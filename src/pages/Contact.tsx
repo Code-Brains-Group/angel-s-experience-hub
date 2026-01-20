@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
   Send,
   Instagram,
   Twitter,
   Linkedin,
   Youtube,
-  CheckCircle2
+  CheckCircle2,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -22,9 +22,19 @@ const serviceOptions = [
 ];
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "olangmichael37@gmail.com", href: "mailto:olangmichael37@gmail.com" },
-  { icon: Phone, label: "Phone", value: "+234 XXX XXX XXXX", href: "tel:+234XXXXXXXX" },
-  { icon: MapPin, label: "Location", value: "Lagos, Nigeria", href: null },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "aloopurity2@gmail.com",
+    href: "mailto:aloopurity2@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+254 728 946 612",
+    href: "tel:+254728946612",
+  },
+  { icon: MapPin, label: "Location", value: "Nairobi, Kenya", href: null },
 ];
 
 const socialLinks = [
@@ -50,7 +60,7 @@ export default function Contact() {
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
       title: "Message Sent!",
@@ -61,8 +71,12 @@ export default function Contact() {
     setIsSubmitting(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -78,7 +92,9 @@ export default function Contact() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
               <Mail className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">Get in Touch</span>
+              <span className="text-primary text-sm font-medium">
+                Get in Touch
+              </span>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
@@ -87,8 +103,8 @@ export default function Contact() {
             </h1>
 
             <p className="text-xl text-muted-foreground">
-              Have a project in mind? Want to book my services? Or just want to say hello? 
-              I'd love to hear from you.
+              Have a project in mind? Want to book my services? Or just want to
+              say hello? I'd love to hear from you.
             </p>
           </div>
         </div>
@@ -100,12 +116,17 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
-              <h2 className="font-display text-2xl font-bold mb-6">Send a Message</h2>
-              
+              <h2 className="font-display text-2xl font-bold mb-6">
+                Send a Message
+              </h2>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Full Name *
                     </label>
                     <input
@@ -120,7 +141,10 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email Address *
                     </label>
                     <input
@@ -138,7 +162,10 @@ export default function Contact() {
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Phone Number
                     </label>
                     <input
@@ -148,11 +175,14 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-card border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
-                      placeholder="+234 XXX XXX XXXX"
+                      placeholder="+254 XXX XXX XXXX"
                     />
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="service"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Service Interest *
                     </label>
                     <select
@@ -164,7 +194,7 @@ export default function Contact() {
                       className="w-full px-4 py-3 rounded-lg bg-card border border-border/50 text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
                     >
                       <option value="">Select a service</option>
-                      {serviceOptions.map(option => (
+                      {serviceOptions.map((option) => (
                         <option key={option.value} value={option.value}>
                           {option.label}
                         </option>
@@ -174,7 +204,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -212,8 +245,10 @@ export default function Contact() {
 
             {/* Contact Info */}
             <div>
-              <h2 className="font-display text-2xl font-bold mb-6">Contact Information</h2>
-              
+              <h2 className="font-display text-2xl font-bold mb-6">
+                Contact Information
+              </h2>
+
               <div className="space-y-6 mb-12">
                 {contactInfo.map((info) => (
                   <div key={info.label} className="flex items-start gap-4">
@@ -221,7 +256,9 @@ export default function Contact() {
                       <info.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
+                      <p className="text-sm text-muted-foreground mb-1">
+                        {info.label}
+                      </p>
                       {info.href ? (
                         <a
                           href={info.href}
@@ -239,7 +276,9 @@ export default function Contact() {
 
               {/* Social Links */}
               <div>
-                <h3 className="font-display text-lg font-semibold mb-4">Follow Me</h3>
+                <h3 className="font-display text-lg font-semibold mb-4">
+                  Follow Me
+                </h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social) => (
                     <a
@@ -258,11 +297,14 @@ export default function Contact() {
               <div className="mt-12 p-6 rounded-2xl bg-gradient-card border border-border/50">
                 <div className="flex items-center gap-3 mb-4">
                   <CheckCircle2 className="h-6 w-6 text-green-500" />
-                  <span className="font-semibold text-foreground">Currently Available</span>
+                  <span className="font-semibold text-foreground">
+                    Currently Available
+                  </span>
                 </div>
                 <p className="text-muted-foreground">
-                  I'm currently accepting bookings for events and training sessions. 
-                  Reach out to discuss your needs and secure your preferred dates.
+                  I'm currently accepting bookings for events and training
+                  sessions. Reach out to discuss your needs and secure your
+                  preferred dates.
                 </p>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Play, ArrowRight, Star, Users, Calendar } from "lucide-react";
-import angelPortrait from "@/assets/angel-portrait.jpg";
+import angelPortrait from "@/assets/angel.jpg";
 
 const stats = [
   { icon: Calendar, value: "500+", label: "Events Hosted" },
@@ -42,14 +42,14 @@ export function HeroSection() {
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Hi, I'm{" "}
               <span className="text-gradient-gold relative">
-                Angel
+                Purity
                 <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary to-gold-light rounded-full opacity-50" />
               </span>
             </h1>
 
             {/* Tagline */}
             <p className="text-xl sm:text-2xl text-muted-foreground mb-4 font-light animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              ✨ Creating Memorable Experiences
+            Creating Memorable Experiences
             </p>
 
             {/* Description */}

@@ -2,16 +2,16 @@ import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ImageGallery } from "@/components/ImageGallery";
-import { 
-  GraduationCap, 
-  ArrowRight, 
-  CheckCircle2, 
+import {
+  GraduationCap,
+  ArrowRight,
+  CheckCircle2,
   Play,
   Users,
   Target,
   Award,
   BookOpen,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 
 // Import gallery images
@@ -23,12 +23,30 @@ import cxTraining5 from "@/assets/gallery/cx-training-5.jpg";
 import cxTraining6 from "@/assets/gallery/cx-training-6.jpg";
 
 const modules = [
-  { title: "Customer Psychology", description: "Understanding customer needs and expectations" },
-  { title: "Communication Excellence", description: "Mastering verbal and non-verbal communication" },
-  { title: "Problem Resolution", description: "Turning complaints into opportunities" },
-  { title: "Service Recovery", description: "Strategies for exceptional recovery" },
-  { title: "Building Loyalty", description: "Creating long-term customer relationships" },
-  { title: "Metrics & Measurement", description: "Tracking and improving CX performance" },
+  {
+    title: "Customer Psychology",
+    description: "Understanding customer needs and expectations",
+  },
+  {
+    title: "Communication Excellence",
+    description: "Mastering verbal and non-verbal communication",
+  },
+  {
+    title: "Problem Resolution",
+    description: "Turning complaints into opportunities",
+  },
+  {
+    title: "Service Recovery",
+    description: "Strategies for exceptional recovery",
+  },
+  {
+    title: "Building Loyalty",
+    description: "Creating long-term customer relationships",
+  },
+  {
+    title: "Metrics & Measurement",
+    description: "Tracking and improving CX performance",
+  },
 ];
 
 const outcomes = [
@@ -39,12 +57,36 @@ const outcomes = [
 ];
 
 const galleryImages = [
-  { src: cxTraining1, alt: "Corporate Training Session", caption: "Executive Training Workshop" },
-  { src: cxTraining2, alt: "Team Building Workshop", caption: "Interactive Team Building" },
-  { src: cxTraining3, alt: "Seminar Presentation", caption: "Professional Development Seminar" },
-  { src: cxTraining4, alt: "Group Discussion", caption: "Collaborative Problem Solving" },
-  { src: cxTraining5, alt: "Graduation Ceremony", caption: "CX Champions Graduation" },
-  { src: cxTraining6, alt: "Role Play Exercise", caption: "Customer Service Role Play" },
+  {
+    src: cxTraining1,
+    alt: "Corporate Training Session",
+    caption: "Executive Training Workshop",
+  },
+  {
+    src: cxTraining2,
+    alt: "Team Building Workshop",
+    caption: "Interactive Team Building",
+  },
+  {
+    src: cxTraining3,
+    alt: "Seminar Presentation",
+    caption: "Professional Development Seminar",
+  },
+  {
+    src: cxTraining4,
+    alt: "Group Discussion",
+    caption: "Collaborative Problem Solving",
+  },
+  {
+    src: cxTraining5,
+    alt: "Graduation Ceremony",
+    caption: "CX Champions Graduation",
+  },
+  {
+    src: cxTraining6,
+    alt: "Role Play Exercise",
+    caption: "Customer Service Role Play",
+  },
 ];
 
 export default function CXTraining() {
@@ -61,7 +103,9 @@ export default function CXTraining() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
               <GraduationCap className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">CX Training & Development</span>
+              <span className="text-primary text-sm font-medium">
+                CX Training & Development
+              </span>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
@@ -70,8 +114,9 @@ export default function CXTraining() {
             </h1>
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Empower your organization with cutting-edge customer experience strategies 
-              that drive satisfaction, loyalty, and measurable business growth.
+              Empower your organization with cutting-edge customer experience
+              strategies that drive satisfaction, loyalty, and measurable
+              business growth.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -112,7 +157,9 @@ export default function CXTraining() {
                   <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors cursor-pointer">
                     <Play className="h-8 w-8 text-primary ml-1" />
                   </div>
-                  <p className="text-muted-foreground">Watch 1-minute introduction</p>
+                  <p className="text-muted-foreground">
+                    Watch 1-minute introduction
+                  </p>
                 </div>
               </div>
             </div>
@@ -125,13 +172,14 @@ export default function CXTraining() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {outcomes.map((outcome) => (
-              <div
-                key={outcome.label}
-                className="stat-card text-center"
-              >
+              <div key={outcome.label} className="stat-card text-center">
                 <outcome.icon className="h-6 w-6 text-primary mx-auto mb-3" />
-                <div className="text-3xl font-bold text-gradient-gold mb-1">{outcome.stat}</div>
-                <div className="text-sm text-muted-foreground">{outcome.label}</div>
+                <div className="text-3xl font-bold text-gradient-gold mb-1">
+                  {outcome.stat}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {outcome.label}
+                </div>
               </div>
             ))}
           </div>
@@ -142,7 +190,7 @@ export default function CXTraining() {
       <section className="bg-secondary/20">
         <ImageGallery
           images={galleryImages}
-          title="Training <span class='text-gradient-gold'>Sessions</span>"
+          title="Training Sessions"
           subtitle="A look at our engaging training workshops and the professionals we've empowered."
           variant="grid"
         />
@@ -157,11 +205,13 @@ export default function CXTraining() {
                 Curriculum
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-                Comprehensive <span className="text-gradient-gold">Training Modules</span>
+                Comprehensive{" "}
+                <span className="text-gradient-gold">Training Modules</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Our carefully designed curriculum covers every aspect of customer experience, 
-                from understanding customer psychology to implementing world-class service strategies.
+                Our carefully designed curriculum covers every aspect of
+                customer experience, from understanding customer psychology to
+                implementing world-class service strategies.
               </p>
 
               <div className="space-y-4">
@@ -174,8 +224,12 @@ export default function CXTraining() {
                       <BookOpen className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-foreground mb-1">{module.title}</h3>
-                      <p className="text-sm text-muted-foreground">{module.description}</p>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {module.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {module.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -191,7 +245,8 @@ export default function CXTraining() {
                   Ready to Transform Your Team?
                 </h3>
                 <p className="text-muted-foreground mb-8">
-                  Invest in your team's CX capabilities and watch your customer satisfaction soar.
+                  Invest in your team's CX capabilities and watch your customer
+                  satisfaction soar.
                 </p>
                 <Button variant="gold" size="lg" className="w-full" asChild>
                   <Link to="/contact">
@@ -212,10 +267,12 @@ export default function CXTraining() {
       <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-            Elevate Your Customer <span className="text-gradient-gold">Experience</span>
+            Elevate Your Customer{" "}
+            <span className="text-gradient-gold">Experience</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Join hundreds of organizations that have transformed their customer experience with our training.
+            Join hundreds of organizations that have transformed their customer
+            experience with our training.
           </p>
           <Button variant="hero" size="xl" asChild>
             <Link to="/contact" className="group">

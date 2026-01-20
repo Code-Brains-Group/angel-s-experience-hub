@@ -2,15 +2,15 @@ import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ImageGallery } from "@/components/ImageGallery";
-import { 
-  Film, 
-  ArrowRight, 
+import {
+  Film,
+  ArrowRight,
   Heart,
   Users,
   Star,
   Popcorn,
   Calendar,
-  MessageCircle
+  MessageCircle,
 } from "lucide-react";
 
 // Import gallery images
@@ -22,55 +22,79 @@ import movieDate5 from "@/assets/gallery/movie-date-5.jpg";
 import movieDate6 from "@/assets/gallery/movie-date-6.jpg";
 
 const features = [
-  { 
-    icon: Popcorn, 
-    title: "Curated Screenings", 
-    description: "Hand-picked films from across genres, eras, and cultures for the ultimate viewing experience." 
+  {
+    icon: Popcorn,
+    title: "Curated Screenings",
+    description:
+      "Hand-picked films from across genres, eras, and cultures for the ultimate viewing experience.",
   },
-  { 
-    icon: Users, 
-    title: "Community Events", 
-    description: "Connect with fellow movie enthusiasts in a warm, welcoming atmosphere." 
+  {
+    icon: Users,
+    title: "Community Events",
+    description:
+      "Connect with fellow movie enthusiasts in a warm, welcoming atmosphere.",
   },
-  { 
-    icon: MessageCircle, 
-    title: "Post-Movie Discussions", 
-    description: "Dive deep into film analysis and share perspectives after each screening." 
+  {
+    icon: MessageCircle,
+    title: "Post-Movie Discussions",
+    description:
+      "Dive deep into film analysis and share perspectives after each screening.",
   },
-  { 
-    icon: Heart, 
-    title: "Themed Experiences", 
-    description: "From romance nights to thriller marathons, there's something for everyone." 
+  {
+    icon: Heart,
+    title: "Themed Experiences",
+    description:
+      "From romance nights to thriller marathons, there's something for everyone.",
   },
 ];
 
 const upcomingEvents = [
-  { 
-    title: "Classic Romance Night", 
-    date: "Coming Soon", 
+  {
+    title: "Classic Romance Night",
+    date: "Coming Soon",
     genre: "Romance",
-    description: "A celebration of timeless love stories on the silver screen"
+    description: "A celebration of timeless love stories on the silver screen",
   },
-  { 
-    title: "African Cinema Showcase", 
-    date: "Coming Soon", 
+  {
+    title: "African Cinema Showcase",
+    date: "Coming Soon",
     genre: "Drama",
-    description: "Highlighting brilliant filmmaking from across the continent"
+    description: "Highlighting brilliant filmmaking from across the continent",
   },
-  { 
-    title: "Thriller Thursday", 
-    date: "Coming Soon", 
+  {
+    title: "Thriller Thursday",
+    date: "Coming Soon",
     genre: "Thriller",
-    description: "Edge-of-your-seat suspense guaranteed"
+    description: "Edge-of-your-seat suspense guaranteed",
   },
 ];
 
 const galleryImages = [
-  { src: movieDate1, alt: "Cozy Movie Screening", caption: "Intimate Cinema Experience" },
-  { src: movieDate2, alt: "Post-Movie Discussion", caption: "Film Discussion Circle" },
-  { src: movieDate3, alt: "Outdoor Screening", caption: "Under the Stars Screening" },
-  { src: movieDate4, alt: "Romantic Movie Night", caption: "Date Night Special" },
-  { src: movieDate5, alt: "African Cinema", caption: "African Cinema Showcase" },
+  {
+    src: movieDate1,
+    alt: "Cozy Movie Screening",
+    caption: "Intimate Cinema Experience",
+  },
+  {
+    src: movieDate2,
+    alt: "Post-Movie Discussion",
+    caption: "Film Discussion Circle",
+  },
+  {
+    src: movieDate3,
+    alt: "Outdoor Screening",
+    caption: "Under the Stars Screening",
+  },
+  {
+    src: movieDate4,
+    alt: "Romantic Movie Night",
+    caption: "Date Night Special",
+  },
+  {
+    src: movieDate5,
+    alt: "African Cinema",
+    caption: "African Cinema Showcase",
+  },
   { src: movieDate6, alt: "Popcorn Setup", caption: "Gourmet Popcorn Bar" },
 ];
 
@@ -88,7 +112,9 @@ export default function MovieDate() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
               <Film className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">Movie Date with Angel</span>
+              <span className="text-primary text-sm font-medium">
+                Movie Date with Angel
+              </span>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
@@ -97,8 +123,9 @@ export default function MovieDate() {
             </h1>
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              More than just watching movies — it's about sharing stories, building connections, 
-              and experiencing the magic of cinema together in a unique, intimate setting.
+              More than just watching movies — it's about sharing stories,
+              building connections, and experiencing the magic of cinema
+              together in a unique, intimate setting.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -124,11 +151,13 @@ export default function MovieDate() {
               The Experience
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-              Why <span className="text-gradient-gold">Movie Date with Angel?</span>
+              Why{" "}
+              <span className="text-gradient-gold">Movie Date with Angel?</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              It's not just about the film on screen — it's about the conversations, 
-              the laughter, the shared moments that make movie-going truly special.
+              It's not just about the film on screen — it's about the
+              conversations, the laughter, the shared moments that make
+              movie-going truly special.
             </p>
           </div>
 
@@ -141,7 +170,9 @@ export default function MovieDate() {
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
                   <feature.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-3">{feature.title}</h3>
+                <h3 className="font-display text-xl font-semibold mb-3">
+                  {feature.title}
+                </h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
             ))}
@@ -153,7 +184,7 @@ export default function MovieDate() {
       <section id="gallery" className="bg-secondary/20">
         <ImageGallery
           images={galleryImages}
-          title="Movie Night <span class='text-gradient-gold'>Moments</span>"
+          title="Movie Night Moments"
           subtitle="Capturing the magic of our film screenings and the community we've built."
           variant="featured"
         />
@@ -170,7 +201,8 @@ export default function MovieDate() {
               Next <span className="text-gradient-gold">Screenings</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Don't miss out on our upcoming movie events. Reserve your spot and be part of something special.
+              Don't miss out on our upcoming movie events. Reserve your spot and
+              be part of something special.
             </p>
           </div>
 
@@ -193,9 +225,18 @@ export default function MovieDate() {
                       {event.date}
                     </span>
                   </div>
-                  <h3 className="font-display text-lg font-semibold mb-2">{event.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{event.description}</p>
-                  <Button variant="gold-outline" size="sm" className="w-full" asChild>
+                  <h3 className="font-display text-lg font-semibold mb-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {event.description}
+                  </p>
+                  <Button
+                    variant="gold-outline"
+                    size="sm"
+                    className="w-full"
+                    asChild
+                  >
                     <Link to="/contact">Reserve Spot</Link>
                   </Button>
                 </div>
@@ -213,7 +254,8 @@ export default function MovieDate() {
             Join Our Movie <span className="text-gradient-gold">Community</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Be the first to know about upcoming screenings, special events, and exclusive movie night experiences.
+            Be the first to know about upcoming screenings, special events, and
+            exclusive movie night experiences.
           </p>
           <Button variant="hero" size="xl" asChild>
             <Link to="/contact" className="group">

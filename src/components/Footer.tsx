@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Sparkles,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const quickLinks = [
   { label: "Home", path: "/" },
@@ -43,7 +52,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Creating memorable experiences through exceptional MC services, transformative CX training, and unique entertainment concepts.
+              Creating memorable experiences through exceptional MC services,
+              transformative CX training, and unique entertainment concepts.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -61,7 +71,9 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-6 text-foreground">Services</h4>
+            <h4 className="font-display text-lg font-semibold mb-6 text-foreground">
+              Services
+            </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.path}>
@@ -78,7 +90,9 @@ export function Footer() {
 
           {/* Support Links */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-6 text-foreground">Support</h4>
+            <h4 className="font-display text-lg font-semibold mb-6 text-foreground">
+              Support
+            </h4>
             <ul className="space-y-3">
               {supportLinks.map((link) => (
                 <li key={link.path}>
@@ -95,24 +109,26 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-display text-lg font-semibold mb-6 text-foreground">Contact</h4>
+            <h4 className="font-display text-lg font-semibold mb-6 text-foreground">
+              Contact
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Mail className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:olangmichael37@gmail.com"
+                  href="mailto:aloopurity2@gmail.com"
                   className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
-                  olangmichael37@gmail.com
+                  aloopurity2@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">+234 XXX XXX XXXX</span>
+                <span className="text-muted-foreground">+254 728 946 612</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Lagos, Nigeria</span>
+                <span className="text-muted-foreground">Nairobi, Kenya</span>
               </li>
             </ul>
           </div>
@@ -125,7 +141,8 @@ export function Footer() {
               © {new Date().getFullYear()} Angel. All rights reserved.
             </p>
             <p className="text-muted-foreground text-sm">
-              Crafted with <span className="text-primary">♥</span> for memorable experiences
+              Crafted with <span className="text-primary">♥</span> for memorable
+              experiences
             </p>
           </div>
         </div>

@@ -2,15 +2,15 @@ import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ImageGallery } from "@/components/ImageGallery";
-import { 
-  Mic2, 
-  ArrowRight, 
-  CheckCircle2, 
-  PartyPopper, 
-  Building2, 
-  Heart, 
+import {
+  Mic2,
+  ArrowRight,
+  CheckCircle2,
+  PartyPopper,
+  Building2,
+  Heart,
   Presentation,
-  Star
+  Star,
 } from "lucide-react";
 
 // Import gallery images
@@ -26,10 +26,26 @@ import mcEvent9 from "@/assets/gallery/mc-event-9.jpg";
 import mcEvent10 from "@/assets/gallery/mc-event-10.jpg";
 
 const eventTypes = [
-  { icon: Building2, title: "Corporate Events", description: "Conferences, product launches, and annual galas" },
-  { icon: Heart, title: "Weddings & Celebrations", description: "Making your special day truly unforgettable" },
-  { icon: Presentation, title: "Conferences & Seminars", description: "Engaging audiences with dynamic hosting" },
-  { icon: PartyPopper, title: "Private Parties", description: "Birthdays, anniversaries, and milestone celebrations" },
+  {
+    icon: Building2,
+    title: "Corporate Events",
+    description: "Conferences, product launches, and annual galas",
+  },
+  {
+    icon: Heart,
+    title: "Weddings & Celebrations",
+    description: "Making your special day truly unforgettable",
+  },
+  {
+    icon: Presentation,
+    title: "Conferences & Seminars",
+    description: "Engaging audiences with dynamic hosting",
+  },
+  {
+    icon: PartyPopper,
+    title: "Private Parties",
+    description: "Birthdays, anniversaries, and milestone celebrations",
+  },
 ];
 
 const benefits = [
@@ -42,16 +58,36 @@ const benefits = [
 ];
 
 const galleryImages = [
-  { src: mcEvent1, alt: "Corporate Gala Event", caption: "Corporate Gala Evening" },
-  { src: mcEvent2, alt: "Wedding Reception", caption: "Elegant Wedding Reception" },
-  { src: mcEvent3, alt: "Conference Hosting", caption: "International Conference" },
+  {
+    src: mcEvent1,
+    alt: "Corporate Gala Event",
+    caption: "Corporate Gala Evening",
+  },
+  {
+    src: mcEvent2,
+    alt: "Wedding Reception",
+    caption: "Elegant Wedding Reception",
+  },
+  {
+    src: mcEvent3,
+    alt: "Conference Hosting",
+    caption: "International Conference",
+  },
   { src: mcEvent4, alt: "Award Ceremony", caption: "Award Ceremony Gala" },
   { src: mcEvent5, alt: "Product Launch", caption: "Tech Product Launch" },
-  { src: mcEvent6, alt: "Charity Fundraiser", caption: "Charity Fundraiser Event" },
+  {
+    src: mcEvent6,
+    alt: "Charity Fundraiser",
+    caption: "Charity Fundraiser Event",
+  },
   { src: mcEvent7, alt: "Music Festival", caption: "Outdoor Music Festival" },
   { src: mcEvent8, alt: "Corporate Dinner", caption: "Executive Dinner Event" },
   { src: mcEvent9, alt: "Fashion Show", caption: "Fashion Show Hosting" },
-  { src: mcEvent10, alt: "New Year Celebration", caption: "New Year's Eve Gala" },
+  {
+    src: mcEvent10,
+    alt: "New Year Celebration",
+    caption: "New Year's Eve Gala",
+  },
 ];
 
 export default function MCServices() {
@@ -68,7 +104,9 @@ export default function MCServices() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
               <Mic2 className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">Professional MC Services</span>
+              <span className="text-primary text-sm font-medium">
+                Professional MC Services
+              </span>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
@@ -77,9 +115,9 @@ export default function MCServices() {
             </h1>
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              With years of experience and an innate ability to connect with audiences, 
-              I bring energy, professionalism, and that special touch that transforms 
-              ordinary events into extraordinary experiences.
+              With years of experience and an innate ability to connect with
+              audiences, I bring energy, professionalism, and that special touch
+              that transforms ordinary events into extraordinary experiences.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -105,10 +143,12 @@ export default function MCServices() {
               Event Types
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-              Every Occasion, <span className="text-gradient-gold">Expertly Hosted</span>
+              Every Occasion,{" "}
+              <span className="text-gradient-gold">Expertly Hosted</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              From intimate gatherings to grand celebrations, I adapt my style to match your event's unique atmosphere.
+              From intimate gatherings to grand celebrations, I adapt my style
+              to match your event's unique atmosphere.
             </p>
           </div>
 
@@ -121,7 +161,9 @@ export default function MCServices() {
                 <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
                   <event.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-3">{event.title}</h3>
+                <h3 className="font-display text-xl font-semibold mb-3">
+                  {event.title}
+                </h3>
                 <p className="text-muted-foreground">{event.description}</p>
               </div>
             ))}
@@ -133,7 +175,7 @@ export default function MCServices() {
       <section id="gallery" className="bg-secondary/20">
         <ImageGallery
           images={galleryImages}
-          title="Events I've <span class='text-gradient-gold'>Hosted</span>"
+          title="Events I've Hosted"
           subtitle="A glimpse into the memorable events I've had the honor of hosting over the years."
           variant="masonry"
         />
@@ -148,11 +190,13 @@ export default function MCServices() {
                 Why Choose Me
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-                Your Event Deserves <span className="text-gradient-gold">the Best</span>
+                Your Event Deserves{" "}
+                <span className="text-gradient-gold">the Best</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                I don't just host events — I create experiences. With meticulous preparation, 
-                genuine enthusiasm, and a commitment to excellence, every moment is crafted to perfection.
+                I don't just host events — I create experiences. With meticulous
+                preparation, genuine enthusiasm, and a commitment to excellence,
+                every moment is crafted to perfection.
               </p>
 
               <ul className="space-y-4 mb-8">
@@ -177,7 +221,9 @@ export default function MCServices() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <Star className="h-16 w-16 text-primary mx-auto mb-4" />
-                    <p className="text-2xl font-display font-bold text-gradient-gold">500+</p>
+                    <p className="text-2xl font-display font-bold text-gradient-gold">
+                      500+
+                    </p>
                     <p className="text-muted-foreground">Events Hosted</p>
                   </div>
                 </div>
@@ -192,10 +238,12 @@ export default function MCServices() {
       <section className="py-24 bg-gradient-hero">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-            Ready to Make Your Event <span className="text-gradient-gold">Unforgettable?</span>
+            Ready to Make Your Event{" "}
+            <span className="text-gradient-gold">Unforgettable?</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Let's create something extraordinary together. Get in touch to discuss your event and secure your date.
+            Let's create something extraordinary together. Get in touch to
+            discuss your event and secure your date.
           </p>
           <Button variant="hero" size="xl" asChild>
             <Link to="/contact" className="group">
