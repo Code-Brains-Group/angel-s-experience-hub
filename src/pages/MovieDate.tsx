@@ -1,6 +1,7 @@
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ImageGallery } from "@/components/ImageGallery";
 import { 
   Film, 
   ArrowRight, 
@@ -11,6 +12,14 @@ import {
   Calendar,
   MessageCircle
 } from "lucide-react";
+
+// Import gallery images
+import movieDate1 from "@/assets/gallery/movie-date-1.jpg";
+import movieDate2 from "@/assets/gallery/movie-date-2.jpg";
+import movieDate3 from "@/assets/gallery/movie-date-3.jpg";
+import movieDate4 from "@/assets/gallery/movie-date-4.jpg";
+import movieDate5 from "@/assets/gallery/movie-date-5.jpg";
+import movieDate6 from "@/assets/gallery/movie-date-6.jpg";
 
 const features = [
   { 
@@ -56,6 +65,15 @@ const upcomingEvents = [
   },
 ];
 
+const galleryImages = [
+  { src: movieDate1, alt: "Cozy Movie Screening", caption: "Intimate Cinema Experience" },
+  { src: movieDate2, alt: "Post-Movie Discussion", caption: "Film Discussion Circle" },
+  { src: movieDate3, alt: "Outdoor Screening", caption: "Under the Stars Screening" },
+  { src: movieDate4, alt: "Romantic Movie Night", caption: "Date Night Special" },
+  { src: movieDate5, alt: "African Cinema", caption: "African Cinema Showcase" },
+  { src: movieDate6, alt: "Popcorn Setup", caption: "Gourmet Popcorn Bar" },
+];
+
 export default function MovieDate() {
   return (
     <MainLayout>
@@ -91,7 +109,7 @@ export default function MovieDate() {
                 </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
-                <a href="#upcoming">View Upcoming Events</a>
+                <a href="#gallery">View Gallery</a>
               </Button>
             </div>
           </div>
@@ -131,8 +149,18 @@ export default function MovieDate() {
         </div>
       </section>
 
+      {/* Movie Date Gallery */}
+      <section id="gallery" className="bg-secondary/20">
+        <ImageGallery
+          images={galleryImages}
+          title="Movie Night <span class='text-gradient-gold'>Moments</span>"
+          subtitle="Capturing the magic of our film screenings and the community we've built."
+          variant="featured"
+        />
+      </section>
+
       {/* Upcoming Events */}
-      <section id="upcoming" className="py-24 bg-secondary/20">
+      <section id="upcoming" className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">

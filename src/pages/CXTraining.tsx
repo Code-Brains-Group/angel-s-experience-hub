@@ -1,6 +1,7 @@
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ImageGallery } from "@/components/ImageGallery";
 import { 
   GraduationCap, 
   ArrowRight, 
@@ -12,6 +13,14 @@ import {
   BookOpen,
   TrendingUp
 } from "lucide-react";
+
+// Import gallery images
+import cxTraining1 from "@/assets/gallery/cx-training-1.jpg";
+import cxTraining2 from "@/assets/gallery/cx-training-2.jpg";
+import cxTraining3 from "@/assets/gallery/cx-training-3.jpg";
+import cxTraining4 from "@/assets/gallery/cx-training-4.jpg";
+import cxTraining5 from "@/assets/gallery/cx-training-5.jpg";
+import cxTraining6 from "@/assets/gallery/cx-training-6.jpg";
 
 const modules = [
   { title: "Customer Psychology", description: "Understanding customer needs and expectations" },
@@ -27,6 +36,15 @@ const outcomes = [
   { icon: Users, stat: "1000+", label: "Professionals trained" },
   { icon: Award, stat: "98%", label: "Course completion rate" },
   { icon: Target, stat: "50+", label: "Organizations transformed" },
+];
+
+const galleryImages = [
+  { src: cxTraining1, alt: "Corporate Training Session", caption: "Executive Training Workshop" },
+  { src: cxTraining2, alt: "Team Building Workshop", caption: "Interactive Team Building" },
+  { src: cxTraining3, alt: "Seminar Presentation", caption: "Professional Development Seminar" },
+  { src: cxTraining4, alt: "Group Discussion", caption: "Collaborative Problem Solving" },
+  { src: cxTraining5, alt: "Graduation Ceremony", caption: "CX Champions Graduation" },
+  { src: cxTraining6, alt: "Role Play Exercise", caption: "Customer Service Role Play" },
 ];
 
 export default function CXTraining() {
@@ -118,6 +136,16 @@ export default function CXTraining() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Training Gallery */}
+      <section className="bg-secondary/20">
+        <ImageGallery
+          images={galleryImages}
+          title="Training <span class='text-gradient-gold'>Sessions</span>"
+          subtitle="A look at our engaging training workshops and the professionals we've empowered."
+          variant="grid"
+        />
       </section>
 
       {/* Course Curriculum */}

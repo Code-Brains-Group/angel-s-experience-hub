@@ -1,0 +1,279 @@
+import { useState } from "react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+interface ImageGalleryProps {
+  images: GalleryImage[];
+  title?: string;
+  subtitle?: string;
+  variant?: "masonry" | "grid" | "featured";
+}
+
+export function ImageGallery({ 
+  images, 
+  title, 
+  subtitle,
+  variant = "masonry" 
+}: ImageGalleryProps) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = "auto";
+  };
+
+  const goNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const goPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") goNext();
+    if (e.key === "ArrowLeft") goPrev();
+  };
+
+  // Masonry layout with varied sizes
+  const getMasonryClass = (index: number) => {
+    const patterns = [
+      "col-span-1 row-span-1",
+      "col-span-1 row-span-2 md:col-span-1",
+      "col-span-1 row-span-1",
+      "col-span-2 row-span-1 md:col-span-1",
+      "col-span-1 row-span-1",
+      "col-span-1 row-span-2",
+      "col-span-1 row-span-1",
+      "col-span-1 row-span-1",
+      "col-span-2 row-span-1 md:col-span-1",
+      "col-span-1 row-span-1",
+    ];
+    return patterns[index % patterns.length];
+  };
+
+  return (
+    <>
+      <section className="py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {(title || subtitle) && (
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              {title && (
+                <>
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+                    Gallery
+                  </span>
+                  <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
+                    {title}
+                  </h2>
+                </>
+              )}
+              {subtitle && (
+                <p className="text-lg text-muted-foreground">{subtitle}</p>
+              )}
+            </div>
+          )}
+
+          {variant === "masonry" && (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "relative group cursor-pointer overflow-hidden rounded-2xl",
+                    getMasonryClass(index)
+                  )}
+                  onClick={() => openLightbox(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                        <ZoomIn className="h-5 w-5 text-primary" />
+                      </div>
+                    </div>
+                    {image.caption && (
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <p className="text-sm font-medium text-foreground">{image.caption}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {variant === "grid" && (
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-square"
+                  onClick={() => openLightbox(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                        <ZoomIn className="h-5 w-5 text-primary" />
+                      </div>
+                    </div>
+                    {image.caption && (
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <p className="text-sm font-medium text-foreground">{image.caption}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {variant === "featured" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "relative group cursor-pointer overflow-hidden rounded-2xl border border-border/50",
+                    index === 0 && "md:col-span-2 md:row-span-2 aspect-[16/10]",
+                    index !== 0 && "aspect-[4/3]"
+                  )}
+                  onClick={() => openLightbox(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                        <ZoomIn className="h-6 w-6 text-primary" />
+                      </div>
+                    </div>
+                    {image.caption && (
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <p className="text-base font-medium text-foreground">{image.caption}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-md flex items-center justify-center"
+          onClick={closeLightbox}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          {/* Close Button */}
+          <button
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-card border border-border/50 flex items-center justify-center hover:bg-primary/10 transition-colors z-10"
+            onClick={closeLightbox}
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          {/* Navigation */}
+          <button
+            className="absolute left-4 md:left-8 w-12 h-12 rounded-full bg-card border border-border/50 flex items-center justify-center hover:bg-primary/10 transition-colors z-10"
+            onClick={(e) => {
+              e.stopPropagation();
+              goPrev();
+            }}
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          <button
+            className="absolute right-4 md:right-8 w-12 h-12 rounded-full bg-card border border-border/50 flex items-center justify-center hover:bg-primary/10 transition-colors z-10"
+            onClick={(e) => {
+              e.stopPropagation();
+              goNext();
+            }}
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          {/* Image Container */}
+          <div
+            className="max-w-5xl max-h-[80vh] px-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={images[currentIndex].src}
+              alt={images[currentIndex].alt}
+              className="max-w-full max-h-[70vh] object-contain rounded-xl shadow-2xl"
+            />
+            {images[currentIndex].caption && (
+              <div className="text-center mt-6">
+                <p className="text-lg text-foreground font-medium">
+                  {images[currentIndex].caption}
+                </p>
+              </div>
+            )}
+            <div className="text-center mt-4">
+              <span className="text-sm text-muted-foreground">
+                {currentIndex + 1} / {images.length}
+              </span>
+            </div>
+          </div>
+
+          {/* Thumbnail Strip */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-full px-4">
+            {images.map((image, index) => (
+              <button
+                key={index}
+                className={cn(
+                  "w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all",
+                  currentIndex === index
+                    ? "border-primary opacity-100 scale-105"
+                    : "border-transparent opacity-50 hover:opacity-75"
+                )}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(index);
+                }}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

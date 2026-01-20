@@ -1,6 +1,7 @@
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ImageGallery } from "@/components/ImageGallery";
 import { 
   Mic2, 
   ArrowRight, 
@@ -11,6 +12,18 @@ import {
   Presentation,
   Star
 } from "lucide-react";
+
+// Import gallery images
+import mcEvent1 from "@/assets/gallery/mc-event-1.jpg";
+import mcEvent2 from "@/assets/gallery/mc-event-2.jpg";
+import mcEvent3 from "@/assets/gallery/mc-event-3.jpg";
+import mcEvent4 from "@/assets/gallery/mc-event-4.jpg";
+import mcEvent5 from "@/assets/gallery/mc-event-5.jpg";
+import mcEvent6 from "@/assets/gallery/mc-event-6.jpg";
+import mcEvent7 from "@/assets/gallery/mc-event-7.jpg";
+import mcEvent8 from "@/assets/gallery/mc-event-8.jpg";
+import mcEvent9 from "@/assets/gallery/mc-event-9.jpg";
+import mcEvent10 from "@/assets/gallery/mc-event-10.jpg";
 
 const eventTypes = [
   { icon: Building2, title: "Corporate Events", description: "Conferences, product launches, and annual galas" },
@@ -26,6 +39,19 @@ const benefits = [
   "Adaptable to any event theme",
   "Bilingual capabilities",
   "Comprehensive pre-event coordination",
+];
+
+const galleryImages = [
+  { src: mcEvent1, alt: "Corporate Gala Event", caption: "Corporate Gala Evening" },
+  { src: mcEvent2, alt: "Wedding Reception", caption: "Elegant Wedding Reception" },
+  { src: mcEvent3, alt: "Conference Hosting", caption: "International Conference" },
+  { src: mcEvent4, alt: "Award Ceremony", caption: "Award Ceremony Gala" },
+  { src: mcEvent5, alt: "Product Launch", caption: "Tech Product Launch" },
+  { src: mcEvent6, alt: "Charity Fundraiser", caption: "Charity Fundraiser Event" },
+  { src: mcEvent7, alt: "Music Festival", caption: "Outdoor Music Festival" },
+  { src: mcEvent8, alt: "Corporate Dinner", caption: "Executive Dinner Event" },
+  { src: mcEvent9, alt: "Fashion Show", caption: "Fashion Show Hosting" },
+  { src: mcEvent10, alt: "New Year Celebration", caption: "New Year's Eve Gala" },
 ];
 
 export default function MCServices() {
@@ -64,7 +90,7 @@ export default function MCServices() {
                 </Link>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
-                <a href="#event-types">View Event Types</a>
+                <a href="#gallery">View Gallery</a>
               </Button>
             </div>
           </div>
@@ -103,8 +129,18 @@ export default function MCServices() {
         </div>
       </section>
 
+      {/* Event Gallery */}
+      <section id="gallery" className="bg-secondary/20">
+        <ImageGallery
+          images={galleryImages}
+          title="Events I've <span class='text-gradient-gold'>Hosted</span>"
+          subtitle="A glimpse into the memorable events I've had the honor of hosting over the years."
+          variant="masonry"
+        />
+      </section>
+
       {/* Why Choose Me */}
-      <section className="py-24 bg-secondary/20">
+      <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
