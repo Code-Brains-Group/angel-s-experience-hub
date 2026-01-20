@@ -11,7 +11,10 @@ import {
   Target,
   Award,
   BookOpen,
-  TrendingUp
+  TrendingUp,
+  Check,
+  Star,
+  Zap
 } from "lucide-react";
 
 // Import gallery images
@@ -36,6 +39,54 @@ const outcomes = [
   { icon: Users, stat: "1000+", label: "Professionals trained" },
   { icon: Award, stat: "98%", label: "Course completion rate" },
   { icon: Target, stat: "50+", label: "Organizations transformed" },
+];
+
+const pricingPackages = [
+  {
+    name: "Starter",
+    price: "15,000",
+    description: "Perfect for individuals looking to boost their CX skills",
+    icon: BookOpen,
+    features: [
+      "6 Core Training Modules",
+      "Digital Course Materials",
+      "1-Month Access",
+      "Certificate of Completion",
+      "Email Support",
+    ],
+    popular: false,
+  },
+  {
+    name: "Professional",
+    price: "35,000",
+    description: "Ideal for teams seeking comprehensive CX transformation",
+    icon: Star,
+    features: [
+      "All Starter Features",
+      "Live Virtual Sessions",
+      "3-Month Access",
+      "Role-Play Workshops",
+      "1-on-1 Coaching Session",
+      "Priority Support",
+    ],
+    popular: true,
+  },
+  {
+    name: "Enterprise",
+    price: "85,000",
+    description: "Complete solution for organizations serious about CX excellence",
+    icon: Zap,
+    features: [
+      "All Professional Features",
+      "On-Site Training Option",
+      "Lifetime Access",
+      "Custom Curriculum",
+      "Team of up to 10",
+      "Quarterly Check-ins",
+      "Dedicated Account Manager",
+    ],
+    popular: false,
+  },
 ];
 
 const galleryImages = [
@@ -135,6 +186,83 @@ export default function CXTraining() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Pricing Packages */}
+      <section className="py-24 bg-gradient-hero">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+              Investment
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
+              Choose Your <span className="text-gradient-gold">Package</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Flexible pricing options designed to fit your needs and budget. 
+              All packages include our proven CX training methodology.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {pricingPackages.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-2 ${
+                  pkg.popular
+                    ? "bg-gradient-to-b from-primary/20 to-card border-primary/50 shadow-2xl shadow-primary/20"
+                    : "bg-gradient-card border-border/50"
+                }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="bg-primary text-primary-foreground text-sm font-semibold px-4 py-1.5 rounded-full">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
+                <div className="text-center mb-8">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
+                    pkg.popular ? "bg-primary/30" : "bg-primary/10"
+                  }`}>
+                    <pkg.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold mb-2">{pkg.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{pkg.description}</p>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-sm text-muted-foreground">KSH</span>
+                    <span className="text-4xl font-bold text-gradient-gold">{pkg.price}</span>
+                  </div>
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {pkg.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  variant={pkg.popular ? "gold" : "gold-outline"}
+                  className="w-full"
+                  asChild
+                >
+                  <Link to="/contact">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-10">
+            All prices are in Kenyan Shillings (KSH). Custom corporate packages available upon request.
+          </p>
         </div>
       </section>
 
