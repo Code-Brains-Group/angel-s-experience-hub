@@ -252,99 +252,173 @@ export default function MovieDate() {
         </div>
       </section>
 
-      {/* Movie Date Gallery */}
-      <section id="gallery" className="bg-secondary/20">
-        <ImageGallery
-          images={galleryImages}
-          title="Movie Night Moments"
-          subtitle="Capturing the magic of our film screenings and the community we've built."
-          variant="featured"
-        />
-      </section>
-
       {/* Edutainment Program Section */}
-      <section id="edutainment" className="py-24 bg-gradient-hero">
+      <section id="edutainment" className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6">
-              <GraduationCap className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">
-                Edutainment Program
-              </span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content Side */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6">
+                <GraduationCap className="h-4 w-4 text-primary" />
+                <span className="text-primary text-sm font-medium">
+                  Edutainment Program
+                </span>
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
+                Shaping the Next Generation,{" "}
+                <span className="text-gradient-gold">One Film at a Time</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                A transformative mentorship program designed for schools, using the power 
+                of cinema to inspire, educate, and shape young minds into thoughtful, 
+                empathetic leaders of tomorrow.
+              </p>
+
+              {/* Features Grid */}
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {edutainmentFeatures.map((feature) => (
+                  <div
+                    key={feature.title}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">{feature.title}</h3>
+                      <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stats */}
+              <div className="flex gap-8 mb-8">
+                <div>
+                  <div className="text-3xl font-display font-bold text-gradient-gold">10+</div>
+                  <p className="text-sm text-muted-foreground">Schools Reached</p>
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-bold text-gradient-gold">500+</div>
+                  <p className="text-sm text-muted-foreground">Students Impacted</p>
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-bold text-gradient-gold">20+</div>
+                  <p className="text-sm text-muted-foreground">Sessions</p>
+                </div>
+              </div>
+
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/contact" className="group">
+                  Partner With Us
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-              Shaping the Next Generation,{" "}
-              <span className="text-gradient-gold">One Film at a Time</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              A transformative mentorship program designed for schools, using the power 
-              of cinema to inspire, educate, and shape young minds into thoughtful, 
-              empathetic leaders of tomorrow.
-            </p>
-          </div>
 
-          {/* Edutainment Features */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-            {edutainmentFeatures.map((feature) => (
-              <div
-                key={feature.title}
-                className="bg-gradient-card rounded-2xl border border-border/50 p-8 text-center card-hover"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="h-8 w-8 text-primary" />
+            {/* Image Side */}
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src={edutainment1}
+                  alt="Edutainment Program - Students engaged in film education"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-lg font-display font-semibold text-foreground">
+                    Film Education in Schools
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Students engaged in an interactive film screening session
+                  </p>
                 </div>
-                <h3 className="font-display text-xl font-semibold mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">{feature.description}</p>
               </div>
-            ))}
-          </div>
-
-          {/* Program Highlights */}
-          <div className="bg-gradient-card rounded-3xl border border-border/50 p-8 md:p-12 max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-display font-bold text-gradient-gold mb-2">
-                  10+
-                </div>
-                <p className="text-muted-foreground">Schools Reached</p>
-              </div>
-              <div>
-                <div className="text-4xl font-display font-bold text-gradient-gold mb-2">
-                  500+
-                </div>
-                <p className="text-muted-foreground">Students Impacted</p>
-              </div>
-              <div>
-                <div className="text-4xl font-display font-bold text-gradient-gold mb-2">
-                  20+
-                </div>
-                <p className="text-muted-foreground">Sessions Conducted</p>
-              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
             </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center mt-12">
-            <Button variant="hero" size="xl" asChild>
-              <Link to="/contact" className="group">
-                Partner With Us
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Edutainment Gallery */}
-      <section className="bg-secondary/20">
-        <ImageGallery
-          images={edutainmentGalleryImages}
-          title="Edutainment in Action"
-          subtitle="Capturing the transformative moments from our school mentorship programs."
-          variant="grid"
-        />
+      {/* Combined Gallery Section */}
+      <section id="gallery" className="py-24 bg-secondary/20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+              Our Gallery
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
+              Moments <span className="text-gradient-gold">Captured</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              A visual journey through our movie nights and edutainment sessions.
+            </p>
+          </div>
+
+          {/* Movie Night Moments */}
+          <div className="mb-20">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <Film className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-bold">Movie Night Moments</h3>
+                <p className="text-muted-foreground">Capturing the magic of our film screenings</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {galleryImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm font-medium text-foreground">{image.caption}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Edutainment Gallery */}
+          <div>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <GraduationCap className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-display text-2xl font-bold">Edutainment in Action</h3>
+                <p className="text-muted-foreground">Transformative moments from our school programs</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {edutainmentGalleryImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-sm font-medium text-foreground">{image.caption}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Upcoming Events */}
