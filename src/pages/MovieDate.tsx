@@ -11,6 +11,10 @@ import {
   Popcorn,
   Calendar,
   MessageCircle,
+  GraduationCap,
+  Lightbulb,
+  Target,
+  BookOpen,
 } from "lucide-react";
 
 // Import gallery images
@@ -20,6 +24,14 @@ import movieDate3 from "@/assets/gallery/movie-date-3.jpg";
 import movieDate4 from "@/assets/gallery/movie-date-4.jpg";
 import movieDate5 from "@/assets/gallery/movie-date-5.jpg";
 import movieDate6 from "@/assets/gallery/movie-date-6.jpg";
+
+// Import edutainment gallery images
+import edutainment1 from "@/assets/gallery/edutainment-1.jpg";
+import edutainment2 from "@/assets/gallery/edutainment-2.jpg";
+import edutainment3 from "@/assets/gallery/edutainment-3.jpg";
+import edutainment4 from "@/assets/gallery/edutainment-4.jpg";
+import edutainment5 from "@/assets/gallery/edutainment-5.jpg";
+import edutainment6 from "@/assets/gallery/edutainment-6.jpg";
 
 const features = [
   {
@@ -96,6 +108,66 @@ const galleryImages = [
     caption: "African Cinema Showcase",
   },
   { src: movieDate6, alt: "Popcorn Setup", caption: "Gourmet Popcorn Bar" },
+];
+
+const edutainmentFeatures = [
+  {
+    icon: GraduationCap,
+    title: "School Partnerships",
+    description:
+      "Collaborating with schools to bring impactful film experiences to students.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Life Lessons Through Film",
+    description:
+      "Using cinema to teach values, critical thinking, and emotional intelligence.",
+  },
+  {
+    icon: Target,
+    title: "Focused Curriculum",
+    description:
+      "Age-appropriate films selected to align with educational goals and student development.",
+  },
+  {
+    icon: BookOpen,
+    title: "Discussion & Reflection",
+    description:
+      "Guided conversations that help students process and apply what they've learned.",
+  },
+];
+
+const edutainmentGalleryImages = [
+  {
+    src: edutainment1,
+    alt: "Students Watching Educational Film",
+    caption: "School Film Screening",
+  },
+  {
+    src: edutainment2,
+    alt: "Interactive Mentorship Session",
+    caption: "Interactive Discussion",
+  },
+  {
+    src: edutainment3,
+    alt: "Post-Film Discussion Circle",
+    caption: "Reflection Circle",
+  },
+  {
+    src: edutainment4,
+    alt: "Certificate Ceremony",
+    caption: "Program Graduation",
+  },
+  {
+    src: edutainment5,
+    alt: "Mentor with Students",
+    caption: "Collaborative Learning",
+  },
+  {
+    src: edutainment6,
+    alt: "Students Learning Film Production",
+    caption: "Film-Making Workshop",
+  },
 ];
 
 export default function MovieDate() {
@@ -187,6 +259,91 @@ export default function MovieDate() {
           title="Movie Night Moments"
           subtitle="Capturing the magic of our film screenings and the community we've built."
           variant="featured"
+        />
+      </section>
+
+      {/* Edutainment Program Section */}
+      <section id="edutainment" className="py-24 bg-gradient-hero">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6">
+              <GraduationCap className="h-4 w-4 text-primary" />
+              <span className="text-primary text-sm font-medium">
+                Edutainment Program
+              </span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
+              Shaping the Next Generation,{" "}
+              <span className="text-gradient-gold">One Film at a Time</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              A transformative mentorship program designed for schools, using the power 
+              of cinema to inspire, educate, and shape young minds into thoughtful, 
+              empathetic leaders of tomorrow.
+            </p>
+          </div>
+
+          {/* Edutainment Features */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {edutainmentFeatures.map((feature) => (
+              <div
+                key={feature.title}
+                className="bg-gradient-card rounded-2xl border border-border/50 p-8 text-center card-hover"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                  <feature.icon className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="font-display text-xl font-semibold mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Program Highlights */}
+          <div className="bg-gradient-card rounded-3xl border border-border/50 p-8 md:p-12 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-display font-bold text-gradient-gold mb-2">
+                  10+
+                </div>
+                <p className="text-muted-foreground">Schools Reached</p>
+              </div>
+              <div>
+                <div className="text-4xl font-display font-bold text-gradient-gold mb-2">
+                  500+
+                </div>
+                <p className="text-muted-foreground">Students Impacted</p>
+              </div>
+              <div>
+                <div className="text-4xl font-display font-bold text-gradient-gold mb-2">
+                  20+
+                </div>
+                <p className="text-muted-foreground">Sessions Conducted</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/contact" className="group">
+                Partner With Us
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Edutainment Gallery */}
+      <section className="bg-secondary/20">
+        <ImageGallery
+          images={edutainmentGalleryImages}
+          title="Edutainment in Action"
+          subtitle="Capturing the transformative moments from our school mentorship programs."
+          variant="grid"
         />
       </section>
 
