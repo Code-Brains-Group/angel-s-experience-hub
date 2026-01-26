@@ -3,6 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { BookOpen, ArrowRight, Calendar, User, Tag } from "lucide-react";
 
+// Import images for blog posts
+import mcEvent1 from "@/assets/gallery/mc-event-1.jpg";
+import mcEvent2 from "@/assets/gallery/mc-event-2.jpg";
+import cxTraining1 from "@/assets/gallery/cx-training-1.jpg";
+import cxTraining2 from "@/assets/gallery/cx-training-2.jpg";
+import movieDate1 from "@/assets/gallery/movie-date-1.jpg";
+import mcEvent3 from "@/assets/gallery/mc-event-3.jpg";
+
 // Mock blog posts - these would typically come from an API
 const blogPosts = [
   {
@@ -14,6 +22,7 @@ const blogPosts = [
     date: "2024-01-15",
     category: "MC Tips",
     readTime: "5 min read",
+    image: mcEvent1,
   },
   {
     id: 2,
@@ -24,6 +33,7 @@ const blogPosts = [
     date: "2024-01-10",
     category: "CX Insights",
     readTime: "7 min read",
+    image: cxTraining1,
   },
   {
     id: 3,
@@ -34,6 +44,7 @@ const blogPosts = [
     date: "2024-01-05",
     category: "Public Speaking",
     readTime: "6 min read",
+    image: mcEvent2,
   },
   {
     id: 4,
@@ -44,6 +55,7 @@ const blogPosts = [
     date: "2024-01-01",
     category: "CX Insights",
     readTime: "8 min read",
+    image: cxTraining2,
   },
   {
     id: 5,
@@ -54,6 +66,7 @@ const blogPosts = [
     date: "2023-12-28",
     category: "Community",
     readTime: "4 min read",
+    image: movieDate1,
   },
   {
     id: 6,
@@ -64,6 +77,7 @@ const blogPosts = [
     date: "2023-12-20",
     category: "MC Tips",
     readTime: "10 min read",
+    image: mcEvent3,
   },
 ];
 
@@ -126,8 +140,12 @@ export default function Blog() {
                 className="group bg-gradient-card rounded-2xl border border-border/50 overflow-hidden card-hover"
               >
                 {/* Thumbnail */}
-                <div className="h-48 bg-secondary/50 flex items-center justify-center relative overflow-hidden">
-                  <BookOpen className="h-12 w-12 text-primary/30 group-hover:scale-110 transition-transform duration-500" />
+                <div className="h-48 overflow-hidden relative">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
                 </div>
 

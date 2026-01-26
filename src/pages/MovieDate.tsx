@@ -66,18 +66,21 @@ const upcomingEvents = [
     date: "Coming Soon",
     genre: "Romance",
     description: "A celebration of timeless love stories on the silver screen",
+    image: movieDate1,
   },
   {
     title: "African Cinema Showcase",
     date: "Coming Soon",
     genre: "Drama",
     description: "Highlighting brilliant filmmaking from across the continent",
+    image: movieDate2,
   },
   {
     title: "Thriller Thursday",
     date: "Coming Soon",
     genre: "Thriller",
     description: "Edge-of-your-seat suspense guaranteed",
+    image: movieDate3,
   },
 ];
 
@@ -455,8 +458,12 @@ export default function MovieDate() {
                 key={event.title}
                 className="bg-gradient-card rounded-2xl border border-border/50 overflow-hidden card-hover"
               >
-                <div className="h-48 bg-secondary/50 flex items-center justify-center">
-                  <Film className="h-16 w-16 text-primary/30" />
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={event.image} 
+                    alt={event.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
