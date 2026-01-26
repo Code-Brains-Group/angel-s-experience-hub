@@ -268,28 +268,40 @@ export default function MovieDate() {
                 Shaping the Next Generation,{" "}
                 <span className="text-gradient-gold">One Film at a Time</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                A transformative mentorship program designed for schools, using the power 
-                of cinema to inspire, educate, and shape young minds into thoughtful, 
-                empathetic leaders of tomorrow.
-              </p>
+              {/* Mission Statements */}
+              <div className="space-y-3 mb-8">
+                <p className="text-lg text-foreground font-medium">We are sparking light in places that need it.</p>
+                <p className="text-lg text-foreground font-medium">We are transforming how stories are experienced.</p>
+                <p className="text-lg text-foreground font-medium">We are giving voice to lessons often hidden in plain sight.</p>
+                <p className="text-lg text-gradient-gold font-semibold">We are shaping the next generation, one Film at a time.</p>
+              </div>
 
-              {/* Features Grid */}
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                {edutainmentFeatures.map((feature) => (
-                  <div
-                    key={feature.title}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </div>
-                ))}
+              {/* Call to Action Messages */}
+              <div className="space-y-4 mb-8 p-6 bg-primary/5 rounded-2xl border border-primary/20">
+                <p className="text-muted-foreground flex items-start gap-2">
+                  <span className="text-primary">✨</span>
+                  <span>If you know a school, youth group, or community that would love to experience this, reach out to us.</span>
+                </p>
+                <p className="text-muted-foreground flex items-start gap-2">
+                  <span className="text-primary">✨</span>
+                  <span>If this vision speaks to your heart and you'd like to partner with us or support/sponsor this mission, we'd love to hear from you.</span>
+                </p>
+              </div>
+
+              {/* Community Call */}
+              <div className="space-y-2 mb-8">
+                <p className="text-foreground font-medium">Mention us to your networks.</p>
+                <p className="text-foreground font-medium">Invite us into your spaces.</p>
+                <p className="text-muted-foreground italic">Together, we can touch hearts, shape minds, and transform lives through the power of Film.</p>
+              </div>
+
+              {/* Contact */}
+              <div className="flex items-center gap-2 mb-8 p-4 bg-secondary/50 rounded-xl">
+                <span className="text-lg">📩</span>
+                <span className="text-muted-foreground">Email:</span>
+                <a href="mailto:moviedatewithangel@gmail.com" className="text-primary font-medium hover:underline">
+                  moviedatewithangel@gmail.com
+                </a>
               </div>
 
               {/* Stats */}
