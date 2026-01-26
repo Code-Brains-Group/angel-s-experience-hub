@@ -173,10 +173,10 @@ export default function CXTraining() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
-                <Link to="/contact" className="group">
-                  Enroll Now
+                <a href="#packages" className="group">
+                  View Packages
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </a>
               </Button>
               <Button variant="hero-outline" size="xl" asChild>
                 <a href="#intro-video" className="group">
@@ -239,7 +239,7 @@ export default function CXTraining() {
       </section>
 
       {/* Pricing Packages */}
-      <section className="py-24 bg-gradient-hero">
+      <section id="packages" className="py-24 bg-gradient-hero scroll-mt-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
