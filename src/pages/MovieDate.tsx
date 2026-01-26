@@ -309,10 +309,10 @@ export default function MovieDate() {
               </div>
 
               <Button variant="hero" size="lg" asChild>
-                <Link to="/contact" className="group">
+                <a href="mailto:moviedatewithangel@gmail.com?subject=Edutainment Program Partnership Inquiry" className="group">
                   Partner With Us
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
+                </a>
               </Button>
             </div>
 
