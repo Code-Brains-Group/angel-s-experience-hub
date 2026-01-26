@@ -14,7 +14,7 @@ import {
   TrendingUp,
   Check,
   Star,
-  Zap
+  Zap,
 } from "lucide-react";
 
 // Import gallery images
@@ -92,7 +92,8 @@ const pricingPackages = [
   {
     name: "Enterprise",
     price: "85,000",
-    description: "Complete solution for organizations serious about CX excellence",
+    description:
+      "Complete solution for organizations serious about CX excellence",
     icon: Zap,
     features: [
       "All Professional Features",
@@ -248,7 +249,7 @@ export default function CXTraining() {
               Choose Your <span className="text-gradient-gold">Package</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              Flexible pricing options designed to fit your needs and budget. 
+              Flexible pricing options designed to fit your needs and budget.
               All packages include our proven CX training methodology.
             </p>
           </div>
@@ -272,16 +273,24 @@ export default function CXTraining() {
                 )}
 
                 <div className="text-center mb-8">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
-                    pkg.popular ? "bg-primary/30" : "bg-primary/10"
-                  }`}>
+                  <div
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
+                      pkg.popular ? "bg-primary/30" : "bg-primary/10"
+                    }`}
+                  >
                     <pkg.icon className="h-7 w-7 text-primary" />
                   </div>
-                  <h3 className="font-display text-xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{pkg.description}</p>
+                  <h3 className="font-display text-xl font-bold mb-2">
+                    {pkg.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {pkg.description}
+                  </p>
                   <div className="flex items-baseline justify-center gap-1">
                     <span className="text-sm text-muted-foreground">KSH</span>
-                    <span className="text-4xl font-bold text-gradient-gold">{pkg.price}</span>
+                    <span className="text-4xl font-bold text-gradient-gold">
+                      {pkg.price}
+                    </span>
                   </div>
                 </div>
 
@@ -289,27 +298,35 @@ export default function CXTraining() {
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
 
+                {/* TODO: Edit link */}
                 <Button
                   variant={pkg.popular ? "gold" : "gold-outline"}
                   className="w-full"
                   asChild
                 >
-                  <Link to="/contact">
+                  <a
+                    href="https://paystack.shop/pay/lexblitz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 </Button>
               </div>
             ))}
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-10">
-            All prices are in Kenyan Shillings (KSH). Custom corporate packages available upon request.
+            All prices are in Kenyan Shillings (KSH). Custom corporate packages
+            available upon request.
           </p>
         </div>
       </section>
