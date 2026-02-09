@@ -36,27 +36,39 @@ import edutainment6 from "@/assets/gallery/edutainment-6.jpg";
 const features = [
   {
     icon: Popcorn,
-    title: "Curated Screenings",
+    title: "Curated Movie Events",
     description:
-      "Hand-picked films from across genres, eras, and cultures for the ultimate viewing experience.",
+      "A blend of entertainment, education, and meaningful connection.",
   },
   {
     icon: Users,
-    title: "Community Events",
+    title: "Private Screenings",
     description:
-      "Connect with fellow movie enthusiasts in a warm, welcoming atmosphere.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Post-Movie Discussions",
-    description:
-      "Dive deep into film analysis and share perspectives after each screening.",
+      "Intimate movie experiences tailored for your group or family.",
   },
   {
     icon: Heart,
-    title: "Themed Experiences",
+    title: "Themed Events",
     description:
-      "From romance nights to thriller marathons, there's something for everyone.",
+      "Curated film nights that transport you through different worlds and eras.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Movie Reviews & Discussions",
+    description:
+      "Engaging post-film conversations that deepen your connection to cinema.",
+  },
+  {
+    icon: Star,
+    title: "Community Gatherings",
+    description:
+      "Bringing people together through the shared love of storytelling.",
+  },
+  {
+    icon: GraduationCap,
+    title: "School Based Edutainment",
+    description:
+      "Creative screenings designed to educate and inspire student audiences.",
   },
 ];
 
@@ -197,10 +209,9 @@ export default function MovieDate() {
               <span className="text-gradient-gold">Community Created</span>
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              More than just watching movies — it's about sharing stories,
-              building connections, and experiencing the magic of cinema
-              together in a unique, intimate setting.
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto italic">
+              Experience cinema like never before through curated movie events
+              that blend entertainment, education, and meaningful connection.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -459,8 +470,8 @@ export default function MovieDate() {
                 className="bg-gradient-card rounded-2xl border border-border/50 overflow-hidden card-hover"
               >
                 <div className="h-48 overflow-hidden">
-                  <img 
-                    src={event.image} 
+                  <img
+                    src={event.image}
                     alt={event.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />

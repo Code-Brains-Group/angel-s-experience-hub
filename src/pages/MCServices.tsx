@@ -29,32 +29,32 @@ const eventTypes = [
   {
     icon: Building2,
     title: "Corporate Events",
-    description: "Conferences, product launches, and annual galas",
+    description: "Conferences, gala dinners, and executive gatherings",
   },
   {
     icon: Heart,
-    title: "Weddings & Celebrations",
-    description: "Making your special day truly unforgettable",
+    title: "Weddings and Celebrations",
+    description:
+      "Making your special day smooth, engaging, and truly memorable",
   },
   {
     icon: Presentation,
-    title: "Conferences & Seminars",
-    description: "Engaging audiences with dynamic hosting",
+    title: "Conferences and Seminars",
+    description: "Engaging audiences with dynamic hosting and flow management",
   },
   {
-    icon: PartyPopper,
-    title: "Private Parties",
-    description: "Birthdays, anniversaries, and milestone celebrations",
+    icon: Star,
+    title: "Product Launches",
+    description: "Creating excitement and maintaining momentum for your brand",
   },
 ];
 
 const benefits = [
-  "Professional and polished delivery",
-  "Excellent crowd engagement skills",
-  "Seamless event flow management",
-  "Adaptable to any event theme",
-  "Bilingual capabilities",
-  "Comprehensive pre-event coordination",
+  "Polished and professional delivery",
+  "Engaging and interactive hosting",
+  "Smooth, flawless event management",
+  "Tailored to any theme or audience",
+  "End-to-end pre-event coordination",
 ];
 
 const galleryImages = [
@@ -114,10 +114,10 @@ export default function MCServices() {
               <span className="text-gradient-gold">Captivate the Crowd</span>
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              With years of experience and an innate ability to connect with
-              audiences, I bring energy, professionalism, and that special touch
-              that transforms ordinary events into extraordinary experiences.
+            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto italic">
+              Transform your events into memorable experiences through
+              professional hosting that engages audiences, maintains flow, and
+              leaves a lasting impression.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -190,13 +190,15 @@ export default function MCServices() {
                 Why Choose Me
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-                Your Event Deserves{" "}
-                <span className="text-gradient-gold">the Best</span>
+                Turning Events into{" "}
+                <span className="text-gradient-gold">
+                  Memorable Experiences
+                </span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                I don't just host events — I create experiences. With meticulous
-                preparation, genuine enthusiasm, and a commitment to excellence,
-                every moment is crafted to perfection.
+                Every event is unique, and I ensure it’s executed with
+                precision, energy, and style. From planning to the final moment,
+                I focus on creating experiences that your guests will remember.
               </p>
 
               <ul className="space-y-4 mb-8">
@@ -239,15 +241,15 @@ export default function MCServices() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
             Ready to Make Your Event{" "}
-            <span className="text-gradient-gold">Unforgettable?</span>
+            <span className="text-gradient-gold">memorable?</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Let's create something extraordinary together. Get in touch to
-            discuss your event and secure your date.
+            Ready to create something extraordinary? Get in touch to discuss
+            your event and secure your date.
           </p>
           <Button variant="hero" size="xl" asChild>
             <Link to="/contact" className="group">
-              Book Me Now
+              Let's make your next event remarkable
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>

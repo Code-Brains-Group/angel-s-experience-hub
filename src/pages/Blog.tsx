@@ -17,7 +17,8 @@ const blogPosts = [
     id: 1,
     slug: "mastering-event-hosting",
     title: "The Art of Mastering Event Hosting: Tips from a Professional MC",
-    excerpt: "Discover the key principles that transform a good event into an unforgettable experience. From reading the room to perfect timing...",
+    excerpt:
+      "Discover the key principles that transform a good event into an memorable experience. From reading the room to perfect timing...",
     author: "Angel",
     date: "2024-01-15",
     category: "MC Tips",
@@ -28,7 +29,8 @@ const blogPosts = [
     id: 2,
     slug: "customer-experience-2024",
     title: "Customer Experience Trends to Watch in 2024",
-    excerpt: "The landscape of customer experience is evolving rapidly. Here are the trends that will define how businesses connect with their customers...",
+    excerpt:
+      "The landscape of customer experience is evolving rapidly. Here are the trends that will define how businesses connect with their customers...",
     author: "Angel",
     date: "2024-01-10",
     category: "CX Insights",
@@ -39,7 +41,8 @@ const blogPosts = [
     id: 3,
     slug: "power-of-storytelling",
     title: "The Power of Storytelling in Public Speaking",
-    excerpt: "Stories have the unique ability to captivate audiences and make messages memorable. Learn how to weave compelling narratives...",
+    excerpt:
+      "Stories have the unique ability to captivate audiences and make messages memorable. Learn how to weave compelling narratives...",
     author: "Angel",
     date: "2024-01-05",
     category: "Public Speaking",
@@ -50,7 +53,8 @@ const blogPosts = [
     id: 4,
     slug: "building-customer-loyalty",
     title: "Building Customer Loyalty: Beyond Satisfaction",
-    excerpt: "Satisfied customers are good, but loyal customers are gold. Explore strategies that turn one-time buyers into lifelong advocates...",
+    excerpt:
+      "Satisfied customers are good, but loyal customers are gold. Explore strategies that turn one-time buyers into lifelong advocates...",
     author: "Angel",
     date: "2024-01-01",
     category: "CX Insights",
@@ -61,7 +65,8 @@ const blogPosts = [
     id: 5,
     slug: "movie-nights-community",
     title: "How Movie Nights Build Stronger Communities",
-    excerpt: "There's something magical about sharing a film experience with others. Discover how communal viewing creates lasting bonds...",
+    excerpt:
+      "There's something magical about sharing a film experience with others. Discover how communal viewing creates lasting bonds...",
     author: "Angel",
     date: "2023-12-28",
     category: "Community",
@@ -72,7 +77,8 @@ const blogPosts = [
     id: 6,
     slug: "wedding-mc-guide",
     title: "The Ultimate Guide to Being a Wedding MC",
-    excerpt: "Weddings are deeply personal events that require a special touch. Here's everything you need to know about hosting the perfect celebration...",
+    excerpt:
+      "Weddings are deeply personal events that require a special touch. Here's everything you need to know about hosting the perfect celebration...",
     author: "Angel",
     date: "2023-12-20",
     category: "MC Tips",
@@ -81,7 +87,13 @@ const blogPosts = [
   },
 ];
 
-const categories = ["All", "MC Tips", "CX Insights", "Public Speaking", "Community"];
+const categories = [
+  "All",
+  "MC Tips",
+  "CX Insights",
+  "Public Speaking",
+  "Community",
+];
 
 export default function Blog() {
   return (
@@ -96,7 +108,9 @@ export default function Blog() {
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8">
               <BookOpen className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">Insights & Stories</span>
+              <span className="text-primary text-sm font-medium">
+                Insights & Stories
+              </span>
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
@@ -104,7 +118,8 @@ export default function Blog() {
             </h1>
 
             <p className="text-xl text-muted-foreground">
-              Thoughts on hosting, customer experience, storytelling, and the art of creating memorable moments.
+              Thoughts on hosting, customer experience, storytelling, and the
+              art of creating memorable moments.
             </p>
           </div>
         </div>
@@ -141,8 +156,8 @@ export default function Blog() {
               >
                 {/* Thumbnail */}
                 <div className="h-48 overflow-hidden relative">
-                  <img 
-                    src={post.image} 
+                  <img
+                    src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
@@ -158,7 +173,11 @@ export default function Blog() {
                     </span>
                     <span className="flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
-                      {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
                     </span>
                   </div>
 
@@ -178,13 +197,15 @@ export default function Blog() {
                       <User className="h-4 w-4" />
                       {post.author}
                     </div>
-                    <span className="text-xs text-muted-foreground">{post.readTime}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {post.readTime}
+                    </span>
                   </div>
                 </div>
 
                 {/* Read More Link - full card clickable */}
-                <Link 
-                  to={`/blog/${post.slug}`} 
+                <Link
+                  to={`/blog/${post.slug}`}
                   className="absolute inset-0"
                   aria-label={`Read ${post.title}`}
                 />
@@ -210,7 +231,8 @@ export default function Blog() {
               Never Miss a <span className="text-gradient-gold">Story</span>
             </h2>
             <p className="text-muted-foreground mb-8">
-              Subscribe to get the latest insights on hosting, CX, and creating memorable experiences delivered straight to your inbox.
+              Subscribe to get the latest insights on hosting, CX, and creating
+              memorable experiences delivered straight to your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input

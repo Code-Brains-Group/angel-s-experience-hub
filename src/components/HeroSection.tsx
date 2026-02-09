@@ -55,28 +55,34 @@ export function HeroSection() {
               </span>
             </h1>
 
-            {/* Tagline */}
+            {/* Tagline
             <p
               className="text-xl sm:text-2xl text-muted-foreground mb-4 font-light animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              Creating Memorable Experiences
-            </p>
+              Hi, I’m Purity. 
+            </p> */}
 
             {/* Description */}
             <p
               className="text-lg text-muted-foreground/80 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in"
               style={{ animationDelay: "0.3s" }}
             >
-              Corporate MC, CX Trainer, and Movie Enthusiast driven by purpose,
-              creativity, and meaningful impact. With 8+ years of managerial
-              experience, I transform service teams through trainings that
-              elevate customer interactions and build lasting impressions.
-              Beyond corporate work, I host Movie Date with Angel—monthly movie
-              events exploring reviews, actors, and narratives that educate and
-              inspire. I also founder Apparel by Neila, a trench coat brand for
-              elegant self-expression. On stage, I bring energy and
-              professionalism to every event. Ready to elevate your experiences.
+              I create memorable experiences that connect, inspire, and leave a
+              lasting impact. I am a Corporate MC and Customer Experience
+              Trainer with over 8 years of hands on CX and leadership
+              experience. I work with organizations to transform service teams,
+              elevate customer interactions, and build customer centric cultures
+              that stand out and endure. Beyond the corporate space, I host
+              Movie Date with Angel, a curated monthly edutainment experience
+              that uses film to spark dialogue, learning, and meaningful
+              connection. I am also the founder of Apparel by Neila, a trench
+              coat brand created for elegant self expression and confidence.
+              Whether on stage, in a training room, or behind the scenes, I
+              bring presence, creativity, and professionalism to every
+              experience.
+              <br />
+              Let’s elevate your experience.
             </p>
 
             {/* CTAs */}

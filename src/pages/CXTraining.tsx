@@ -166,10 +166,25 @@ export default function CXTraining() {
             </h1>
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Empower your organization with cutting-edge customer experience
-              strategies that drive satisfaction, loyalty, and measurable
-              business growth.
+              Equip your teams with modern customer experience skills that
+              improve service delivery, deepen customer loyalty, and create
+              measurable business impact.
             </p>
+
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 max-w-3xl mx-auto mb-10">
+              <span className="text-foreground text-sm font-medium">
+                <span className="text-primary mr-1">•</span>Team Workshops
+              </span>
+              <span className="text-foreground text-sm font-medium">
+                <span className="text-primary mr-1">•</span>Executive Coaching
+              </span>
+              <span className="text-foreground text-sm font-medium">
+                <span className="text-primary mr-1">•</span>Online Learning
+              </span>
+              <span className="text-foreground text-sm font-medium">
+                <span className="text-primary mr-1">•</span>CX Masterclasses
+              </span>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
@@ -258,15 +273,15 @@ export default function CXTraining() {
             {pricingPackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-2 ${
+                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${
                   pkg.popular
                     ? "bg-gradient-to-b from-primary/20 to-card border-primary/50 shadow-2xl shadow-primary/20"
-                    : "bg-gradient-card border-border/50"
+                    : "bg-gradient-card border-border/50 hover:border-primary/30"
                 }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground text-sm font-semibold px-4 py-1.5 rounded-full">
+                    <span className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full shadow-lg shadow-primary/30">
                       Most Popular
                     </span>
                   </div>
@@ -274,27 +289,31 @@ export default function CXTraining() {
 
                 <div className="text-center mb-8">
                   <div
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${
-                      pkg.popular ? "bg-primary/30" : "bg-primary/10"
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${
+                      pkg.popular
+                        ? "bg-gradient-to-br from-primary/40 to-primary/20 shadow-lg shadow-primary/20"
+                        : "bg-primary/10"
                     }`}
                   >
-                    <pkg.icon className="h-7 w-7 text-primary" />
+                    <pkg.icon className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="font-display text-xl font-bold mb-2">
+                  <h3 className="font-display text-2xl font-bold mb-2">
                     {pkg.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
                     {pkg.description}
                   </p>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-sm text-muted-foreground">KSH</span>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-sm text-muted-foreground font-medium">
+                      KSH
+                    </span>
                     <span className="text-4xl font-bold text-gradient-gold">
                       {pkg.price}
                     </span>
                   </div>
                 </div>
 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3 mb-8">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -308,7 +327,7 @@ export default function CXTraining() {
                 {/* TODO: Edit link */}
                 <Button
                   variant={pkg.popular ? "gold" : "gold-outline"}
-                  className="w-full"
+                  className="w-full font-semibold"
                   asChild
                 >
                   <a
@@ -363,16 +382,16 @@ export default function CXTraining() {
                 {modules.map((module, index) => (
                   <div
                     key={module.title}
-                    className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border/50 card-hover"
+                    className="flex items-start gap-4 p-5 rounded-xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 card-hover transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <BookOpen className="h-5 w-5 text-primary" />
+                    <div className="w-12 h-12 rounded-lg bg-primary/15 flex items-center justify-center flex-shrink-0">
+                      <BookOpen className="h-6 w-6 text-primary" />
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">
+                    <div className="flex-1">
+                      <h3 className="font-bold text-foreground mb-1 text-lg">
                         {module.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {module.description}
                       </p>
                     </div>
@@ -382,24 +401,29 @@ export default function CXTraining() {
             </div>
 
             <div className="lg:sticky lg:top-32">
-              <div className="bg-gradient-card rounded-3xl border border-border/50 p-8 text-center">
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <Award className="h-8 w-8 text-primary" />
+              <div className="bg-gradient-to-br from-primary/15 to-transparent rounded-3xl border border-primary/30 p-8 text-center shadow-xl shadow-primary/10">
+                <div className="w-18 h-18 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/20">
+                  <Award className="h-10 w-10 text-primary" />
                 </div>
                 <h3 className="font-display text-2xl font-bold mb-4">
                   Ready to Transform Your Team?
                 </h3>
-                <p className="text-muted-foreground mb-8">
+                <p className="text-muted-foreground mb-8 leading-relaxed">
                   Invest in your team's CX capabilities and watch your customer
                   satisfaction soar.
                 </p>
-                <Button variant="gold" size="lg" className="w-full" asChild>
+                <Button
+                  variant="gold"
+                  size="lg"
+                  className="w-full font-semibold"
+                  asChild
+                >
                   <Link to="/contact">
                     Enroll Your Team
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <p className="text-sm text-muted-foreground mt-4">
+                <p className="text-sm text-muted-foreground mt-5 font-medium">
                   Corporate packages available
                 </p>
               </div>

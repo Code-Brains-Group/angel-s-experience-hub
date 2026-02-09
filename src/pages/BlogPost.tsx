@@ -1,30 +1,45 @@
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Calendar, User, Clock, Tag, Share2, Facebook, Twitter, Linkedin, BookOpen } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  User,
+  Clock,
+  Tag,
+  Share2,
+  Facebook,
+  Twitter,
+  Linkedin,
+  BookOpen,
+} from "lucide-react";
 
 // Mock blog posts data - this would typically come from an API
-const blogPostsData: Record<string, {
-  id: number;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  date: string;
-  category: string;
-  readTime: string;
-  tags: string[];
-}> = {
+const blogPostsData: Record<
+  string,
+  {
+    id: number;
+    slug: string;
+    title: string;
+    excerpt: string;
+    content: string;
+    author: string;
+    date: string;
+    category: string;
+    readTime: string;
+    tags: string[];
+  }
+> = {
   "mastering-event-hosting": {
     id: 1,
     slug: "mastering-event-hosting",
     title: "The Art of Mastering Event Hosting: Tips from a Professional MC",
-    excerpt: "Discover the key principles that transform a good event into an unforgettable experience.",
+    excerpt:
+      "Discover the key principles that transform a good event into an memorable experience.",
     content: `
 ## Introduction
 
-Event hosting is more than just speaking into a microphone—it's about creating an atmosphere, guiding emotions, and ensuring every moment flows seamlessly into the next. After hosting over 500 events, I've learned that the difference between a good event and an unforgettable one lies in the details.
+Event hosting is more than just speaking into a microphone—it's about creating an atmosphere, guiding emotions, and ensuring every moment flows seamlessly into the next. After hosting over 500 events, I've learned that the difference between a good event and an memorable one lies in the details.
 
 ## Reading the Room
 
@@ -69,19 +84,25 @@ Murphy's Law is especially true at events. Here's how I prepare:
 
 Mastering event hosting is a journey, not a destination. Every event teaches you something new, and the best MCs never stop learning. Whether you're hosting your first wedding or your hundredth corporate gala, remember: your energy sets the tone for everyone else.
 
-*Ready to create unforgettable moments at your next event? [Get in touch](/contact) and let's make it happen.*
+*Ready to create memorable moments at your next event? [Get in touch](/contact) and let's make it happen.*
     `,
     author: "Angel",
     date: "2024-01-15",
     category: "MC Tips",
     readTime: "5 min read",
-    tags: ["Event Hosting", "MC Tips", "Public Speaking", "Professional Development"],
+    tags: [
+      "Event Hosting",
+      "MC Tips",
+      "Public Speaking",
+      "Professional Development",
+    ],
   },
   "customer-experience-2024": {
     id: 2,
     slug: "customer-experience-2024",
     title: "Customer Experience Trends to Watch in 2024",
-    excerpt: "The landscape of customer experience is evolving rapidly. Here are the trends that will define how businesses connect with their customers.",
+    excerpt:
+      "The landscape of customer experience is evolving rapidly. Here are the trends that will define how businesses connect with their customers.",
     content: `
 ## The Evolution of Customer Experience
 
@@ -151,7 +172,8 @@ The future of CX is exciting and challenging. Organizations that embrace these t
     id: 3,
     slug: "power-of-storytelling",
     title: "The Power of Storytelling in Public Speaking",
-    excerpt: "Stories have the unique ability to captivate audiences and make messages memorable. Learn how to weave compelling narratives.",
+    excerpt:
+      "Stories have the unique ability to captivate audiences and make messages memorable. Learn how to weave compelling narratives.",
     content: `
 ## Why Stories Matter
 
@@ -218,13 +240,19 @@ Every presentation, every speech, every meeting is an opportunity to connect thr
     date: "2024-01-05",
     category: "Public Speaking",
     readTime: "6 min read",
-    tags: ["Storytelling", "Public Speaking", "Communication", "Presentation Skills"],
+    tags: [
+      "Storytelling",
+      "Public Speaking",
+      "Communication",
+      "Presentation Skills",
+    ],
   },
   "building-customer-loyalty": {
     id: 4,
     slug: "building-customer-loyalty",
     title: "Building Customer Loyalty: Beyond Satisfaction",
-    excerpt: "Satisfied customers are good, but loyal customers are gold. Explore strategies that turn one-time buyers into lifelong advocates.",
+    excerpt:
+      "Satisfied customers are good, but loyal customers are gold. Explore strategies that turn one-time buyers into lifelong advocates.",
     content: `
 ## The Loyalty Ladder
 
@@ -301,13 +329,19 @@ Key metrics to track:
     date: "2024-01-01",
     category: "CX Insights",
     readTime: "8 min read",
-    tags: ["Customer Loyalty", "Customer Retention", "Business Growth", "CX Strategy"],
+    tags: [
+      "Customer Loyalty",
+      "Customer Retention",
+      "Business Growth",
+      "CX Strategy",
+    ],
   },
   "movie-nights-community": {
     id: 5,
     slug: "movie-nights-community",
     title: "How Movie Nights Build Stronger Communities",
-    excerpt: "There's something magical about sharing a film experience with others. Discover how communal viewing creates lasting bonds.",
+    excerpt:
+      "There's something magical about sharing a film experience with others. Discover how communal viewing creates lasting bonds.",
     content: `
 ## The Magic of Shared Experience
 
@@ -399,7 +433,8 @@ You don't need anything fancy to begin:
     id: 6,
     slug: "wedding-mc-guide",
     title: "The Ultimate Guide to Being a Wedding MC",
-    excerpt: "Weddings are deeply personal events that require a special touch. Here's everything you need to know about hosting the perfect celebration.",
+    excerpt:
+      "Weddings are deeply personal events that require a special touch. Here's everything you need to know about hosting the perfect celebration.",
     content: `
 ## The Weight of the Moment
 
@@ -514,16 +549,18 @@ Every wedding I host receives:
 // Get related posts
 const getRelatedPosts = (currentSlug: string, category: string) => {
   return Object.values(blogPostsData)
-    .filter(post => post.slug !== currentSlug)
-    .filter(post => post.category === category || post.tags.some(tag => 
-      blogPostsData[currentSlug]?.tags.includes(tag)
-    ))
+    .filter((post) => post.slug !== currentSlug)
+    .filter(
+      (post) =>
+        post.category === category ||
+        post.tags.some((tag) => blogPostsData[currentSlug]?.tags.includes(tag)),
+    )
     .slice(0, 3);
 };
 
 // Simple markdown-like content renderer
 function renderContent(content: string) {
-  const lines = content.trim().split('\n');
+  const lines = content.trim().split("\n");
   const elements: JSX.Element[] = [];
   let inList = false;
   let inTable = false;
@@ -533,19 +570,25 @@ function renderContent(content: string) {
   const processInlineFormatting = (text: string) => {
     // Process bold, italic, links, and inline code
     let result = text;
-    
+
     // Bold
-    result = result.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    
+    result = result.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
     // Italic
-    result = result.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    
+    result = result.replace(/\*(.+?)\*/g, "<em>$1</em>");
+
     // Links
-    result = result.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>');
-    
+    result = result.replace(
+      /\[(.+?)\]\((.+?)\)/g,
+      '<a href="$2" class="text-primary hover:underline">$1</a>',
+    );
+
     // Inline code
-    result = result.replace(/`(.+?)`/g, '<code class="bg-secondary px-1.5 py-0.5 rounded text-sm">$1</code>');
-    
+    result = result.replace(
+      /`(.+?)`/g,
+      '<code class="bg-secondary px-1.5 py-0.5 rounded text-sm">$1</code>',
+    );
+
     return result;
   };
 
@@ -557,11 +600,19 @@ function renderContent(content: string) {
     if (!trimmedLine) {
       if (inList && listItems.length > 0) {
         elements.push(
-          <ul key={`list-${i}`} className="list-disc list-inside space-y-2 mb-6 text-muted-foreground">
+          <ul
+            key={`list-${i}`}
+            className="list-disc list-inside space-y-2 mb-6 text-muted-foreground"
+          >
             {listItems.map((item, idx) => (
-              <li key={idx} dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }} />
+              <li
+                key={idx}
+                dangerouslySetInnerHTML={{
+                  __html: processInlineFormatting(item),
+                }}
+              />
             ))}
-          </ul>
+          </ul>,
         );
         listItems = [];
         inList = false;
@@ -573,7 +624,9 @@ function renderContent(content: string) {
               <thead>
                 <tr className="border-b border-border">
                   {tableRows[0]?.map((cell, idx) => (
-                    <th key={idx} className="text-left p-3 font-semibold">{cell}</th>
+                    <th key={idx} className="text-left p-3 font-semibold">
+                      {cell}
+                    </th>
                   ))}
                 </tr>
               </thead>
@@ -581,13 +634,15 @@ function renderContent(content: string) {
                 {tableRows.slice(2).map((row, rowIdx) => (
                   <tr key={rowIdx} className="border-b border-border/50">
                     {row.map((cell, cellIdx) => (
-                      <td key={cellIdx} className="p-3 text-muted-foreground">{cell}</td>
+                      <td key={cellIdx} className="p-3 text-muted-foreground">
+                        {cell}
+                      </td>
                     ))}
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
+          </div>,
         );
         tableRows = [];
         inTable = false;
@@ -596,34 +651,40 @@ function renderContent(content: string) {
     }
 
     // H2
-    if (trimmedLine.startsWith('## ')) {
+    if (trimmedLine.startsWith("## ")) {
       elements.push(
-        <h2 key={`h2-${i}`} className="font-display text-2xl font-bold mt-10 mb-4">
+        <h2
+          key={`h2-${i}`}
+          className="font-display text-2xl font-bold mt-10 mb-4"
+        >
           {trimmedLine.slice(3)}
-        </h2>
+        </h2>,
       );
       continue;
     }
 
     // H3
-    if (trimmedLine.startsWith('### ')) {
+    if (trimmedLine.startsWith("### ")) {
       elements.push(
-        <h3 key={`h3-${i}`} className="font-display text-xl font-semibold mt-8 mb-3">
+        <h3
+          key={`h3-${i}`}
+          className="font-display text-xl font-semibold mt-8 mb-3"
+        >
           {trimmedLine.slice(4)}
-        </h3>
+        </h3>,
       );
       continue;
     }
 
     // Blockquote
-    if (trimmedLine.startsWith('> ')) {
+    if (trimmedLine.startsWith("> ")) {
       elements.push(
-        <blockquote 
-          key={`quote-${i}`} 
+        <blockquote
+          key={`quote-${i}`}
           className="border-l-4 border-primary pl-6 py-2 my-6 italic text-lg text-muted-foreground bg-secondary/30 rounded-r-lg"
         >
-          {trimmedLine.slice(2).replace(/"/g, '')}
-        </blockquote>
+          {trimmedLine.slice(2).replace(/"/g, "")}
+        </blockquote>,
       );
       continue;
     }
@@ -633,29 +694,39 @@ function renderContent(content: string) {
       const match = trimmedLine.match(/^\d+\.\s(.+)/);
       if (match) {
         elements.push(
-          <div key={`ol-${i}`} className="flex items-start gap-3 mb-2 text-muted-foreground">
+          <div
+            key={`ol-${i}`}
+            className="flex items-start gap-3 mb-2 text-muted-foreground"
+          >
             <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary text-sm flex items-center justify-center font-medium">
               {trimmedLine.match(/^\d+/)?.[0]}
             </span>
-            <span dangerouslySetInnerHTML={{ __html: processInlineFormatting(match[1]) }} />
-          </div>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: processInlineFormatting(match[1]),
+              }}
+            />
+          </div>,
         );
       }
       continue;
     }
 
     // Unordered list
-    if (trimmedLine.startsWith('- ')) {
+    if (trimmedLine.startsWith("- ")) {
       inList = true;
       listItems.push(trimmedLine.slice(2));
       continue;
     }
 
     // Table
-    if (trimmedLine.startsWith('|')) {
+    if (trimmedLine.startsWith("|")) {
       inTable = true;
-      const cells = trimmedLine.split('|').filter(cell => cell.trim()).map(cell => cell.trim());
-      if (!trimmedLine.includes('---')) {
+      const cells = trimmedLine
+        .split("|")
+        .filter((cell) => cell.trim())
+        .map((cell) => cell.trim());
+      if (!trimmedLine.includes("---")) {
         tableRows.push(cells);
       }
       continue;
@@ -663,22 +734,30 @@ function renderContent(content: string) {
 
     // Regular paragraph
     elements.push(
-      <p 
-        key={`p-${i}`} 
+      <p
+        key={`p-${i}`}
         className="text-muted-foreground mb-4 leading-relaxed"
-        dangerouslySetInnerHTML={{ __html: processInlineFormatting(trimmedLine) }}
-      />
+        dangerouslySetInnerHTML={{
+          __html: processInlineFormatting(trimmedLine),
+        }}
+      />,
     );
   }
 
   // Handle remaining list items
   if (listItems.length > 0) {
     elements.push(
-      <ul key="list-final" className="list-disc list-inside space-y-2 mb-6 text-muted-foreground">
+      <ul
+        key="list-final"
+        className="list-disc list-inside space-y-2 mb-6 text-muted-foreground"
+      >
         {listItems.map((item, idx) => (
-          <li key={idx} dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }} />
+          <li
+            key={idx}
+            dangerouslySetInnerHTML={{ __html: processInlineFormatting(item) }}
+          />
         ))}
-      </ul>
+      </ul>,
     );
   }
 
@@ -695,9 +774,13 @@ export default function BlogPost() {
       <MainLayout>
         <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-hero min-h-screen">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="font-display text-4xl font-bold mb-4">Post Not Found</h1>
-            <p className="text-muted-foreground mb-8">The article you're looking for doesn't exist.</p>
-            <Button variant="gold" onClick={() => navigate('/blog')}>
+            <h1 className="font-display text-4xl font-bold mb-4">
+              Post Not Found
+            </h1>
+            <p className="text-muted-foreground mb-8">
+              The article you're looking for doesn't exist.
+            </p>
+            <Button variant="gold" onClick={() => navigate("/blog")}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Button>
@@ -709,7 +792,7 @@ export default function BlogPost() {
 
   const relatedPosts = getRelatedPosts(post.slug, post.category);
 
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
   const shareText = encodeURIComponent(post.title);
 
   return (
@@ -723,7 +806,7 @@ export default function BlogPost() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Back Link */}
-          <Link 
+          <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
           >
@@ -735,7 +818,9 @@ export default function BlogPost() {
             {/* Category */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6">
               <Tag className="h-4 w-4 text-primary" />
-              <span className="text-primary text-sm font-medium">{post.category}</span>
+              <span className="text-primary text-sm font-medium">
+                {post.category}
+              </span>
             </div>
 
             {/* Title */}
@@ -753,11 +838,13 @@ export default function BlogPost() {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                <span>{new Date(post.date).toLocaleDateString('en-US', { 
-                  month: 'long', 
-                  day: 'numeric', 
-                  year: 'numeric' 
-                })}</span>
+                <span>
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="h-4 w-4" />
@@ -782,7 +869,7 @@ export default function BlogPost() {
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-muted-foreground text-sm">Tags:</span>
                 {post.tags.map((tag) => (
-                  <span 
+                  <span
                     key={tag}
                     className="px-3 py-1 rounded-full text-sm bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors cursor-pointer"
                   >
@@ -852,7 +939,9 @@ export default function BlogPost() {
                     <BookOpen className="h-8 w-8 text-primary/30 group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="p-4">
-                    <span className="text-xs text-primary font-medium">{relatedPost.category}</span>
+                    <span className="text-xs text-primary font-medium">
+                      {relatedPost.category}
+                    </span>
                     <h3 className="font-display font-semibold mt-2 group-hover:text-primary transition-colors line-clamp-2">
                       {relatedPost.title}
                     </h3>
@@ -876,7 +965,7 @@ export default function BlogPost() {
               Enjoyed this article?
             </h2>
             <p className="text-muted-foreground mb-6">
-              Let's work together to create unforgettable experiences.
+              Let's work together to create memorable experiences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="gold" asChild>

@@ -8,7 +8,7 @@ export function CTASection() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-background to-primary/10" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
-      
+
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -40,8 +40,8 @@ export function CTASection() {
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Whether it's hosting your next big event, training your team, or experiencing movies in a new way — 
-            let's make it unforgettable together.
+            Whether it's hosting your next big event, training your team, or
+            experiencing movies in a new way — let's make it memorable together.
           </p>
 
           {/* CTAs */}
@@ -53,9 +53,7 @@ export function CTASection() {
               </Link>
             </Button>
             <Button variant="hero-outline" size="xl" asChild>
-              <Link to="/mc-services">
-                Explore Services
-              </Link>
+              <Link to="/mc-services">Explore Services</Link>
             </Button>
           </div>
 

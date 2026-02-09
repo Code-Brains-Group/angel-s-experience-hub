@@ -6,24 +6,43 @@ const services = [
   {
     icon: Mic2,
     title: "MC Services",
-    description: "Transform your events into unforgettable experiences with professional hosting that captivates, entertains, and leaves lasting impressions.",
-    features: ["Corporate Events", "Weddings & Celebrations", "Conferences & Seminars", "Product Launches"],
+    description:
+      "Transform your events into memorable experiences through professional hosting that engages audiences, maintains flow, and leaves a lasting impression.",
+    features: [
+      "Corporate Events",
+      "Weddings and Celebrations",
+      "Conferences and Seminars",
+      "Product Launches",
+    ],
     path: "/mc-services",
     gradient: "from-amber-500/20 to-orange-500/10",
   },
   {
     icon: GraduationCap,
     title: "CX Training",
-    description: "Empower your team with cutting-edge customer experience strategies that drive satisfaction, loyalty, and business growth.",
-    features: ["Team Workshops", "Executive Coaching", "Online Courses", "Certification Programs"],
+    description:
+      "Empower your team with cutting-edge customer experience strategies that drive satisfaction, loyalty, and business growth.",
+    features: [
+      "Team Workshops",
+      "Executive Coaching",
+      "Online Courses",
+      "Certification Programs",
+    ],
     path: "/cx-training",
     gradient: "from-blue-500/20 to-cyan-500/10",
   },
   {
     icon: Film,
     title: "Movie Date with Angel",
-    description: "Experience cinema like never before with exclusive movie events, curated screenings, and unique entertainment experiences.",
-    features: ["Private Screenings", "Themed Events", "Movie Reviews", "Community Gatherings"],
+    description:
+      "Experience cinema like never before through curated movie events that blend entertainment, education, and meaningful connection.",
+    features: [
+      "Private Screenings",
+      "Themed Events",
+      "Movie Reviews and Discussions",
+      "Community Gatherings",
+      "School Based Edutainment Screenings",
+    ],
     path: "/movie-date",
     gradient: "from-purple-500/20 to-pink-500/10",
   },
@@ -34,7 +53,7 @@ export function ServicesSection() {
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -42,12 +61,11 @@ export function ServicesSection() {
             What I Offer
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-            Services That{" "}
-            <span className="text-gradient-gold">Transform</span>
+            Services That <span className="text-gradient-gold">Transform</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            From commanding stages to training champions and creating magical movie moments, 
-            discover how I can elevate your next experience.
+            From commanding stages to training champions and creating magical
+            movie moments, discover how I can elevate your next experience.
           </p>
         </div>
 
@@ -60,8 +78,10 @@ export function ServicesSection() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              />
+
               <div className="relative p-8">
                 {/* Icon */}
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-300">
@@ -79,7 +99,10 @@ export function ServicesSection() {
                 {/* Features */}
                 <ul className="space-y-2 mb-8">
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-sm text-muted-foreground">
+                    <li
+                      key={feature}
+                      className="flex items-center text-sm text-muted-foreground"
+                    >
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mr-3" />
                       {feature}
                     </li>
@@ -87,7 +110,11 @@ export function ServicesSection() {
                 </ul>
 
                 {/* CTA */}
-                <Button variant="gold-outline" className="w-full group/btn" asChild>
+                <Button
+                  variant="gold-outline"
+                  className="w-full group/btn"
+                  asChild
+                >
                   <Link to={service.path}>
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
