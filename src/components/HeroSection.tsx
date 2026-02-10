@@ -32,71 +32,77 @@ export function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-24">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-8 animate-fade-in">
-              <span className="text-primary text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-12 animate-fade-in">
+              <span className="text-primary text-sm font-medium tracking-wide">
                 Corporate MC | Customer Experience | Movie Enthusiast
               </span>
             </div>
 
             {/* Heading */}
             <h1
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-in"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.1] mb-10 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
               Hi, I'm{" "}
               <span className="text-gradient-gold relative">
                 Purity
-                <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary to-gold-light rounded-full opacity-50" />
+                <span className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-gold-light rounded-full opacity-50" />
               </span>
             </h1>
 
-            {/* Tagline
-            <p
-              className="text-xl sm:text-2xl text-muted-foreground mb-4 font-light animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Hi, I’m Purity. 
-            </p> */}
-
             {/* Description */}
-            <p
-              className="text-lg text-muted-foreground/80 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in"
+            <div
+              className="space-y-6 text-lg text-muted-foreground/80 mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in"
               style={{ animationDelay: "0.3s" }}
             >
-              I create memorable experiences that connect, inspire, and leave a
-              lasting impact. I am a Corporate MC and Customer Experience
-              Trainer with over 8 years of hands on CX and leadership
-              experience. I work with organizations to transform service teams,
-              elevate customer interactions, and build customer centric cultures
-              that stand out and endure. Beyond the corporate space, I host
-              Movie Date with Angel, a curated monthly edutainment experience
-              that uses film to spark dialogue, learning, and meaningful
-              connection. I am also the founder of Apparel by Neila, a trench
-              coat brand created for elegant self expression and confidence.
-              Whether on stage, in a training room, or behind the scenes, I
-              bring presence, creativity, and professionalism to every
-              experience.
-              <br />
-              Let’s elevate your experience.
-            </p>
+              <p>
+                I create memorable experiences that connect, inspire, and leave
+                a lasting impact. As a <strong>Corporate MC</strong> and{" "}
+                <strong>Customer Experience Trainer</strong> with over 8 years
+                of leadership experience, I transform service teams and build
+                customer-centric cultures that endure.
+              </p>
+
+              <p>
+                Beyond the corporate space, I host{" "}
+                <strong>Movie Date with Angel</strong>, a curated monthly
+                edutainment experience. I am also the founder of
+                <strong> Apparel by Neila</strong>, a trench coat brand created
+                for elegant self-expression.
+              </p>
+
+              <p className="text-xl font-medium text-primary/90">
+                Let’s elevate your experience.
+              </p>
+            </div>
 
             {/* CTAs */}
             <div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in"
+              className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start animate-fade-in"
               style={{ animationDelay: "0.4s" }}
             >
-              <Button variant="hero" size="xl" asChild>
+              <Button
+                variant="hero"
+                size="xl"
+                asChild
+                className="px-10 h-14 text-lg"
+              >
                 <Link to="/contact" className="group">
                   Book Me Now
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button variant="hero-outline" size="xl" asChild>
+              <Button
+                variant="hero-outline"
+                size="xl"
+                asChild
+                className="px-10 h-14 text-lg"
+              >
                 <Link to="/cx-training" className="group">
                   <Play className="mr-2 h-5 w-5" />
                   Watch Intro
@@ -106,16 +112,16 @@ export function HeroSection() {
 
             {/* Stats */}
             <div
-              className="grid grid-cols-3 gap-4 mt-16 animate-fade-in"
+              className="grid grid-cols-3 gap-6 mt-20 animate-fade-in"
               style={{ animationDelay: "0.5s" }}
             >
               {stats.map((stat, index) => (
-                <div key={stat.label} className="stat-card text-center">
-                  <stat.icon className="h-5 w-5 text-primary mx-auto mb-2" />
-                  <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1">
+                <div key={stat.label} className="stat-card text-center py-8">
+                  <stat.icon className="h-6 w-6 text-primary mx-auto mb-3" />
+                  <div className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-xs sm:text-sm text-muted-foreground">
+                  <div className="text-xs sm:text-sm font-medium text-muted-foreground uppercase tracking-widest">
                     {stat.label}
                   </div>
                 </div>
@@ -125,7 +131,7 @@ export function HeroSection() {
 
           {/* Photo */}
           <div
-            className="order-1 lg:order-2 flex justify-center animate-fade-in-right"
+            className="order-1 lg:order-2 flex justify-center animate-fade-in-right lg:pt-[88px]"
             style={{ animationDelay: "0.3s" }}
           >
             <div className="relative">
@@ -141,7 +147,7 @@ export function HeroSection() {
 
               {/* Photo frame */}
               <div className="photo-frame animate-glow">
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-secondary">
+                <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[520px] lg:h-[520px] rounded-full overflow-hidden bg-secondary">
                   <img
                     src={angelPortrait}
                     alt="Angel - Professional MC and CX Trainer"

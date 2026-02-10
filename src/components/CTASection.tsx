@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 export function CTASection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-background to-primary/10" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
@@ -28,18 +28,18 @@ export function CTASection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Icon */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-8 animate-glow-pulse">
-            <Sparkles className="h-8 w-8 text-primary" />
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-12 animate-glow-pulse">
+            <Sparkles className="h-10 w-10 text-primary" />
           </div>
 
           {/* Heading */}
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
             Ready to Create Something{" "}
             <span className="text-gradient-gold">Extraordinary?</span>
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-muted-foreground/90 mb-16 max-w-2xl mx-auto leading-relaxed">
             Whether it's hosting your next big event, training your team, or
             experiencing movies in a new way — let's make it memorable together.
           </p>

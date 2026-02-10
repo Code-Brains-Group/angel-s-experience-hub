@@ -50,27 +50,27 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-32 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-24">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-8">
             What I Offer
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold mb-8">
             Services That <span className="text-gradient-gold">Transform</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-xl text-muted-foreground/90 leading-relaxed">
             From commanding stages to training champions and creating magical
             movie moments, discover how I can elevate your next experience.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {services.map((service, index) => (
             <div
               key={service.title}
