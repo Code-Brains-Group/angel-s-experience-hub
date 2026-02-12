@@ -21,12 +21,12 @@ const services = [
     icon: GraduationCap,
     title: "CX Training",
     description:
-      "Empower your team with cutting-edge customer experience strategies that drive satisfaction, loyalty, and business growth.",
+      "Equip your teams with modern customer experience skills that improve service delivery, deepen customer loyalty, and create measurable business impact.",
     features: [
       "Team Workshops",
       "Executive Coaching",
-      "Online Courses",
-      "Certification Programs",
+      "Online Learning Programs",
+      " CX Masterclasses",
     ],
     path: "/cx-training",
     gradient: "from-blue-500/20 to-cyan-500/10",
