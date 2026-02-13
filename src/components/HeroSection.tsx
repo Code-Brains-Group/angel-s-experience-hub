@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Play, ArrowRight, Star, Users, Calendar } from "lucide-react";
-import angelPortrait from "@/assets/angel.jpg";
+import angelPortrait from "@/assets/purity2.jpeg";
 
 const stats = [
   { icon: Calendar, value: "500+", label: "Events Hosted" },
@@ -32,7 +32,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-24">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">
@@ -45,7 +45,7 @@ export function HeroSection() {
 
             {/* Heading */}
             <h1
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.1] mb-10 animate-fade-in"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold leading-[1.1] mb-6 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
               Hi, I'm{" "}
@@ -57,23 +57,36 @@ export function HeroSection() {
 
             {/* Description */}
             <div
-              className="space-y-6 text-lg text-muted-foreground/80 mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in"
+              className="space-y-4 text-lg text-muted-foreground/80 mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in"
               style={{ animationDelay: "0.3s" }}
             >
               <p>
                 I create memorable experiences that connect, inspire, and leave
-                a lasting impact. As a <strong>Corporate MC</strong> and{" "}
+                a lasting impact.
+              </p>
+
+              <p>
+                I am a <strong>Corporate MC</strong> and{" "}
                 <strong>Customer Experience Trainer</strong> with over 8 years
-                of leadership experience, I transform service teams and build
-                customer-centric cultures that endure.
+                of hands on CX and leadership experience. I work with
+                organizations to transform service teams, elevate customer
+                interactions, and build customer centric cultures that stand out
+                and endure.
               </p>
 
               <p>
                 Beyond the corporate space, I host{" "}
                 <strong>Movie Date with Angel</strong>, a curated monthly
-                edutainment experience. I am also the founder of
+                edutainment experience that uses film to spark dialogue,
+                learning, and meaningful connection. I am also the founder of
                 <strong> Apparel by Neila</strong>, a trench coat brand created
-                for elegant self-expression.
+                for elegant self expression and confidence.
+              </p>
+
+              <p>
+                Whether on stage, in a training room, or behind the scenes, I
+                bring presence, creativity, and professionalism to every
+                experience.
               </p>
 
               <p className="text-xl font-medium text-primary/90">
@@ -131,36 +144,24 @@ export function HeroSection() {
 
           {/* Photo */}
           <div
-            className="order-1 lg:order-2 flex justify-center animate-fade-in-right lg:pt-[88px]"
+            className="order-1 lg:order-2 flex justify-center animate-fade-in-right lg:pt-0"
             style={{ animationDelay: "0.3s" }}
           >
-            <div className="relative">
-              {/* Animated rings */}
-              <div
-                className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping"
-                style={{ animationDuration: "3s" }}
-              />
-              <div
-                className="absolute inset-4 rounded-full border border-primary/10 animate-ping"
-                style={{ animationDuration: "3s", animationDelay: "0.5s" }}
-              />
-
-              {/* Photo frame */}
-              <div className="photo-frame animate-glow">
-                <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[520px] lg:h-[520px] rounded-full overflow-hidden bg-secondary">
-                  <img
-                    src={angelPortrait}
-                    alt="Angel - Professional MC and CX Trainer"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                </div>
+            <div className="relative group">
+              {/* Image Container */}
+              <div className="relative w-full max-w-[480px] rounded-2xl overflow-hidden shadow-2xl border border-primary/10">
+                <img
+                  src={angelPortrait}
+                  alt="Angel - Professional MC and CX Trainer"
+                  className="w-full h-[720px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
               </div>
 
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-float" />
+              {/* Decorative elements */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse-slow" />
               <div
-                className="absolute -bottom-8 -left-8 w-16 h-16 bg-primary/10 rounded-full blur-xl animate-float"
+                className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"
                 style={{ animationDelay: "1s" }}
               />
             </div>
