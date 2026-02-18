@@ -284,36 +284,61 @@ export default function MovieDate() {
               </h2>
               {/* Mission Statements */}
               <div className="space-y-3 mb-8">
-                <p className="text-lg text-foreground font-medium">We are sparking light in places that need it.</p>
-                <p className="text-lg text-foreground font-medium">We are transforming how stories are experienced.</p>
-                <p className="text-lg text-foreground font-medium">We are giving voice to lessons often hidden in plain sight.</p>
-                <p className="text-lg text-gradient-gold font-semibold">We are shaping the next generation, one Film at a time.</p>
+                <p className="text-lg text-foreground font-medium">
+                  We are sparking light in places that need it.
+                </p>
+                <p className="text-lg text-foreground font-medium">
+                  We are transforming how stories are experienced.
+                </p>
+                <p className="text-lg text-foreground font-medium">
+                  We are giving voice to lessons often hidden in plain sight.
+                </p>
+                <p className="text-lg text-gradient-gold font-semibold">
+                  We are shaping the next generation, one Film at a time.
+                </p>
               </div>
 
               {/* Call to Action Messages */}
               <div className="space-y-4 mb-8 p-6 bg-primary/5 rounded-2xl border border-primary/20">
                 <p className="text-muted-foreground flex items-start gap-2">
                   <span className="text-primary">✨</span>
-                  <span>If you know a school, youth group, or community that would love to experience this, reach out to us.</span>
+                  <span>
+                    If you know a school, youth group, or community that would
+                    love to experience this, reach out to us.
+                  </span>
                 </p>
                 <p className="text-muted-foreground flex items-start gap-2">
                   <span className="text-primary">✨</span>
-                  <span>If this vision speaks to your heart and you'd like to partner with us or support/sponsor this mission, we'd love to hear from you.</span>
+                  <span>
+                    If this vision speaks to your heart and you'd like to
+                    partner with us or support/sponsor this mission, we'd love
+                    to hear from you.
+                  </span>
                 </p>
               </div>
 
               {/* Community Call */}
               <div className="space-y-2 mb-8">
-                <p className="text-foreground font-medium">Mention us to your networks.</p>
-                <p className="text-foreground font-medium">Invite us into your spaces.</p>
-                <p className="text-muted-foreground italic">Together, we can touch hearts, shape minds, and transform lives through the power of Film.</p>
+                <p className="text-foreground font-medium">
+                  Mention us to your networks.
+                </p>
+                <p className="text-foreground font-medium">
+                  Invite us into your spaces.
+                </p>
+                <p className="text-muted-foreground italic">
+                  Together, we can touch hearts, shape minds, and transform
+                  lives through the power of Film.
+                </p>
               </div>
 
               {/* Contact */}
               <div className="flex items-center gap-2 mb-8 p-4 bg-secondary/50 rounded-xl">
                 <span className="text-lg">📩</span>
                 <span className="text-muted-foreground">Email:</span>
-                <a href="mailto:moviedatewithangel@gmail.com" className="text-primary font-medium hover:underline">
+                <a
+                  href="mailto:moviedatewithangel@gmail.com"
+                  className="text-primary font-medium hover:underline"
+                >
                   moviedatewithangel@gmail.com
                 </a>
               </div>
@@ -321,21 +346,34 @@ export default function MovieDate() {
               {/* Stats */}
               <div className="flex gap-8 mb-8">
                 <div>
-                  <div className="text-3xl font-display font-bold text-gradient-gold">10+</div>
-                  <p className="text-sm text-muted-foreground">Schools Reached</p>
+                  <div className="text-3xl font-display font-bold text-gradient-gold">
+                    10+
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Schools Reached
+                  </p>
                 </div>
                 <div>
-                  <div className="text-3xl font-display font-bold text-gradient-gold">500+</div>
-                  <p className="text-sm text-muted-foreground">Students Impacted</p>
+                  <div className="text-3xl font-display font-bold text-gradient-gold">
+                    500+
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Students Impacted
+                  </p>
                 </div>
                 <div>
-                  <div className="text-3xl font-display font-bold text-gradient-gold">20+</div>
+                  <div className="text-3xl font-display font-bold text-gradient-gold">
+                    10+
+                  </div>
                   <p className="text-sm text-muted-foreground">Sessions</p>
                 </div>
               </div>
 
               <Button variant="hero" size="lg" asChild>
-                <a href="mailto:moviedatewithangel@gmail.com?subject=Edutainment Program Partnership Inquiry" className="group">
+                <a
+                  href="mailto:moviedatewithangel@gmail.com?subject=Edutainment Program Partnership Inquiry"
+                  className="group"
+                >
                   Partner With Us
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </a>
@@ -379,7 +417,8 @@ export default function MovieDate() {
               Moments <span className="text-gradient-gold">Captured</span>
             </h2>
             <p className="text-lg text-muted-foreground">
-              A visual journey through our movie nights and edutainment sessions.
+              A visual journey through our movie nights and edutainment
+              sessions.
             </p>
           </div>
 
@@ -390,8 +429,12 @@ export default function MovieDate() {
                 <Film className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-display text-2xl font-bold">Movie Night Moments</h3>
-                <p className="text-muted-foreground">Capturing the magic of our film screenings</p>
+                <h3 className="font-display text-2xl font-bold">
+                  Movie Night Moments
+                </h3>
+                <p className="text-muted-foreground">
+                  Capturing the magic of our film screenings
+                </p>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -407,7 +450,9 @@ export default function MovieDate() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm font-medium text-foreground">{image.caption}</p>
+                    <p className="text-sm font-medium text-foreground">
+                      {image.caption}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -421,8 +466,12 @@ export default function MovieDate() {
                 <GraduationCap className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-display text-2xl font-bold">Edutainment in Action</h3>
-                <p className="text-muted-foreground">Transformative moments from our school programs</p>
+                <h3 className="font-display text-2xl font-bold">
+                  Edutainment Program
+                </h3>
+                <p className="text-muted-foreground">
+                  Transformative moments from our school programs
+                </p>
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -438,7 +487,9 @@ export default function MovieDate() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm font-medium text-foreground">{image.caption}</p>
+                    <p className="text-sm font-medium text-foreground">
+                      {image.caption}
+                    </p>
                   </div>
                 </div>
               ))}

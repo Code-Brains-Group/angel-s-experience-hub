@@ -56,7 +56,7 @@ const outcomes = [
   { icon: TrendingUp, stat: "40%", label: "Improvement in CSAT scores" },
   { icon: Users, stat: "1000+", label: "Professionals trained" },
   { icon: Award, stat: "98%", label: "Course completion rate" },
-  { icon: Target, stat: "50+", label: "Organizations transformed" },
+  { icon: Target, stat: "10+", label: "Businesses transformed" },
 ];
 
 const pricingPackages = [

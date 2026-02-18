@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Play, ArrowRight, Star, Users, Calendar } from "lucide-react";
-import angelPortrait from "@/assets/purity2.jpeg";
+import angelPortrait from "@/assets/angel.jpg";
 
 const stats = [
-  { icon: Calendar, value: "500+", label: "Events Hosted" },
+  { icon: Calendar, value: "21+", label: "Events Hosted" },
   { icon: Users, value: "1000+", label: "Trainees" },
   { icon: Star, value: "5.0", label: "Average Rating" },
 ];
@@ -69,7 +69,7 @@ export function HeroSection() {
                 I am a <strong>Corporate MC</strong> and{" "}
                 <strong>Customer Experience Trainer</strong> with over 8 years
                 of hands on CX and leadership experience. I work with
-                organizations to transform service teams, elevate customer
+                businesses to transform service teams, elevate customer
                 interactions, and build customer centric cultures that stand out
                 and endure.
               </p>
@@ -79,7 +79,7 @@ export function HeroSection() {
                 <strong>Movie Date with Angel</strong>, a curated monthly
                 edutainment experience that uses film to spark dialogue,
                 learning, and meaningful connection. I am also the founder of
-                <strong> Apparel by Neila</strong>, a trench coat brand created
+                <strong> Apparel by Neila</strong>, a Trench Coat Brand created
                 for elegant self expression and confidence.
               </p>
 
@@ -149,7 +149,7 @@ export function HeroSection() {
           >
             <div className="relative group">
               {/* Image Container */}
-              <div className="relative w-full max-w-[480px] rounded-2xl overflow-hidden shadow-2xl border border-primary/10">
+              <div className="relative w-full max-w-[480px]">
                 <img
                   src={angelPortrait}
                   alt="Angel - Professional MC and CX Trainer"
@@ -157,13 +157,6 @@ export function HeroSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
               </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse-slow" />
-              <div
-                className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-pulse-slow"
-                style={{ animationDelay: "1s" }}
-              />
             </div>
           </div>
         </div>
