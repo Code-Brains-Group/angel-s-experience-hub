@@ -15,11 +15,11 @@ interface ImageGalleryProps {
   variant?: "masonry" | "grid" | "featured";
 }
 
-export function ImageGallery({ 
-  images, 
-  title, 
+export function ImageGallery({
+  images,
+  title,
   subtitle,
-  variant = "masonry" 
+  variant = "masonry"
 }: ImageGalleryProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -89,20 +89,17 @@ export function ImageGallery({
           )}
 
           {variant === "masonry" && (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+            <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
               {images.map((image, index) => (
                 <div
                   key={index}
-                  className={cn(
-                    "relative group cursor-pointer overflow-hidden rounded-2xl",
-                    getMasonryClass(index)
-                  )}
+                  className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-2xl"
                   onClick={() => openLightbox(index)}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -111,7 +108,7 @@ export function ImageGallery({
                       </div>
                     </div>
                     {image.caption && (
-                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 pt-12">
                         <p className="text-sm font-medium text-foreground">{image.caption}</p>
                       </div>
                     )}
@@ -126,13 +123,13 @@ export function ImageGallery({
               {images.map((image, index) => (
                 <div
                   key={index}
-                  className="relative group cursor-pointer overflow-hidden rounded-2xl aspect-square"
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl"
                   onClick={() => openLightbox(index)}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -156,17 +153,13 @@ export function ImageGallery({
               {images.map((image, index) => (
                 <div
                   key={index}
-                  className={cn(
-                    "relative group cursor-pointer overflow-hidden rounded-2xl border border-border/50",
-                    index === 0 && "md:col-span-2 md:row-span-2 aspect-[16/10]",
-                    index !== 0 && "aspect-[4/3]"
-                  )}
+                  className="relative group cursor-pointer overflow-hidden rounded-2xl border border-border/50"
                   onClick={() => openLightbox(index)}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute inset-0 flex items-center justify-center">

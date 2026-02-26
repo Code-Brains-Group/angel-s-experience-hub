@@ -437,26 +437,7 @@ export default function MovieDate() {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {galleryImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm font-medium text-foreground">
-                      {image.caption}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ImageGallery images={galleryImages} variant="masonry" />
           </div>
 
           {/* Edutainment Gallery */}
@@ -474,26 +455,7 @@ export default function MovieDate() {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {edutainmentGalleryImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="group relative rounded-2xl overflow-hidden aspect-[4/3] cursor-pointer"
-                >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-sm font-medium text-foreground">
-                      {image.caption}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ImageGallery images={edutainmentGalleryImages} variant="masonry" />
           </div>
         </div>
       </section>

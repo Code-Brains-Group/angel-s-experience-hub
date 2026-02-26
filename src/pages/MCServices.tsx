@@ -10,20 +10,23 @@ import {
   Building2,
   Heart,
   Presentation,
+  Users,
   Star,
 } from "lucide-react";
 
 // Import gallery images
-import mcEvent1 from "@/assets/gallery/mc-event-1.jpg";
-import mcEvent2 from "@/assets/gallery/mc-event-2.jpg";
-import mcEvent3 from "@/assets/gallery/mc-event-3.jpg";
-import mcEvent4 from "@/assets/gallery/mc-event-4.jpg";
-import mcEvent5 from "@/assets/gallery/mc-event-5.jpg";
-import mcEvent6 from "@/assets/gallery/mc-event-6.jpg";
-import mcEvent7 from "@/assets/gallery/mc-event-7.jpg";
-import mcEvent8 from "@/assets/gallery/mc-event-8.jpg";
-import mcEvent9 from "@/assets/gallery/mc-event-9.jpg";
-import mcEvent10 from "@/assets/gallery/mc-event-10.jpg";
+import mc1 from "@/assets/gallery/mc/mc1.jpeg";
+import mc2 from "@/assets/gallery/mc/mc2.jpeg";
+import mc3 from "@/assets/gallery/mc/mc3.jpeg";
+import mc4 from "@/assets/gallery/mc/mc4.jpeg";
+import mc5 from "@/assets/gallery/mc/mc5.jpeg";
+import mc6 from "@/assets/gallery/mc/mc6.jpeg";
+import mc7 from "@/assets/gallery/mc/mc7.jpeg";
+import mc8 from "@/assets/gallery/mc/mc8.jpeg";
+import mc9 from "@/assets/gallery/mc/mc9.jpeg";
+import mc10 from "@/assets/gallery/mc/mc10.jpeg";
+import mc11 from "@/assets/gallery/mc/mc11.jpeg";
+import mc12 from "@/assets/gallery/mc/mc12.jpeg";
 
 const eventTypes = [
   {
@@ -58,36 +61,18 @@ const benefits = [
 ];
 
 const galleryImages = [
-  {
-    src: mcEvent1,
-    alt: "Corporate Gala Event",
-    caption: "Corporate Gala Evening",
-  },
-  {
-    src: mcEvent2,
-    alt: "Wedding Reception",
-    caption: "Elegant Wedding Reception",
-  },
-  {
-    src: mcEvent3,
-    alt: "Conference Hosting",
-    caption: "International Conference",
-  },
-  { src: mcEvent4, alt: "Award Ceremony", caption: "Award Ceremony Gala" },
-  { src: mcEvent5, alt: "Product Launch", caption: "Tech Product Launch" },
-  {
-    src: mcEvent6,
-    alt: "Charity Fundraiser",
-    caption: "Charity Fundraiser Event",
-  },
-  { src: mcEvent7, alt: "Music Festival", caption: "Outdoor Music Festival" },
-  { src: mcEvent8, alt: "Corporate Dinner", caption: "Executive Dinner Event" },
-  { src: mcEvent9, alt: "Fashion Show", caption: "Fashion Show Hosting" },
-  {
-    src: mcEvent10,
-    alt: "New Year Celebration",
-    caption: "New Year's Eve Gala",
-  },
+  { src: mc1, alt: "Corporate MC Angel", caption: "Professional Hosting" },
+  { src: mc2, alt: "MC Angel at Event", caption: "Engaging the Audience" },
+  { src: mc3, alt: "Stage Presence", caption: "Commanding the Stage" },
+  { src: mc4, alt: "Event Hosting", caption: "Seamless Coordination" },
+  { src: mc5, alt: "Professional MC", caption: "Vibrant Hosting" },
+  { src: mc6, alt: "Live Event", caption: "Memorable Moments" },
+  { src: mc7, alt: "Angel Hosting", caption: "Elegant Presence" },
+  { src: mc8, alt: "MC Services", caption: "Dynamic Flow" },
+  { src: mc9, alt: "Corporate Event", caption: "Polished Delivery" },
+  { src: mc10, alt: "Special Occasion", caption: "Making it Special" },
+  { src: mc11, alt: "Celebration Hosting", caption: "Celebratory Atmosphere" },
+  { src: mc12, alt: "Grand Opening", caption: "Grand Opening Event" },
 ];
 
 export default function MCServices() {
@@ -171,14 +156,180 @@ export default function MCServices() {
         </div>
       </section>
 
-      {/* Event Gallery */}
-      <section id="gallery" className="bg-secondary/20">
-        <ImageGallery
-          images={galleryImages}
-          title="Events I've Hosted"
-          subtitle="A glimpse into the memorable events I've had the honor of hosting over the years."
-          variant="masonry"
-        />
+      {/* Masterclass Portfolio - Signature Showcase (No-Crop) */}
+      <section
+        id="gallery"
+        className="py-32 relative overflow-hidden bg-[#0A0C10]"
+      >
+        {/* Cinematic Backdrop */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+          <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px]" />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl mb-24">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-[1px] w-12 bg-primary/50" />
+              <span className="text-primary text-sm font-bold uppercase tracking-[0.3em]">
+                Signature Moments
+              </span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-8 leading-[1.1]">
+              The Art of <br />
+              <span className="text-gradient-gold italic">Commanding</span>{" "}
+              Attention
+            </h2>
+            <p className="text-xl text-gray-400 font-light max-w-xl border-l border-primary/30 pl-8 ml-2">
+              A curated visual narrative of excellence across 12 signature
+              events. No filters, no crops—just raw, professional impact.
+            </p>
+          </div>
+
+          <div className="columns-1 md:columns-2 gap-12 space-y-12">
+            {/* 1. THE HERO MOMENT (Top Left) */}
+            <div className="break-inside-avoid relative group">
+              <div className="relative overflow-hidden rounded-[2.5rem] border border-primary/20 bg-secondary/10 hover:shadow-[0_0_80px_-15px_rgba(var(--primary-rgb),0.3)] transition-all duration-700">
+                <img
+                  src={mc1}
+                  alt="Commanding the Stage"
+                  className="w-full h-auto block transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute top-8 left-8 flex items-center gap-3 px-5 py-2.5 rounded-full bg-primary/20 backdrop-blur-2xl border border-white/10 text-primary text-xs font-bold uppercase tracking-widest shadow-2xl">
+                  <Star className="w-4 h-4 fill-primary" />
+                  Golden Moment
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
+                  <p className="text-primary font-display text-2xl font-bold mb-2">
+                    Stage Presence
+                  </p>
+                  <p className="text-gray-300 text-sm italic">
+                    "The room is yours the moment you step into the light."
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. THE DUO INTRO */}
+            <div className="break-inside-avoid space-y-8 md:pt-24">
+              <div className="group relative">
+                <img
+                  src={mc3}
+                  alt="Prep"
+                  className="w-full h-auto rounded-[2rem] border border-white/5 transition-all duration-700"
+                />
+                <div className="absolute -bottom-4 -right-4 bg-primary px-6 py-3 rounded-2xl shadow-2xl font-display font-bold text-black rotate-3 group-hover:rotate-0 transition-transform">
+                  ELITE START
+                </div>
+              </div>
+              <div className="group relative">
+                <img
+                  src={mc2}
+                  alt="Crowd"
+                  className="w-full h-auto rounded-[2rem] border border-white/5 opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+                <div className="absolute top-6 left-6 p-3 rounded-full bg-white/10 backdrop-blur-md">
+                  <Users className="w-5 h-5 text-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* 3. THE CENTER SPREAD (Middle Wide logic) */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[2rem] border border-primary/20 transition-all duration-500 hover:scale-[1.01]">
+              <img
+                src={mc5}
+                alt="Vibrant Energy"
+                className="w-full h-auto block"
+              />
+              <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1 h-24 bg-primary" />
+              <div className="absolute right-8 bottom-8 p-6 rounded-3xl bg-black/60 backdrop-blur-lg border border-primary/30 max-w-[200px]">
+                <span className="text-[10px] text-primary font-bold uppercase block mb-1">
+                  Energy Factor
+                </span>
+                <p className="text-white text-xs leading-relaxed">
+                  Infusing every stage with a pulse of enthusiasm.
+                </p>
+              </div>
+            </div>
+
+            {/* 4. THE ACTION TRIPTYCH (Simulated using columns) */}
+            <div className="break-inside-avoid space-y-6">
+              <div className="columns-2 gap-4 space-y-4">
+                <img
+                  src={mc4}
+                  alt="Flow"
+                  className="w-full h-auto rounded-3xl border border-white/5"
+                />
+                <img
+                  src={mc6}
+                  alt="Flow"
+                  className="w-full h-auto rounded-3xl border border-white/5"
+                />
+              </div>
+              <div className="group relative overflow-hidden rounded-[2rem] border border-white/5 shadow-2xl">
+                <img
+                  src={mc7}
+                  alt="Sync"
+                  className="w-full h-auto block transition-all duration-700"
+                />
+              </div>
+            </div>
+
+            {/* 5. THE VERSATILITY BLADE */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[2.5rem] bg-secondary/5 border border-white/5">
+              <div className="grid grid-cols-2 p-3 gap-3">
+                <img
+                  src={mc8}
+                  alt="Detail 1"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <img
+                  src={mc9}
+                  alt="Detail 2"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <img
+                  src={mc10}
+                  alt="Detail 3"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <img
+                  src={mc11}
+                  alt="Detail 4"
+                  className="w-full h-auto rounded-2xl"
+                />
+              </div>
+              <div className="p-8 border-t border-white/5">
+                <h4 className="font-display text-xl text-white font-bold mb-2">
+                  Corporate Versatility
+                </h4>
+                <p className="text-sm text-gray-400 font-light">
+                  From tech launches to high-society galas, the standard remains
+                  identical.
+                </p>
+              </div>
+            </div>
+
+            {/* 6. THE GRAND FINALE */}
+            <div className="break-inside-avoid relative md:pt-20">
+              <div className="group relative rounded-[3rem] overflow-hidden border-2 border-primary shadow-[0_0_60px_-20px_rgba(var(--primary-rgb),0.5)]">
+                <img
+                  src={mc12}
+                  alt="Legendary Finale"
+                  className="w-full h-auto block transition-transform duration-[2s] group-hover:scale-110"
+                />
+                {/* <div className="absolute inset-x-8 bottom-8 p-10 rounded-[2rem] bg-gradient-to-br from-black/90 to-background/50 backdrop-blur-xl border border-white/10 text-center">
+                  <Mic2 className="w-10 h-10 text-primary mx-auto mb-4" />
+                  <h3 className="font-display text-3xl font-bold text-white mb-4">Legendary Status</h3>
+                  <p className="text-gray-300 text-sm mb-8 italic">Let's craft the perfect narrative for your audience.</p>
+                  <Button variant="gold" size="lg" className="w-full py-8 text-lg font-bold uppercase tracking-widest" asChild>
+                    <Link to="/contact">Book Now</Link>
+                  </Button>
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Why Choose Me */}

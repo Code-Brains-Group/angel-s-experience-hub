@@ -68,10 +68,9 @@ export function HeroSection() {
               <p>
                 I am a <strong>Corporate MC</strong> and{" "}
                 <strong>Customer Experience Trainer</strong> with over 8 years
-                of hands on CX and leadership experience. I work with
-                businesses to transform service teams, elevate customer
-                interactions, and build customer centric cultures that stand out
-                and endure.
+                of hands on CX and leadership experience. I work with businesses
+                to transform service teams, elevate customer interactions, and
+                build customer centric cultures that stand out and endure.
               </p>
 
               <p>
@@ -149,14 +148,24 @@ export function HeroSection() {
           >
             <div className="relative group">
               {/* Image Container */}
-              <div className="relative w-full max-w-[480px]">
-                <img
-                  src={angelPortrait}
-                  alt="Angel - Professional MC and CX Trainer"
-                  className="w-full h-[720px] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
+              <div className="photo-frame w-64 h-64 sm:w-80 sm:h-80 lg:w-[480px] lg:h-[480px] shadow-2xl animate-float">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/10">
+                  <img
+                    src={angelPortrait}
+                    alt="Angel - Professional MC and CX Trainer"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    style={{ objectPosition: "center 20%" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent pointer-events-none" />
+                </div>
               </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-pulse-slow" />
+              <div
+                className="absolute -bottom-12 -left-12 w-48 h-48 bg-primary/20 rounded-full blur-3xl animate-pulse-slow"
+                style={{ animationDelay: "1s" }}
+              />
             </div>
           </div>
         </div>

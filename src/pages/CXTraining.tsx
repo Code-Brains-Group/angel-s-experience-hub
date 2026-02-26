@@ -18,12 +18,12 @@ import {
 } from "lucide-react";
 
 // Import gallery images
-import cxTraining1 from "@/assets/gallery/cx-training-1.jpg";
-import cxTraining2 from "@/assets/gallery/cx-training-2.jpg";
-import cxTraining3 from "@/assets/gallery/cx-training-3.jpg";
-import cxTraining4 from "@/assets/gallery/cx-training-4.jpg";
-import cxTraining5 from "@/assets/gallery/cx-training-5.jpg";
-import cxTraining6 from "@/assets/gallery/cx-training-6.jpg";
+import cx1 from "@/assets/gallery/cx/cx1.jpeg";
+import cx2 from "@/assets/gallery/cx/cx2.jpeg";
+import cx3 from "@/assets/gallery/cx/cx3.jpeg";
+import cx4 from "@/assets/gallery/cx/cx4.jpeg";
+import cx5 from "@/assets/gallery/cx/cx5.jpeg";
+import cx6 from "@/assets/gallery/cx/cx6.jpeg";
 
 const modules = [
   {
@@ -110,32 +110,32 @@ const pricingPackages = [
 
 const galleryImages = [
   {
-    src: cxTraining1,
+    src: cx1,
     alt: "Corporate Training Session",
     caption: "Executive Training Workshop",
   },
   {
-    src: cxTraining2,
+    src: cx2,
     alt: "Team Building Workshop",
     caption: "Interactive Team Building",
   },
   {
-    src: cxTraining3,
+    src: cx3,
     alt: "Seminar Presentation",
     caption: "Professional Development Seminar",
   },
   {
-    src: cxTraining4,
+    src: cx4,
     alt: "Group Discussion",
     caption: "Collaborative Problem Solving",
   },
   {
-    src: cxTraining5,
+    src: cx5,
     alt: "Graduation Ceremony",
     caption: "CX Champions Graduation",
   },
   {
-    src: cxTraining6,
+    src: cx6,
     alt: "Role Play Exercise",
     caption: "Customer Service Role Play",
   },
@@ -273,11 +273,10 @@ export default function CXTraining() {
             {pricingPackages.map((pkg) => (
               <div
                 key={pkg.name}
-                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${
-                  pkg.popular
-                    ? "bg-gradient-to-b from-primary/20 to-card border-primary/50 shadow-2xl shadow-primary/20"
-                    : "bg-gradient-card border-border/50 hover:border-primary/30"
-                }`}
+                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${pkg.popular
+                  ? "bg-gradient-to-b from-primary/20 to-card border-primary/50 shadow-2xl shadow-primary/20"
+                  : "bg-gradient-card border-border/50 hover:border-primary/30"
+                  }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -289,11 +288,10 @@ export default function CXTraining() {
 
                 <div className="text-center mb-8">
                   <div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${
-                      pkg.popular
-                        ? "bg-gradient-to-br from-primary/40 to-primary/20 shadow-lg shadow-primary/20"
-                        : "bg-primary/10"
-                    }`}
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${pkg.popular
+                      ? "bg-gradient-to-br from-primary/40 to-primary/20 shadow-lg shadow-primary/20"
+                      : "bg-primary/10"
+                      }`}
                   >
                     <pkg.icon className="h-8 w-8 text-primary" />
                   </div>
@@ -350,14 +348,95 @@ export default function CXTraining() {
         </div>
       </section>
 
-      {/* Training Gallery */}
-      <section className="bg-secondary/20">
-        <ImageGallery
-          images={galleryImages}
-          title="Training Sessions"
-          subtitle="A look at our engaging training workshops and the professionals we've empowered."
-          variant="grid"
-        />
+      {/* Training Gallery - Creative Staggered Layout (No-Crop) */}
+      <section className="py-32 relative overflow-hidden bg-secondary/10">
+        {/* Background Accents */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -ml-64 -mb-64" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+              Training in Action
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">
+              Experience the <span className="text-gradient-gold">Transformation</span>
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              A curated look at our high-impact training sessions where strategy meets real-world excellence.
+            </p>
+          </div>
+
+          <div className="columns-1 md:columns-2 gap-8 space-y-8">
+            {/* Featured Image - Primary Spotlight */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[2rem] border border-primary/20 shadow-2xl transition-all duration-500 hover:border-primary/40">
+              <img
+                src={cx1}
+                alt="Executive Workshop"
+                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                <span className="text-primary font-display text-2xl font-bold mb-2">Executive Strategy</span>
+                <p className="text-muted-foreground">High-level CX workshops for leadership teams.</p>
+              </div>
+              <div className="absolute top-6 right-6 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-md border border-white/10 text-primary text-xs font-bold uppercase tracking-widest">
+                Featured Session
+              </div>
+            </div>
+
+            {/* Support Image 1 */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[1.5rem] border border-white/5 shadow-xl">
+              <img
+                src={cx2}
+                alt="Interactive Training"
+                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <p className="text-foreground font-medium">Interactive Engagement</p>
+              </div>
+            </div>
+
+            {/* Support Image 2 */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[1.5rem] border border-white/5 shadow-xl">
+              <img
+                src={cx3}
+                alt="Team Building"
+                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <p className="text-foreground font-medium">Culture Building</p>
+              </div>
+            </div>
+
+            {/* Support Image 3 */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[1.5rem] border border-white/5 shadow-xl">
+              <img
+                src={cx4}
+                alt="Problem Solving"
+                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <p className="text-foreground font-medium">Strategic Planning</p>
+              </div>
+            </div>
+
+            {/* The Results - Duo */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[2rem] border border-primary/20 shadow-2xl transition-all duration-500 hover:border-primary/40">
+              <div className="grid grid-cols-2">
+                <div className="border-r border-white/5">
+                  <img src={cx5} alt="Graduation" className="w-full h-auto block" />
+                </div>
+                <div>
+                  <img src={cx6} alt="Success" className="w-full h-auto block" />
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                <span className="text-primary font-display text-2xl font-bold mb-2">The Results</span>
+                <p className="text-muted-foreground">Celebrating excellence and professional growth.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Course Curriculum */}
