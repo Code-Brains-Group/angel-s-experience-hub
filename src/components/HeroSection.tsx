@@ -143,12 +143,12 @@ export function HeroSection() {
 
           {/* Photo */}
           <div
-            className="order-1 lg:order-2 flex justify-center animate-fade-in-right lg:pt-0"
+            className="order-1 lg:order-2 flex justify-center animate-fade-in-right lg:pt-24"
             style={{ animationDelay: "0.3s" }}
           >
-            <div className="relative group">
-              {/* Image Container */}
-              <div className="photo-frame w-64 h-64 sm:w-80 sm:h-80 lg:w-[480px] lg:h-[480px] shadow-2xl animate-float">
+            <div className="relative group lg:translate-y-12">
+              {/* Image Container - Increased Size */}
+              <div className="photo-frame w-80 h-80 sm:w-[440px] sm:h-[440px] lg:w-[640px] lg:h-[640px] shadow-2xl animate-float">
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background/10">
                   <img
                     src={angelPortrait}
