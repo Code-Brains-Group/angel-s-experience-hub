@@ -12,7 +12,7 @@ interface ImageGalleryProps {
   images: GalleryImage[];
   title?: string;
   subtitle?: string;
-  variant?: "masonry" | "grid" | "featured";
+  variant?: "masonry" | "grid" | "featured" | "bento";
 }
 
 export function ImageGallery({
@@ -175,6 +175,57 @@ export function ImageGallery({
                   </div>
                 </div>
               ))}
+            </div>
+          )}
+
+          {variant === "bento" && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 auto-rows-[250px] max-w-7xl mx-auto">
+              {images.map((image, index) => {
+                // Determine span styles based on index to create a beautiful bento box layout
+                let spanClasses = "md:col-span-1 lg:col-span-1 md:row-span-1 lg:row-span-1";
+                if (index === 0) spanClasses = "md:col-span-2 lg:col-span-2 md:row-span-2 lg:row-span-2"; // Large feature image
+                else if (index === 3 || index === 4 || index === 5) spanClasses = "md:col-span-2 lg:col-span-2 md:row-span-1 lg:row-span-1"; // Horizontal span 2
+
+                return (
+                  <div
+                    key={index}
+                    className={cn(
+                      "relative group overflow-hidden rounded-[2rem] shadow-xl border border-border/50 card-hover cursor-pointer",
+                      spanClasses
+                    )}
+                    onClick={() => openLightbox(index)}
+                  >
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      {index === 0 && (
+                        <span className="inline-block px-3 py-1 bg-primary/20 backdrop-blur-md rounded-full text-primary text-xs font-bold tracking-wider uppercase mb-3 border border-primary/20">
+                          Featured Showcase
+                        </span>
+                      )}
+                      {image.caption && (
+                        <p className={cn(
+                          "font-display font-bold text-foreground drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]",
+                          index === 0 ? "text-3xl leading-tight" : "text-xl"
+                        )}>
+                          {image.caption}
+                        </p>
+                      )}
+                    </div>
+                    
+                    {/* Hover Zoom Icon centered */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                      <div className="w-14 h-14 rounded-full bg-background/30 backdrop-blur-md flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500 border border-primary/30">
+                        <ZoomIn className="h-6 w-6 text-primary drop-shadow-md" />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>

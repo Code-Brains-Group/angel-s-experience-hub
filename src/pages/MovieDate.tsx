@@ -18,20 +18,22 @@ import {
 } from "lucide-react";
 
 // Import gallery images
-import movieDate1 from "@/assets/gallery/movie-date-1.jpg";
-import movieDate2 from "@/assets/gallery/movie-date-2.jpg";
-import movieDate3 from "@/assets/gallery/movie-date-3.jpg";
-import movieDate4 from "@/assets/gallery/movie-date-4.jpg";
-import movieDate5 from "@/assets/gallery/movie-date-5.jpg";
-import movieDate6 from "@/assets/gallery/movie-date-6.jpg";
+import movieDate1 from "@/assets/gallery/movie/main_movie/mv1.jpeg";
+import movieDate2 from "@/assets/gallery/movie/main_movie/mv2.jpeg";
+import movieDate3 from "@/assets/gallery/movie/main_movie/mv3.jpeg";
+import movieDate4 from "@/assets/gallery/movie/main_movie/mv4.jpeg";
+import movieDate5 from "@/assets/gallery/movie/main_movie/mv5.jpeg";
+import movieDate6 from "@/assets/gallery/movie/main_movie/mv6.jpeg";
+import movieDate7 from "@/assets/gallery/movie/main_movie/mv7.jpeg";
+import movieDate8 from "@/assets/gallery/movie/main_movie/mv8.jpeg";
 
 // Import edutainment gallery images
-import edutainment1 from "@/assets/gallery/edutainment-1.jpg";
-import edutainment2 from "@/assets/gallery/edutainment-2.jpg";
-import edutainment3 from "@/assets/gallery/edutainment-3.jpg";
-import edutainment4 from "@/assets/gallery/edutainment-4.jpg";
-import edutainment5 from "@/assets/gallery/edutainment-5.jpg";
-import edutainment6 from "@/assets/gallery/edutainment-6.jpg";
+import edutainment1 from "@/assets/gallery/movie/edu/edu3.jpeg";
+import edutainment2 from "@/assets/gallery/movie/edu/edu2.jpeg";
+import edutainment3 from "@/assets/gallery/movie/edu/edu3.jpeg";
+import edutainment4 from "@/assets/gallery/movie/edu/edu4.jpeg";
+import edutainment5 from "@/assets/gallery/movie/edu/edu5.jpeg";
+import edutainment6 from "@/assets/gallery/movie/edu/edu6.jpeg";
 
 const features = [
   {
@@ -123,6 +125,8 @@ const galleryImages = [
     caption: "African Cinema Showcase",
   },
   { src: movieDate6, alt: "Popcorn Setup", caption: "Gourmet Popcorn Bar" },
+  { src: movieDate7, alt: "Movie Audience", caption: "Captivated Audience" },
+  { src: movieDate8, alt: "Community Gathering", caption: "Community Bonding" },
 ];
 
 const edutainmentFeatures = [
@@ -380,27 +384,75 @@ export default function MovieDate() {
               </Button>
             </div>
 
-            {/* Image Side */}
-            <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src={edutainment1}
-                  alt="Edutainment Program - Students engaged in film education"
-                  className="w-full h-[500px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-lg font-display font-semibold text-foreground">
-                    Film Education in Schools
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Students engaged in an interactive film screening session
-                  </p>
+            {/* Image Side - Staggered Bento Grid */}
+            <div className="relative mt-12 lg:mt-0">
+              {/* Animated background glows */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
+              <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-secondary/30 rounded-full blur-[80px] animate-pulse delay-700" />
+              
+              <div className="relative grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-lg mx-auto">
+                {/* Left Column (Shifted up slightly) */}
+                <div className="flex flex-col gap-4 sm:gap-6 -mt-8 sm:-mt-12">
+                  <div className="w-full h-[250px] sm:h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
+                    <img
+                      src={edutainment1}
+                      alt="Film Education in Schools"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
+                        School Sessions
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="w-full h-[200px] sm:h-[240px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
+                    <img
+                      src={edutainment4}
+                      alt="Program Graduation"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
+                        Impact & Growth
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column (Shifted down slightly) */}
+                <div className="flex flex-col gap-4 sm:gap-6 mt-8 sm:mt-12">
+                  <div className="w-full h-[200px] sm:h-[240px] rounded-[2rem] overflow-hidden shadow-xl border border-primary/20 relative group card-hover">
+                    <img
+                      src={edutainment2}
+                      alt="Interactive Discussion"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
+                        Masterclasses
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="w-full h-[250px] sm:h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
+                    <img
+                      src={edutainment6}
+                      alt="Workshop"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
+                        Mentorship
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
             </div>
           </div>
         </div>
@@ -441,21 +493,21 @@ export default function MovieDate() {
           </div>
 
           {/* Edutainment Gallery */}
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <GraduationCap className="h-6 w-6 text-primary" />
+          <div className="pt-16">
+            <div className="flex flex-col items-center gap-4 mb-16 text-center">
+              <div className="w-20 h-20 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-center justify-center glow-gold">
+                <GraduationCap className="h-10 w-10 text-primary animate-pulse" />
               </div>
               <div>
-                <h3 className="font-display text-2xl font-bold">
-                  Edutainment Program
+                <h3 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+                  Edutainment <span className="text-gradient-gold">Program</span>
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
                   Transformative moments from our school programs
                 </p>
               </div>
             </div>
-            <ImageGallery images={edutainmentGalleryImages} variant="masonry" />
+            <ImageGallery images={edutainmentGalleryImages} variant="bento" />
           </div>
         </div>
       </section>
