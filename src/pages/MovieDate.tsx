@@ -389,7 +389,7 @@ export default function MovieDate() {
               {/* Animated background glows */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
               <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-secondary/30 rounded-full blur-[80px] animate-pulse delay-700" />
-              
+
               <div className="relative grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-lg mx-auto">
                 {/* Left Column (Shifted up slightly) */}
                 <div className="flex flex-col gap-4 sm:gap-6 -mt-8 sm:-mt-12">
@@ -406,7 +406,7 @@ export default function MovieDate() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="w-full h-[200px] sm:h-[240px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
                     <img
                       src={edutainment4}
@@ -437,7 +437,7 @@ export default function MovieDate() {
                       </p>
                     </div>
                   </div>
-                  
+
                   <div className="w-full h-[250px] sm:h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
                     <img
                       src={edutainment6}
@@ -475,21 +475,24 @@ export default function MovieDate() {
           </div>
 
           {/* Movie Night Moments */}
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                <Film className="h-6 w-6 text-primary" />
+          <div className="mb-24">
+            <div className="flex flex-col items-center gap-4 mb-2 text-center">
+              <div className="w-20 h-20 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-center justify-center glow-gold">
+                <Film className="h-10 w-10 text-primary animate-pulse" />
               </div>
               <div>
-                <h3 className="font-display text-2xl font-bold">
-                  Movie Night Moments
+                <h3 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+                  Movie Night <span className="text-gradient-gold">Moments</span>
                 </h3>
-                <p className="text-muted-foreground">
-                  Capturing the magic of our film screenings
+                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto italic font-medium">
+                  "Capturing the magic of our film screenings"
                 </p>
               </div>
             </div>
-            <ImageGallery images={galleryImages} variant="masonry" />
+            {/* Full-width Film Strip Marquee */}
+            <div className="-mx-4 sm:-mx-6 lg:-mx-8">
+               <ImageGallery images={galleryImages} variant="marquee" />
+            </div>
           </div>
 
           {/* Edutainment Gallery */}

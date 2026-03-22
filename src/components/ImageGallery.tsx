@@ -12,7 +12,7 @@ interface ImageGalleryProps {
   images: GalleryImage[];
   title?: string;
   subtitle?: string;
-  variant?: "masonry" | "grid" | "featured" | "bento";
+  variant?: "masonry" | "grid" | "featured" | "bento" | "marquee";
 }
 
 export function ImageGallery({
@@ -216,7 +216,7 @@ export function ImageGallery({
                         </p>
                       )}
                     </div>
-                    
+
                     {/* Hover Zoom Icon centered */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                       <div className="w-14 h-14 rounded-full bg-background/30 backdrop-blur-md flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500 border border-primary/30">
@@ -226,6 +226,60 @@ export function ImageGallery({
                   </div>
                 );
               })}
+            </div>
+          )}
+
+          {variant === "marquee" && (
+            <div 
+              className="relative w-full overflow-hidden py-10 flex flex-col gap-6 lg:gap-8 pause-marquee"
+              style={{
+                WebkitMaskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
+                maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)"
+              }}
+            >
+              {/* Row 1 - scrolling left */}
+              <div className="flex w-fit gap-6 lg:gap-8 animate-marquee">
+                {[...images.slice(0, Math.ceil(images.length / 2)), ...images.slice(0, Math.ceil(images.length / 2))].map((image, index) => (
+                  <div
+                    key={`row1-${index}`}
+                    className="relative w-[280px] sm:w-[350px] lg:w-[450px] aspect-[4/3] flex-shrink-0 group overflow-hidden rounded-[2rem] shadow-2xl border border-border/50 cursor-pointer"
+                    onClick={() => openLightbox(index % Math.ceil(images.length / 2))}
+                  >
+                    <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                      <div className="w-16 h-16 rounded-full bg-background/30 backdrop-blur-md flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500 border border-primary/30">
+                        <ZoomIn className="h-6 w-6 text-primary drop-shadow-md" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-2xl font-display font-bold text-foreground mb-1 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">{image.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Row 2 - scrolling right */}
+              <div className="flex w-fit gap-6 lg:gap-8 animate-marquee-reverse -ml-[20%]">
+                {[...images.slice(Math.ceil(images.length / 2)), ...images.slice(Math.ceil(images.length / 2))].map((image, index) => (
+                  <div
+                    key={`row2-${index}`}
+                    className="relative w-[280px] sm:w-[350px] lg:w-[450px] aspect-[4/3] flex-shrink-0 group overflow-hidden rounded-[2rem] shadow-2xl border border-border/50 cursor-pointer"
+                    onClick={() => openLightbox(Math.ceil(images.length / 2) + (index % Math.floor(images.length / 2)))}
+                  >
+                    <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                      <div className="w-16 h-16 rounded-full bg-background/30 backdrop-blur-md flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500 border border-primary/30">
+                        <ZoomIn className="h-6 w-6 text-primary drop-shadow-md" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-2xl font-display font-bold text-foreground mb-1 drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]">{image.caption}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

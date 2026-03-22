@@ -212,6 +212,20 @@
     animation: glow 2s ease-in-out infinite alternate;
   }
 
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee 30s linear infinite reverse;
+  }
+
+  /* Added pause on hover for marquee */
+  .pause-marquee:hover .animate-marquee,
+  .pause-marquee:hover .animate-marquee-reverse {
+    animation-play-state: paused;
+  }
+
   @keyframes float {
 
     0%,
