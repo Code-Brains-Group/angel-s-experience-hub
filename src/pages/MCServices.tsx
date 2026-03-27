@@ -375,7 +375,7 @@ export default function MCServices() {
                   <div className="text-center">
                     <Star className="h-16 w-16 text-primary mx-auto mb-4" />
                     <p className="text-2xl font-display font-bold text-gradient-gold">
-                      500+
+                      21+
                     </p>
                     <p className="text-muted-foreground">Events Hosted</p>
                   </div>

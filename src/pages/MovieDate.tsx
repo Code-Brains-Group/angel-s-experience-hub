@@ -1,7 +1,23 @@
+import { useState } from "react";
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ImageGallery } from "@/components/ImageGallery";
+import { useToast } from "@/hooks/use-toast";
+import { submitToWeb3Forms } from "@/lib/web3forms";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import {
   Film,
   ArrowRight,
@@ -15,6 +31,7 @@ import {
   Lightbulb,
   Target,
   BookOpen,
+  CheckCircle2,
 } from "lucide-react";
 
 // Import gallery images
@@ -35,142 +52,64 @@ import edutainment4 from "@/assets/gallery/movie/edu/edu4.jpeg";
 import edutainment5 from "@/assets/gallery/movie/edu/edu5.jpeg";
 import edutainment6 from "@/assets/gallery/movie/edu/edu6.jpeg";
 
-const features = [
-  {
-    icon: Popcorn,
-    title: "Curated Movie Events",
-    description:
-      "A blend of entertainment, education, and meaningful connection.",
-  },
-  {
-    icon: Users,
-    title: "Private Screenings",
-    description:
-      "Intimate movie experiences tailored for your group or family.",
-  },
-  {
-    icon: Heart,
-    title: "Themed Events",
-    description:
-      "Curated film nights that transport you through different worlds and eras.",
-  },
-  {
-    icon: MessageCircle,
-    title: "Movie Reviews & Discussions",
-    description:
-      "Engaging post-film conversations that deepen your connection to cinema.",
-  },
-  {
-    icon: Star,
-    title: "Community Gatherings",
-    description:
-      "Bringing people together through the shared love of storytelling.",
-  },
-  {
-    icon: GraduationCap,
-    title: "School Based Edutainment",
-    description:
-      "Creative screenings designed to educate and inspire student audiences.",
-  },
-];
-
-const upcomingEvents = [
-  {
-    title: "Classic Romance Night",
-    date: "Coming Soon",
-    genre: "Romance",
-    description: "A celebration of timeless love stories on the silver screen",
-    image: movieDate1,
-  },
-  {
-    title: "African Cinema Showcase",
-    date: "Coming Soon",
-    genre: "Drama",
-    description: "Highlighting brilliant filmmaking from across the continent",
-    image: movieDate2,
-  },
-  {
-    title: "Thriller Thursday",
-    date: "Coming Soon",
-    genre: "Thriller",
-    description: "Edge-of-your-seat suspense guaranteed",
-    image: movieDate3,
-  },
-];
-
 const galleryImages = [
   {
     src: movieDate1,
-    alt: "Cozy Movie Screening",
-    caption: "Intimate Cinema Experience",
+    alt: "Outdoor Movie Night Experience",
+    caption: "Magic under the stars",
   },
   {
     src: movieDate2,
-    alt: "Post-Movie Discussion",
-    caption: "Film Discussion Circle",
+    alt: "Community Gathering",
+    caption: "A night of connection",
   },
   {
     src: movieDate3,
-    alt: "Outdoor Screening",
-    caption: "Under the Stars Screening",
+    alt: "Happy Audience",
+    caption: "Smiles all around",
   },
   {
     src: movieDate4,
-    alt: "Romantic Movie Night",
-    caption: "Date Night Special",
+    alt: "Film Screening Setup",
+    caption: "Cinematic Atmosphere",
   },
   {
     src: movieDate5,
-    alt: "African Cinema",
-    caption: "African Cinema Showcase",
-  },
-  { src: movieDate6, alt: "Popcorn Setup", caption: "Gourmet Popcorn Bar" },
-  { src: movieDate7, alt: "Movie Audience", caption: "Captivated Audience" },
-  { src: movieDate8, alt: "Community Gathering", caption: "Community Bonding" },
-];
-
-const edutainmentFeatures = [
-  {
-    icon: GraduationCap,
-    title: "School Partnerships",
-    description:
-      "Collaborating with schools to bring impactful film experiences to students.",
+    alt: "Evening Atmosphere",
+    caption: "Pure Joy",
   },
   {
-    icon: Lightbulb,
-    title: "Life Lessons Through Film",
-    description:
-      "Using cinema to teach values, critical thinking, and emotional intelligence.",
+    src: movieDate6,
+    alt: "Community Connection",
+    caption: "Building Bonds",
   },
   {
-    icon: Target,
-    title: "Focused Curriculum",
-    description:
-      "Age-appropriate films selected to align with educational goals and student development.",
+    src: movieDate7,
+    alt: "Event Details",
+    caption: "The Experience Hub",
   },
   {
-    icon: BookOpen,
-    title: "Discussion & Reflection",
-    description:
-      "Guided conversations that help students process and apply what they've learned.",
+    src: movieDate8,
+    alt: "Curated Screenings",
+    caption: "Quality Content",
   },
 ];
 
 const edutainmentGalleryImages = [
   {
     src: edutainment1,
-    alt: "Students Watching Educational Film",
-    caption: "School Film Screening",
+    alt: "Film Education in Schools",
+    caption: "Engaged Learning",
   },
   {
     src: edutainment2,
-    alt: "Interactive Mentorship Session",
-    caption: "Interactive Discussion",
+    alt: "Interactive Discussion",
+    caption: "Sharing Perspectives",
   },
   {
     src: edutainment3,
-    alt: "Post-Film Discussion Circle",
-    caption: "Reflection Circle",
+    alt: "Student Workshop",
+    caption: "Hands-on Experience",
   },
   {
     src: edutainment4,
@@ -190,8 +129,63 @@ const edutainmentGalleryImages = [
 ];
 
 export default function MovieDate() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const { status, data } = await submitToWeb3Forms(formData);
+
+      if (status === 200) {
+        toast({
+          title: "Inquiry Sent!",
+          description: "Thank you for your interest. Angel will get back to you soon.",
+        });
+        setIsSubmitted(true);
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Submission Failed",
+          description: data.message || "Something went wrong. Please try again.",
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+    if (!newOpen) {
+      // Small delay to reset success state after dialog closes
+      setTimeout(() => setIsSubmitted(false), 300);
+    }
+  };
+
   return (
     <MainLayout>
+      {/* Global Success Indicator (Top Right) */}
+      {isSubmitted && (
+        <div className="fixed top-24 right-6 z-[100] animate-in slide-in-from-right duration-500">
+          <div className="flex items-center gap-3 px-6 py-3 bg-green-500 text-white rounded-full font-bold shadow-[0_0_30px_rgba(34,197,94,0.5)] border border-white/20">
+            <CheckCircle2 className="w-5 h-5 animate-pulse" />
+            <span>Success! Request Received</span>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-hero">
         <div className="absolute inset-0 overflow-hidden">
@@ -246,142 +240,212 @@ export default function MovieDate() {
             </h2>
             <p className="text-lg text-muted-foreground">
               It's not just about the film on screen — it's about the
-              conversations, the laughter, the shared moments that make
-              movie-going truly special.
+              interactions, the discussions, and the shared moments that happen
+              around it.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="bg-gradient-card rounded-2xl border border-border/50 p-8 text-center card-hover"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-display text-xl font-semibold mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-2xl bg-gradient-card border border-border/50 card-hover text-center">
+              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Popcorn className="h-8 w-8 text-primary" />
               </div>
-            ))}
+              <h3 className="font-display text-xl font-bold mb-4">
+                Curated Selection
+              </h3>
+              <p className="text-muted-foreground">
+                We select films that spark conversation, inspire thought, and
+                provide genuine entertainment value.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-gradient-card border border-border/50 card-hover text-center">
+              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Users className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-bold mb-4">
+                Social Connection
+              </h3>
+              <p className="text-muted-foreground">
+                Our events are designed to bring people together, fostering new
+                friendships and strengthening community ties.
+              </p>
+            </div>
+
+            <div className="p-8 rounded-2xl bg-gradient-card border border-border/50 card-hover text-center">
+              <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <Heart className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="font-display text-xl font-bold mb-4">
+                Memorable Vibes
+              </h3>
+              <p className="text-muted-foreground">
+                From cozy indoor settings to magical outdoor screenings, we
+                create the perfect atmosphere for every film.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Edutainment Program Section */}
-      <section id="edutainment" className="py-24">
+      {/* Program Pillars */}
+      <section className="py-24 bg-card/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Content Side */}
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-sm mb-6">
-                <GraduationCap className="h-4 w-4 text-primary" />
-                <span className="text-primary text-sm font-medium">
-                  Edutainment Program
-                </span>
-              </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-                Shaping the Next Generation,{" "}
-                <span className="text-gradient-gold">One Film at a Time</span>
+              <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">
+                The Edutainment Program
+              </span>
+              <h2 className="font-display text-4xl sm:text-5xl font-bold mb-8 leading-tight">
+                Where Education Meets <br />
+                <span className="text-gradient-gold">Entertainment</span>
               </h2>
-              {/* Mission Statements */}
-              <div className="space-y-3 mb-8">
-                <p className="text-lg text-foreground font-medium">
-                  We are sparking light in places that need it.
-                </p>
-                <p className="text-lg text-foreground font-medium">
-                  We are transforming how stories are experienced.
-                </p>
-                <p className="text-lg text-foreground font-medium">
-                  We are giving voice to lessons often hidden in plain sight.
-                </p>
-                <p className="text-lg text-gradient-gold font-semibold">
-                  We are shaping the next generation, one Film at a time.
-                </p>
-              </div>
 
-              {/* Call to Action Messages */}
-              <div className="space-y-4 mb-8 p-6 bg-primary/5 rounded-2xl border border-primary/20">
-                <p className="text-muted-foreground flex items-start gap-2">
-                  <span className="text-primary">✨</span>
-                  <span>
-                    If you know a school, youth group, or community that would
-                    love to experience this, reach out to us.
-                  </span>
-                </p>
-                <p className="text-muted-foreground flex items-start gap-2">
-                  <span className="text-primary">✨</span>
-                  <span>
-                    If this vision speaks to your heart and you'd like to
-                    partner with us or support/sponsor this mission, we'd love
-                    to hear from you.
-                  </span>
-                </p>
-              </div>
-
-              {/* Community Call */}
-              <div className="space-y-2 mb-8">
-                <p className="text-foreground font-medium">
-                  Mention us to your networks.
-                </p>
-                <p className="text-foreground font-medium">
-                  Invite us into your spaces.
-                </p>
-                <p className="text-muted-foreground italic">
-                  Together, we can touch hearts, shape minds, and transform
-                  lives through the power of Film.
-                </p>
-              </div>
-
-              {/* Contact */}
-              <div className="flex items-center gap-2 mb-8 p-4 bg-secondary/50 rounded-xl">
-                <span className="text-lg">📩</span>
-                <span className="text-muted-foreground">Email:</span>
-                <a
-                  href="mailto:moviedatewithangel@gmail.com"
-                  className="text-primary font-medium hover:underline"
-                >
-                  moviedatewithangel@gmail.com
-                </a>
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-8 mb-8">
-                <div>
-                  <div className="text-3xl font-display font-bold text-gradient-gold">
-                    10+
+              <div className="space-y-8">
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Lightbulb className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    Schools Reached
-                  </p>
+                  <div>
+                    <h4 className="text-xl font-bold mb-2">Creative Learning</h4>
+                    <p className="text-muted-foreground italic">
+                      "Unlocking potential through visual storytelling."
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-3xl font-display font-bold text-gradient-gold">
-                    500+
+
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Target className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    Students Impacted
-                  </p>
+                  <div>
+                    <h4 className="text-xl font-bold mb-2">Purposeful Impact</h4>
+                    <p className="text-muted-foreground italic">
+                      "Measuring success through empowered minds."
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-3xl font-display font-bold text-gradient-gold">
-                    10+
+
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="h-6 w-6 text-primary" />
                   </div>
-                  <p className="text-sm text-muted-foreground">Sessions</p>
+                  <div>
+                    <h4 className="text-xl font-bold mb-2">Beyond the Screen</h4>
+                    <p className="text-muted-foreground italic">
+                      "Carrying the message from cinema into real-world action."
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <Button variant="hero" size="lg" asChild>
-                <a
-                  href="mailto:moviedatewithangel@gmail.com?subject=Edutainment Program Partnership Inquiry"
-                  className="group"
-                >
-                  Partner With Us
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
+              <div className="mt-12 space-y-4">
+                <div className="flex items-center gap-2 mb-8 p-4 bg-secondary/50 rounded-xl">
+                  <span className="text-lg">📩</span>
+                  <span className="text-muted-foreground">Email:</span>
+                  <a
+                    href="mailto:moviedatewithangel@gmail.com"
+                    className="text-primary font-medium hover:underline"
+                  >
+                    moviedatewithangel@gmail.com
+                  </a>
+                </div>
+
+                {/* Stats */}
+                <div className="flex gap-8 mb-8">
+                  <div>
+                    <div className="text-3xl font-display font-bold text-gradient-gold">
+                      10+
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Schools Reached
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-display font-bold text-gradient-gold">
+                      500+
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Students Impacted
+                    </p>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-display font-bold text-gradient-gold">
+                      10+
+                    </div>
+                    <p className="text-sm text-muted-foreground">Sessions</p>
+                  </div>
+                </div>
+
+                <Dialog open={open} onOpenChange={handleOpenChange}>
+                  <DialogTrigger asChild>
+                    <Button variant="hero" size="lg" className="group">
+                      Partner With Us
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[500px] bg-gradient-card border-border/50 overflow-hidden">
+                    <DialogHeader>
+                      <DialogTitle className="font-display text-2xl font-bold">
+                        {isSubmitted ? "Thank You!" : "Partner With Us"}
+                      </DialogTitle>
+                      <DialogDescription>
+                        {isSubmitted 
+                          ? "Success! We've received your partnership request."
+                          : "Fill out the form below to discuss a partnership or booking."}
+                      </DialogDescription>
+                    </DialogHeader>
+
+                    {isSubmitted ? (
+                      <div className="py-12 text-center space-y-6 animate-in fade-in zoom-in duration-500">
+                        <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto">
+                          <CheckCircle2 className="w-10 h-10 text-green-500" />
+                        </div>
+                        <p className="text-xl font-display font-medium text-foreground">
+                          I have received your request and will get back to you shortly.
+                        </p>
+                        <Button 
+                          variant="outline" 
+                          onClick={() => setOpen(false)}
+                          className="mt-4 rounded-full"
+                        >
+                          Close Window
+                        </Button>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSubmit} className="space-y-4 py-4">
+                        <input type="hidden" name="subject" value="Edutainment Program Partnership Inquiry" />
+                        <div className="space-y-2">
+                          <Label htmlFor="partner-name" className="text-foreground">Full Name</Label>
+                          <Input id="partner-name" name="name" placeholder="Your name" required className="bg-background/50 border-border/50" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="partner-email" className="text-foreground">Email Address</Label>
+                          <Input id="partner-email" name="email" type="email" placeholder="you@example.com" required className="bg-background/50 border-border/50" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="partner-org" className="text-foreground">School/Organization</Label>
+                          <Input id="partner-org" name="organization" placeholder="Name of your organization" className="bg-background/50 border-border/50" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="partner-message" className="text-foreground">Message</Label>
+                          <Textarea id="partner-message" name="message" placeholder="Tell us how you'd like to collaborate..." required className="bg-background/50 border-border/50 resize-none" rows={4} />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="document_file" className="text-foreground">Relevant Document (Optional)</Label>
+                          <Input id="document_file" name="document_file" type="file" className="cursor-pointer bg-background/50 border-border/50" />
+                          <p className="text-[10px] text-muted-foreground italic">Accepted: PDF, DOCX, Images (Max 5MB)</p>
+                        </div>
+                        <DialogFooter className="pt-4">
+                          <Button type="submit" variant="gold" className="w-full h-12 text-base" disabled={isSubmitting}>
+                            {isSubmitting ? "Sending..." : "Send Inquiry"}
+                          </Button>
+                        </DialogFooter>
+                      </form>
+                    )}
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
 
             {/* Image Side - Staggered Bento Grid */}
@@ -399,12 +463,7 @@ export default function MovieDate() {
                       alt="Film Education in Schools"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
-                        School Sessions
-                      </p>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   <div className="w-full h-[200px] sm:h-[240px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
@@ -413,12 +472,7 @@ export default function MovieDate() {
                       alt="Program Graduation"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
-                        Impact & Growth
-                      </p>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </div>
 
@@ -430,12 +484,7 @@ export default function MovieDate() {
                       alt="Interactive Discussion"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
-                        Masterclasses
-                      </p>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   <div className="w-full h-[250px] sm:h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
@@ -444,12 +493,7 @@ export default function MovieDate() {
                       alt="Workshop"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-xl font-display font-bold text-foreground mb-1 drop-shadow-md">
-                        Mentorship
-                      </p>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </div>
               </div>
@@ -458,7 +502,7 @@ export default function MovieDate() {
         </div>
       </section>
 
-      {/* Combined Gallery Section */}
+      {/* Gallery Section */}
       <section id="gallery" className="py-24 bg-secondary/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -474,43 +518,85 @@ export default function MovieDate() {
             </p>
           </div>
 
-          {/* Movie Night Moments */}
-          <div className="mb-24">
-            <div className="flex flex-col items-center gap-4 mb-2 text-center">
-              <div className="w-20 h-20 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-center justify-center glow-gold">
+          {/* Movie Night Moments - Creative Staggered Portfolio */}
+          <div className="mb-32 relative">
+            <div className="flex flex-col items-center gap-4 mb-16 text-center">
+              <div className="w-20 h-20 rounded-[2.5rem] bg-primary/10 border border-primary/20 flex items-center justify-center glow-gold relative z-10 transition-transform duration-500 hover:scale-110">
                 <Film className="h-10 w-10 text-primary animate-pulse" />
               </div>
-              <div>
-                <h3 className="font-display text-4xl sm:text-5xl font-bold mb-4">
-                  Movie Night <span className="text-gradient-gold">Moments</span>
+              <div className="relative">
+                <h3 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
+                  Movie Night <span className="text-gradient-gold italic">Moments</span>
                 </h3>
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto italic font-medium">
-                  "Capturing the magic of our film screenings"
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto italic font-medium border-l-2 border-primary/30 pl-6">
+                  "Capturing the raw magic, emotion, and community of our signature film screenings."
                 </p>
               </div>
             </div>
-            {/* Full-width Film Strip Marquee */}
-            <div className="-mx-4 sm:-mx-6 lg:-mx-8">
-               <ImageGallery images={galleryImages} variant="marquee" />
+
+            {/* Creative Staggered Grid Layout (No Titles) */}
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+              {galleryImages.map((image, index) => (
+                <div 
+                  key={index} 
+                  className={cn(
+                    "break-inside-avoid relative group overflow-hidden rounded-[2.5rem] border border-primary/10 bg-secondary/5 transition-all duration-700 hover:shadow-[0_0_50px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-2",
+                    index % 4 === 0 ? "md:scale-105 z-10" : ""
+                  )}
+                >
+                  <div className="relative overflow-hidden aspect-auto">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-auto block transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    {/* Minimalist Overlay - No Titles */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                      <div className="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-md border border-white/10 flex items-center justify-center translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <Star className="w-5 h-5 text-primary fill-primary/20" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Edutainment Gallery */}
-          <div className="pt-16">
+          {/* Edutainment Program - Creative Staggered Grid (No Titles) */}
+          <div className="pt-32 relative">
             <div className="flex flex-col items-center gap-4 mb-16 text-center">
-              <div className="w-20 h-20 rounded-[2rem] bg-primary/10 border border-primary/20 flex items-center justify-center glow-gold">
+              <div className="w-20 h-20 rounded-[2.5rem] bg-primary/10 border border-primary/20 flex items-center justify-center glow-gold relative z-10 transition-transform duration-500 hover:scale-110">
                 <GraduationCap className="h-10 w-10 text-primary animate-pulse" />
               </div>
-              <div>
-                <h3 className="font-display text-4xl sm:text-5xl font-bold mb-4">
-                  Edutainment <span className="text-gradient-gold">Program</span>
+              <div className="relative">
+                <h3 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
+                  Edutainment <span className="text-gradient-gold italic">Program</span>
                 </h3>
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                  Transformative moments from our school programs
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto border-l-2 border-primary/30 pl-6 text-left md:text-center">
+                  Transformative moments from our school programs where film meets education.
                 </p>
               </div>
             </div>
-            <ImageGallery images={edutainmentGalleryImages} variant="bento" />
+
+            <div className="columns-1 md:columns-2 gap-8 space-y-8">
+              {edutainmentGalleryImages.map((image, index) => (
+                <div 
+                  key={index} 
+                  className="break-inside-avoid relative group overflow-hidden rounded-[2.5rem] border border-primary/10 bg-secondary/5 transition-all duration-700 hover:shadow-[0_0_50px_-15px_rgba(var(--primary-rgb),0.3)] hover:-translate-y-2"
+                >
+                  <div className="relative overflow-hidden aspect-auto">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-auto block transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                       <div className="h-1 w-12 bg-primary/50 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -532,7 +618,29 @@ export default function MovieDate() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {upcomingEvents.map((event) => (
+            {[
+              {
+                title: "Cinematic Journey: Classic Tales",
+                date: "April 15, 2024",
+                genre: "Drama / Classic",
+                image: movieDate3,
+                description: "An evening dedicated to the films that shaped cinema history."
+              },
+              {
+                title: "Nairobi Independent Showcase",
+                date: "April 28, 2024",
+                genre: "Indie / Documentary",
+                image: movieDate5,
+                description: "Featuring experimental works from local burgeoning filmmakers."
+              },
+              {
+                title: "Community Choice Night",
+                date: "May 12, 2024",
+                genre: "Family / Adventure",
+                image: movieDate6,
+                description: "A special screening voted for by our loyal community members."
+              }
+            ].map((event) => (
               <div
                 key={event.title}
                 className="bg-gradient-card rounded-2xl border border-border/50 overflow-hidden card-hover"
