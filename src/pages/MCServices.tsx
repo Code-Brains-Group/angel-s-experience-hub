@@ -16,17 +16,27 @@ import {
 
 // Import gallery images
 import mc1 from "@/assets/gallery/mc/mc1.jpeg";
-import mc2 from "@/assets/gallery/mc/mc2.jpeg";
-import mc3 from "@/assets/gallery/mc/mc3.jpeg";
 import mc4 from "@/assets/gallery/mc/mc4.jpeg";
-import mc5 from "@/assets/gallery/mc/mc5.jpeg";
 import mc6 from "@/assets/gallery/mc/mc6.jpeg";
 import mc7 from "@/assets/gallery/mc/mc7.jpeg";
-import mc8 from "@/assets/gallery/mc/mc8.jpeg";
-import mc9 from "@/assets/gallery/mc/mc9.jpeg";
-import mc10 from "@/assets/gallery/mc/mc10.jpeg";
 import mc11 from "@/assets/gallery/mc/mc11.jpeg";
 import mc12 from "@/assets/gallery/mc/mc12.jpeg";
+
+// New MC Assets
+import nmc1 from "@/assets/gallery/mc/new-mc/new-mc1.jpeg";
+import nmc2 from "@/assets/gallery/mc/new-mc/new-mc2.jpeg";
+import nmc3 from "@/assets/gallery/mc/new-mc/new-mc3.jpeg";
+import nmc4 from "@/assets/gallery/mc/new-mc/new-mc4.jpeg";
+import nmc5 from "@/assets/gallery/mc/new-mc/new-mc5.jpeg";
+import nmc6 from "@/assets/gallery/mc/new-mc/new-mc6.jpeg";
+import nmc7 from "@/assets/gallery/mc/new-mc/new-mc7.jpeg";
+import nmc8 from "@/assets/gallery/mc/new-mc/new-mc8.jpeg";
+import nmc9 from "@/assets/gallery/mc/new-mc/new-mc9.jpeg";
+import nmc10 from "@/assets/gallery/mc/new-mc/new-mc10.jpeg";
+import nmc11 from "@/assets/gallery/mc/new-mc/new-mc11.jpeg";
+import nmc12 from "@/assets/gallery/mc/new-mc/new-mc12.jpeg";
+import nmc13 from "@/assets/gallery/mc/new-mc/new-mc13.jpeg";
+import nmc14 from "@/assets/gallery/mc/new-mc/new-mc14.jpeg";
 
 const eventTypes = [
   {
@@ -62,17 +72,25 @@ const benefits = [
 
 const galleryImages = [
   { src: mc1, alt: "Corporate MC Angel", caption: "Professional Hosting" },
-  { src: mc2, alt: "MC Angel at Event", caption: "Engaging the Audience" },
-  { src: mc3, alt: "Stage Presence", caption: "Commanding the Stage" },
-  { src: mc4, alt: "Event Hosting", caption: "Seamless Coordination" },
-  { src: mc5, alt: "Professional MC", caption: "Vibrant Hosting" },
-  { src: mc6, alt: "Live Event", caption: "Memorable Moments" },
   { src: mc7, alt: "Angel Hosting", caption: "Elegant Presence" },
-  { src: mc8, alt: "MC Services", caption: "Dynamic Flow" },
-  { src: mc9, alt: "Corporate Event", caption: "Polished Delivery" },
-  { src: mc10, alt: "Special Occasion", caption: "Making it Special" },
+  { src: nmc2, alt: "Stage Preparation", caption: "Premium Coordination" },
+  { src: mc4, alt: "Event Hosting", caption: "Seamless Coordination" },
+  { src: nmc3, alt: "Crowd Engagement", caption: "Engaging the Audience" },
+  { src: mc6, alt: "Live Event", caption: "Memorable Moments" },
+  { src: nmc1, alt: "Special Event", caption: "Vibrant Stage Presence" },
+  { src: nmc4, alt: "MC Services", caption: "Dynamic Flow" },
+  { src: nmc5, alt: "Corporate Event", caption: "Polished Delivery" },
+  { src: nmc6, alt: "Special Occasion", caption: "Making it Special" },
   { src: mc11, alt: "Celebration Hosting", caption: "Celebratory Atmosphere" },
   { src: mc12, alt: "Grand Opening", caption: "Grand Opening Event" },
+  { src: nmc7, alt: "Corporate Focus", caption: "Executive Engagement" },
+  { src: nmc8, alt: "Stage Magic", caption: "Commanding Attention" },
+  { src: nmc9, alt: "Interaction", caption: "Audience Connection" },
+  { src: nmc10, alt: "Professionalism", caption: "Flawless Execution" },
+  { src: nmc11, alt: "Celebration", caption: "Atmosphere Creator" },
+  { src: nmc12, alt: "Event Energy", caption: "Pure Impact" },
+  { src: nmc13, alt: "Gala Hosting", caption: "Premium Hosting" },
+  { src: nmc14, alt: "Final Bow", caption: "Closing the Show" },
 ];
 
 export default function MCServices() {
@@ -214,7 +232,7 @@ export default function MCServices() {
             <div className="break-inside-avoid space-y-8 md:pt-24">
               <div className="group relative">
                 <img
-                  src={mc3}
+                  src={mc7}
                   alt="Prep"
                   className="w-full h-auto rounded-[2rem] border border-white/5 transition-all duration-700"
                 />
@@ -224,7 +242,7 @@ export default function MCServices() {
               </div>
               <div className="group relative">
                 <img
-                  src={mc2}
+                  src={nmc2}
                   alt="Crowd"
                   className="w-full h-auto rounded-[2rem] border border-white/5 opacity-80 group-hover:opacity-100 transition-opacity"
                 />
@@ -237,7 +255,7 @@ export default function MCServices() {
             {/* 3. THE CENTER SPREAD (Middle Wide logic) */}
             <div className="break-inside-avoid group relative overflow-hidden rounded-[2rem] border border-primary/20 transition-all duration-500 hover:scale-[1.01]">
               <img
-                src={mc5}
+                src={nmc3}
                 alt="Vibrant Energy"
                 className="w-full h-auto block"
               />
@@ -268,7 +286,7 @@ export default function MCServices() {
               </div>
               <div className="group relative overflow-hidden rounded-[2rem] border border-white/5 shadow-2xl">
                 <img
-                  src={mc7}
+                  src={nmc1}
                   alt="Sync"
                   className="w-full h-auto block transition-all duration-700"
                 />
@@ -279,17 +297,17 @@ export default function MCServices() {
             <div className="break-inside-avoid group relative overflow-hidden rounded-[2.5rem] bg-secondary/5 border border-white/5">
               <div className="grid grid-cols-2 p-3 gap-3">
                 <img
-                  src={mc8}
+                  src={nmc4}
                   alt="Detail 1"
                   className="w-full h-auto rounded-2xl"
                 />
                 <img
-                  src={mc9}
+                  src={nmc5}
                   alt="Detail 2"
                   className="w-full h-auto rounded-2xl"
                 />
                 <img
-                  src={mc10}
+                  src={nmc6}
                   alt="Detail 3"
                   className="w-full h-auto rounded-2xl"
                 />
@@ -310,7 +328,67 @@ export default function MCServices() {
               </div>
             </div>
 
-            {/* 6. THE GRAND FINALE */}
+            {/* 6. EXTENDED SHOWCASE - NEW BLOCK 1 (Grid of 4) */}
+            <div className="break-inside-avoid space-y-6">
+              <div className="columns-2 gap-4 space-y-4">
+                <img
+                  src={nmc7}
+                  alt="Corporate Focus"
+                  className="w-full h-auto rounded-3xl border border-white/5"
+                />
+                <img
+                  src={nmc8}
+                  alt="Stage Magic"
+                  className="w-full h-auto rounded-3xl border border-white/5"
+                />
+                <img
+                  src={nmc9}
+                  alt="Interaction"
+                  className="w-full h-auto rounded-3xl border border-white/5"
+                />
+                <img
+                  src={nmc10}
+                  alt="Professionalism"
+                  className="w-full h-auto rounded-3xl border border-white/5"
+                />
+              </div>
+            </div>
+
+            {/* 7. EXTENDED SHOWCASE - NEW BLOCK 2 (Mosaic) */}
+            <div className="break-inside-avoid group relative overflow-hidden rounded-[2.5rem] bg-secondary/5 border border-white/5">
+              <div className="grid grid-cols-2 p-3 gap-3">
+                <img
+                  src={nmc11}
+                  alt="Celebration"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <img
+                  src={nmc12}
+                  alt="Event Energy"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <img
+                  src={nmc13}
+                  alt="Gala Hosting"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <img
+                  src={nmc14}
+                  alt="Final Bow"
+                  className="w-full h-auto rounded-2xl"
+                />
+              </div>
+              <div className="p-8 border-t border-white/5 text-center">
+                <p className="text-primary font-display text-lg font-bold mb-1">
+                  Excellence in Every Frame
+                </p>
+                <p className="text-xs text-gray-500 uppercase tracking-widest">
+                  Signature Gallery Expansion
+                </p>
+              </div>
+            </div>
+
+            {/* 8. THE GRAND FINALE */}
             <div className="break-inside-avoid relative md:pt-20">
               <div className="group relative rounded-[3rem] overflow-hidden border-2 border-primary shadow-[0_0_60px_-20px_rgba(var(--primary-rgb),0.5)]">
                 <img
@@ -318,14 +396,6 @@ export default function MCServices() {
                   alt="Legendary Finale"
                   className="w-full h-auto block transition-transform duration-[2s] group-hover:scale-110"
                 />
-                {/* <div className="absolute inset-x-8 bottom-8 p-10 rounded-[2rem] bg-gradient-to-br from-black/90 to-background/50 backdrop-blur-xl border border-white/10 text-center">
-                  <Mic2 className="w-10 h-10 text-primary mx-auto mb-4" />
-                  <h3 className="font-display text-3xl font-bold text-white mb-4">Legendary Status</h3>
-                  <p className="text-gray-300 text-sm mb-8 italic">Let's craft the perfect narrative for your audience.</p>
-                  <Button variant="gold" size="lg" className="w-full py-8 text-lg font-bold uppercase tracking-widest" asChild>
-                    <Link to="/contact">Book Now</Link>
-                  </Button>
-                </div> */}
               </div>
             </div>
           </div>

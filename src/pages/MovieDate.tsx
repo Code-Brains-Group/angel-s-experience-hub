@@ -32,7 +32,11 @@ import {
   Target,
   BookOpen,
   CheckCircle2,
+  Play
 } from "lucide-react";
+
+// Import video
+import edutainmentVideo from "@/assets/videos/edutainment.mp4";
 
 // Import gallery images
 import movieDate1 from "@/assets/gallery/movie/main_movie/mv1.jpeg";
@@ -133,6 +137,7 @@ export default function MovieDate() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -377,74 +382,90 @@ export default function MovieDate() {
                   </div>
                 </div>
 
-                <Dialog open={open} onOpenChange={handleOpenChange}>
-                  <DialogTrigger asChild>
-                    <Button variant="hero" size="lg" className="group">
-                      Partner With Us
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-[500px] bg-gradient-card border-border/50 overflow-hidden">
-                    <DialogHeader>
-                      <DialogTitle className="font-display text-2xl font-bold">
-                        {isSubmitted ? "Thank You!" : "Partner With Us"}
-                      </DialogTitle>
-                      <DialogDescription>
-                        {isSubmitted 
-                          ? "Success! We've received your partnership request."
-                          : "Fill out the form below to discuss a partnership or booking."}
-                      </DialogDescription>
-                    </DialogHeader>
+                <div className="flex flex-wrap gap-4 mt-12">
+                  <Dialog open={open} onOpenChange={handleOpenChange}>
+                    <DialogTrigger asChild>
+                      <Button variant="hero" size="lg" className="group">
+                        Partner With Us
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[500px] bg-gradient-card border-border/50 overflow-hidden">
+                      <DialogHeader>
+                        <DialogTitle className="font-display text-2xl font-bold">
+                          {isSubmitted ? "Thank You!" : "Partner With Us"}
+                        </DialogTitle>
+                        <DialogDescription>
+                          {isSubmitted 
+                            ? "Success! We've received your partnership request."
+                            : "Fill out the form below to discuss a partnership or booking."}
+                        </DialogDescription>
+                      </DialogHeader>
 
-                    {isSubmitted ? (
-                      <div className="py-12 text-center space-y-6 animate-in fade-in zoom-in duration-500">
-                        <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto">
-                          <CheckCircle2 className="w-10 h-10 text-green-500" />
-                        </div>
-                        <p className="text-xl font-display font-medium text-foreground">
-                          I have received your request and will get back to you shortly.
-                        </p>
-                        <Button 
-                          variant="outline" 
-                          onClick={() => setOpen(false)}
-                          className="mt-4 rounded-full"
-                        >
-                          Close Window
-                        </Button>
-                      </div>
-                    ) : (
-                      <form onSubmit={handleSubmit} className="space-y-4 py-4">
-                        <input type="hidden" name="subject" value="Edutainment Program Partnership Inquiry" />
-                        <div className="space-y-2">
-                          <Label htmlFor="partner-name" className="text-foreground">Full Name</Label>
-                          <Input id="partner-name" name="name" placeholder="Your name" required className="bg-background/50 border-border/50" />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="partner-email" className="text-foreground">Email Address</Label>
-                          <Input id="partner-email" name="email" type="email" placeholder="you@example.com" required className="bg-background/50 border-border/50" />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="partner-org" className="text-foreground">School/Organization</Label>
-                          <Input id="partner-org" name="organization" placeholder="Name of your organization" className="bg-background/50 border-border/50" />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="partner-message" className="text-foreground">Message</Label>
-                          <Textarea id="partner-message" name="message" placeholder="Tell us how you'd like to collaborate..." required className="bg-background/50 border-border/50 resize-none" rows={4} />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="document_file" className="text-foreground">Relevant Document (Optional)</Label>
-                          <Input id="document_file" name="document_file" type="file" className="cursor-pointer bg-background/50 border-border/50" />
-                          <p className="text-[10px] text-muted-foreground italic">Accepted: PDF, DOCX, Images (Max 5MB)</p>
-                        </div>
-                        <DialogFooter className="pt-4">
-                          <Button type="submit" variant="gold" className="w-full h-12 text-base" disabled={isSubmitting}>
-                            {isSubmitting ? "Sending..." : "Send Inquiry"}
+                      {isSubmitted ? (
+                        <div className="py-12 text-center space-y-6 animate-in fade-in zoom-in duration-500">
+                          <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto">
+                            <CheckCircle2 className="w-10 h-10 text-green-500" />
+                          </div>
+                          <p className="text-xl font-display font-medium text-foreground">
+                            I have received your request and will get back to you shortly.
+                          </p>
+                          <Button 
+                            variant="outline" 
+                            onClick={() => setOpen(false)}
+                            className="mt-4 rounded-full"
+                          >
+                            Close Window
                           </Button>
-                        </DialogFooter>
-                      </form>
-                    )}
-                  </DialogContent>
-                </Dialog>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleSubmit} className="space-y-4 py-4">
+                          <input type="hidden" name="subject" value="Edutainment Program Partnership Inquiry" />
+                          <div className="space-y-2">
+                            <Label htmlFor="partner-name" className="text-foreground">Full Name</Label>
+                            <Input id="partner-name" name="name" placeholder="Your name" required className="bg-background/50 border-border/50" />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="partner-email" className="text-foreground">Email Address</Label>
+                            <Input id="partner-email" name="email" type="email" placeholder="you@example.com" required className="bg-background/50 border-border/50" />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="partner-org" className="text-foreground">School/Organization</Label>
+                            <Input id="partner-org" name="organization" placeholder="Name of your organization" className="bg-background/50 border-border/50" />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="partner-message" className="text-foreground">Message</Label>
+                            <Textarea id="partner-message" name="message" placeholder="Tell us how you'd like to collaborate..." required className="bg-background/50 border-border/50 resize-none" rows={4} />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="document_file" className="text-foreground">Relevant Document (Optional)</Label>
+                            <Input id="document_file" name="document_file" type="file" className="cursor-pointer bg-background/50 border-border/50" />
+                            <p className="text-[10px] text-muted-foreground italic">Accepted: PDF, DOCX, Images (Max 5MB)</p>
+                          </div>
+                          <DialogFooter className="pt-4">
+                            <Button type="submit" variant="gold" className="w-full h-12 text-base" disabled={isSubmitting}>
+                              {isSubmitting ? "Sending..." : "Send Inquiry"}
+                            </Button>
+                          </DialogFooter>
+                        </form>
+                      )}
+                    </DialogContent>
+                  </Dialog>
+
+                  <Button 
+                    variant="hero-outline" 
+                    size="lg" 
+                    className="group relative overflow-hidden"
+                    onClick={() => setVideoOpen(true)}
+                  >
+                    <span className="relative z-10 flex items-center">
+                      Watch Intro
+                      <Play className="ml-2 h-4 w-4 fill-current transition-transform group-hover:scale-125" />
+                    </span>
+                    <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 blur opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -453,20 +474,59 @@ export default function MovieDate() {
               {/* Animated background glows */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
               <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-secondary/30 rounded-full blur-[80px] animate-pulse delay-700" />
+              <div className="relative grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-2xl mx-auto">
+                {/* Featured Video - Now Spans 2 Columns for Maximum Impact */}
+                <div className="col-span-2 mb-8">
+                  <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+                    <DialogTrigger asChild>
+                      <div className="w-full h-[350px] sm:h-[450px] rounded-[3rem] overflow-hidden shadow-[0_20px_60px_-15px_rgba(var(--primary-rgb),0.4)] border-2 border-primary/30 relative group card-hover cursor-pointer bg-black">
+                        <video
+                          src={edutainmentVideo}
+                          muted
+                          autoPlay
+                          loop
+                          playsInline
+                          className="w-full h-full object-cover opacity-70 transition-all duration-1000 group-hover:scale-105 group-hover:opacity-90"
+                        />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                          <div className="w-24 h-24 rounded-full bg-primary/20 backdrop-blur-xl border-2 border-white/30 flex items-center justify-center mb-6 transition-all duration-700 group-hover:scale-110 group-hover:bg-primary/40 group-hover:shadow-[0_0_50px_rgba(var(--primary-rgb),0.5)]">
+                            <Play className="w-10 h-10 text-white fill-white animate-pulse" />
+                          </div>
+                          <h4 className="text-white font-display text-3xl font-bold mb-2 drop-shadow-2xl">The Edutainment Experience</h4>
+                          <span className="text-primary font-medium uppercase tracking-[0.2em] text-sm">Experience the Vision</span>
+                        </div>
+                        
+                        {/* Interactive UI elements on the video tile */}
+                        <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                           <div className="flex gap-1">
+                              {[1,2,3].map(i => <div key={i} className="h-1 w-8 bg-white/40 rounded-full" />)}
+                           </div>
+                           <div className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] text-white font-bold uppercase tracking-widest">
+                             Pre-Launch Intro
+                           </div>
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[95vw] md:max-w-[90vw] lg:max-w-[1200px] p-0 bg-black border-none overflow-hidden rounded-[2.5rem] shadow-[0_0_100px_rgba(var(--primary-rgb),0.4)]">
+                      <div className="relative aspect-video w-full group/video">
+                        <video
+                          src={edutainmentVideo}
+                          controls
+                          autoPlay
+                          className="w-full h-full"
+                        />
+                        <div className="absolute top-6 left-6 flex items-center gap-3 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/20 opacity-0 group-hover/video:opacity-100 transition-opacity">
+                          <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                          <span className="text-white text-sm font-bold tracking-tight">Edutainment: The Mission</span>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
 
-              <div className="relative grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-lg mx-auto">
-                {/* Left Column (Shifted up slightly) */}
-                <div className="flex flex-col gap-4 sm:gap-6 -mt-8 sm:-mt-12">
-                  <div className="w-full h-[250px] sm:h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
-                    <img
-                      src={edutainment1}
-                      alt="Film Education in Schools"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <div className="w-full h-[200px] sm:h-[240px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
+                {/* Left Column (Shifted up slightly) - Rest of the images */}
+                <div className="flex flex-col gap-4 sm:gap-6">
+                  <div className="w-full h-[220px] sm:h-[260px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
                     <img
                       src={edutainment4}
                       alt="Program Graduation"
@@ -477,20 +537,11 @@ export default function MovieDate() {
                 </div>
 
                 {/* Right Column (Shifted down slightly) */}
-                <div className="flex flex-col gap-4 sm:gap-6 mt-8 sm:mt-12">
-                  <div className="w-full h-[200px] sm:h-[240px] rounded-[2rem] overflow-hidden shadow-xl border border-primary/20 relative group card-hover">
+                <div className="flex flex-col gap-4 sm:gap-6 pt-8 sm:pt-12">
+                  <div className="w-full h-[220px] sm:h-[260px] rounded-[2rem] overflow-hidden shadow-xl border border-primary/20 relative group card-hover">
                     <img
                       src={edutainment2}
                       alt="Interactive Discussion"
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <div className="w-full h-[250px] sm:h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-primary/20 relative group card-hover">
-                    <img
-                      src={edutainment6}
-                      alt="Workshop"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
