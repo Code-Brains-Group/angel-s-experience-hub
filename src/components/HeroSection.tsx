@@ -50,7 +50,7 @@ export function HeroSection() {
             >
               Hi, I'm{" "}
               <span className="text-gradient-gold relative">
-                Purity
+                Faith
                 <span className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-primary to-gold-light rounded-full opacity-50" />
               </span>
             </h1>
