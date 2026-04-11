@@ -1,11 +1,9 @@
 import { MainLayout } from "@/layouts/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ImageGallery } from "@/components/ImageGallery";
 import {
   GraduationCap,
   ArrowRight,
-  CheckCircle2,
   Play,
   Users,
   Target,
@@ -17,13 +15,28 @@ import {
   Zap,
 } from "lucide-react";
 
-// Import gallery images
+// Import original gallery images
 import cx1 from "@/assets/gallery/cx/cx1.jpeg";
 import cx2 from "@/assets/gallery/cx/cx2.jpeg";
 import cx3 from "@/assets/gallery/cx/cx3.jpeg";
 import cx4 from "@/assets/gallery/cx/cx4.jpeg";
 import cx5 from "@/assets/gallery/cx/cx5.jpeg";
 import cx6 from "@/assets/gallery/cx/cx6.jpeg";
+
+// Import new gallery images
+import cx001 from "@/assets/gallery/cx/cx001.jpeg";
+import cx002 from "@/assets/gallery/cx/cx002.jpeg";
+import cx003 from "@/assets/gallery/cx/cx003.jpeg";
+import cx004 from "@/assets/gallery/cx/cx004.jpeg";
+import cx005 from "@/assets/gallery/cx/cx005.jpeg";
+import cx006 from "@/assets/gallery/cx/cx006.jpeg";
+import cx007 from "@/assets/gallery/cx/cx007.jpeg";
+import cx008 from "@/assets/gallery/cx/cx008.jpeg";
+
+const allCxImages = [
+  cx1, cx2, cx3, cx4, cx5, cx6,
+  cx001, cx002, cx003, cx004, cx005, cx006, cx007, cx008
+];
 
 const modules = [
   {
@@ -108,38 +121,7 @@ const pricingPackages = [
   },
 ];
 
-const galleryImages = [
-  {
-    src: cx1,
-    alt: "Corporate Training Session",
-    caption: "Executive Training Workshop",
-  },
-  {
-    src: cx2,
-    alt: "Team Building Workshop",
-    caption: "Interactive Team Building",
-  },
-  {
-    src: cx3,
-    alt: "Seminar Presentation",
-    caption: "Professional Development Seminar",
-  },
-  {
-    src: cx4,
-    alt: "Group Discussion",
-    caption: "Collaborative Problem Solving",
-  },
-  {
-    src: cx5,
-    alt: "Graduation Ceremony",
-    caption: "CX Champions Graduation",
-  },
-  {
-    src: cx6,
-    alt: "Role Play Exercise",
-    caption: "Customer Service Role Play",
-  },
-];
+
 
 export default function CXTraining() {
   return (
@@ -253,109 +235,14 @@ export default function CXTraining() {
         </div>
       </section>
 
-      {/* Pricing Packages */}
-      <section id="packages" className="py-24 bg-gradient-hero scroll-mt-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
-              Investment
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
-              Choose Your <span className="text-gradient-gold">Package</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Flexible pricing options designed to fit your needs and budget.
-              All packages include our proven CX training methodology.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricingPackages.map((pkg) => (
-              <div
-                key={pkg.name}
-                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${pkg.popular
-                  ? "bg-gradient-to-b from-primary/20 to-card border-primary/50 shadow-2xl shadow-primary/20"
-                  : "bg-gradient-card border-border/50 hover:border-primary/30"
-                  }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full shadow-lg shadow-primary/30">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-center mb-8">
-                  <div
-                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${pkg.popular
-                      ? "bg-gradient-to-br from-primary/40 to-primary/20 shadow-lg shadow-primary/20"
-                      : "bg-primary/10"
-                      }`}
-                  >
-                    <pkg.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="font-display text-2xl font-bold mb-2">
-                    {pkg.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                    {pkg.description}
-                  </p>
-                  <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-sm text-muted-foreground font-medium">
-                      KSH
-                    </span>
-                    <span className="text-4xl font-bold text-gradient-gold">
-                      {pkg.price}
-                    </span>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {pkg.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-muted-foreground">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* TODO: Edit link */}
-                <Button
-                  variant={pkg.popular ? "gold" : "gold-outline"}
-                  className="w-full font-semibold"
-                  asChild
-                >
-                  <a
-                    href="https://paystack.shop/pay/lexblitz"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Get Started
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-sm text-muted-foreground mt-10">
-            All prices are in Kenyan Shillings (KSH). Custom corporate packages
-            available upon request.
-          </p>
-        </div>
-      </section>
-
-      {/* Training Gallery - Creative Staggered Layout (No-Crop) */}
+      {/* Professional Training Gallery - New Component */}
       <section className="py-32 relative overflow-hidden bg-secondary/10">
         {/* Background Accents */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -ml-64 -mb-64" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -ml-64 -mb-64 pointer-events-none" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
               Training in Action
             </span>
@@ -363,77 +250,91 @@ export default function CXTraining() {
               Experience the <span className="text-gradient-gold">Transformation</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A curated look at our high-impact training sessions where strategy meets real-world excellence.
+              A comprehensive showcase of our high-impact training sessions where executive strategy meets real-world excellence.
             </p>
           </div>
 
-          <div className="columns-1 md:columns-2 gap-8 space-y-8">
-            {/* Featured Image - Primary Spotlight */}
-            <div className="break-inside-avoid group relative overflow-hidden rounded-[2rem] border border-primary/20 shadow-2xl transition-all duration-500 hover:border-primary/40">
-              <img
-                src={cx1}
-                alt="Executive Workshop"
-                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                <span className="text-primary font-display text-2xl font-bold mb-2">Executive Strategy</span>
-                <p className="text-muted-foreground">High-level CX workshops for leadership teams.</p>
-              </div>
-              <div className="absolute top-6 right-6 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-md border border-white/10 text-primary text-xs font-bold uppercase tracking-widest">
-                Featured Session
-              </div>
-            </div>
-
-            {/* Support Image 1 */}
-            <div className="break-inside-avoid group relative overflow-hidden rounded-[1.5rem] border border-white/5 shadow-xl">
-              <img
-                src={cx2}
-                alt="Interactive Training"
-                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                <p className="text-foreground font-medium">Interactive Engagement</p>
-              </div>
-            </div>
-
-            {/* Support Image 2 */}
-            <div className="break-inside-avoid group relative overflow-hidden rounded-[1.5rem] border border-white/5 shadow-xl">
-              <img
-                src={cx3}
-                alt="Team Building"
-                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                <p className="text-foreground font-medium">Culture Building</p>
-              </div>
-            </div>
-
-            {/* Support Image 3 */}
-            <div className="break-inside-avoid group relative overflow-hidden rounded-[1.5rem] border border-white/5 shadow-xl">
-              <img
-                src={cx4}
-                alt="Problem Solving"
-                className="w-full h-auto block transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                <p className="text-foreground font-medium">Strategic Planning</p>
-              </div>
-            </div>
-
-            {/* The Results - Duo */}
-            <div className="break-inside-avoid group relative overflow-hidden rounded-[2rem] border border-primary/20 shadow-2xl transition-all duration-500 hover:border-primary/40">
-              <div className="grid grid-cols-2">
-                <div className="border-r border-white/5">
-                  <img src={cx5} alt="Graduation" className="w-full h-auto block" />
-                </div>
-                <div>
-                  <img src={cx6} alt="Success" className="w-full h-auto block" />
+          {/* Picture Listing for CX Training (Curated Masonry) */}
+          <div className="max-w-6xl mx-auto">
+            <div className="columns-1 md:columns-2 gap-8 space-y-8">
+              
+              {/* PRIMARY SPOTLIGHT */}
+              <div className="break-inside-avoid relative group shadow-2xl rounded-[2.5rem] overflow-hidden border border-primary/30">
+                <img
+                  src={cx1}
+                  alt="Executive Strategy"
+                  className="w-full h-auto block transition-transform duration-1000 group-hover:scale-105"
+                />
+                <div className="absolute top-6 left-6 flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-white/10 text-primary text-[10px] font-bold uppercase tracking-widest">
+                  Executive Training
                 </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                <span className="text-primary font-display text-2xl font-bold mb-2">The Results</span>
-                <p className="text-muted-foreground">Celebrating excellence and professional growth.</p>
+
+              {/* DYNAMIC COMBINATION 1 */}
+              <div className="break-inside-avoid space-y-6">
+                <div className="columns-2 gap-4 space-y-4">
+                  <img src={cx2} alt="Workshop" className="w-full h-auto rounded-3xl border border-white/10" />
+                  <img src={cx3} alt="Team Building" className="w-full h-auto rounded-3xl border border-white/10" />
+                </div>
+                <div className="group relative rounded-[2rem] overflow-hidden border border-white/10 shadow-xl">
+                  <img src={cx001} alt="Collaborative Session" className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]" />
+                </div>
               </div>
+
+              {/* ACTION FOCUS */}
+              <div className="break-inside-avoid group relative rounded-[2rem] overflow-hidden border border-primary/20 shadow-xl">
+                <img src={cx4} alt="Strategic Planning" className="w-full h-auto block transition-all duration-[2s] group-hover:scale-105" />
+                <div className="absolute bottom-6 right-6 px-5 py-3 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 max-w-[200px]">
+                  <p className="text-white text-xs font-medium leading-relaxed italic">
+                    "Driving cultural shifts through actionable strategy."
+                  </p>
+                </div>
+              </div>
+
+              {/* GRID MOSAIC */}
+              <div className="break-inside-avoid space-y-6">
+                <div className="columns-2 gap-4 space-y-4">
+                  <img src={cx002} alt="Focus 1" className="w-full h-auto rounded-3xl border border-white/10" />
+                  <img src={cx003} alt="Focus 2" className="w-full h-auto rounded-3xl border border-white/10" />
+                  <img src={cx004} alt="Focus 3" className="w-full h-auto rounded-3xl border border-white/10" />
+                  <img src={cx5} alt="Focus 4" className="w-full h-auto rounded-3xl border border-white/10" />
+                </div>
+              </div>
+
+              {/* THE MASTERPIECE QUARTET */}
+              <div className="break-inside-avoid group relative rounded-[2.5rem] bg-secondary/5 border border-white/10 p-3 shadow-lg">
+                <div className="grid grid-cols-2 gap-3">
+                  <img src={cx005} alt="Highlight 1" className="w-full h-auto rounded-2xl" />
+                  <img src={cx006} alt="Highlight 2" className="w-full h-auto rounded-2xl" />
+                  <img src={cx007} alt="Highlight 3" className="w-full h-auto rounded-2xl" />
+                  <img src={cx008} alt="Highlight 4" className="w-full h-auto rounded-2xl" />
+                </div>
+                <div className="p-6 text-center">
+                  <p className="text-foreground font-display text-lg font-bold mb-1">
+                    Excellence In Motion
+                  </p>
+                  <p className="text-xs text-muted-foreground tracking-widest uppercase">
+                    Interactive Workshops
+                  </p>
+                </div>
+              </div>
+
+              {/* THE CLOSING MOMENT */}
+              <div className="break-inside-avoid relative md:pt-12">
+                <div className="group relative rounded-[3rem] overflow-hidden border-2 border-primary shadow-[0_0_50px_-15px_rgba(var(--primary-rgb),0.4)]">
+                  <img
+                    src={cx6}
+                    alt="Success & Graduation"
+                    className="w-full h-auto block transition-transform duration-[3s] group-hover:scale-[1.08]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <span className="text-primary font-display font-bold text-2xl drop-shadow-md">
+                      Celebrate Success
+                    </span>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -508,6 +409,100 @@ export default function CXTraining() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing Packages */}
+      <section id="packages" className="py-24 bg-card/50 scroll-mt-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+              Investment
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold mb-6">
+              Choose Your <span className="text-gradient-gold">Package</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Flexible pricing options designed to fit your needs and budget.
+              All packages include our proven CX training methodology.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {pricingPackages.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={`relative rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl ${pkg.popular
+                  ? "bg-gradient-to-b from-primary/20 to-card border-primary/50 shadow-2xl shadow-primary/20"
+                  : "bg-gradient-card border-border/50 hover:border-primary/30"
+                  }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-sm font-bold px-4 py-1.5 rounded-full shadow-lg shadow-primary/30">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
+                <div className="text-center mb-8">
+                  <div
+                    className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 ${pkg.popular
+                      ? "bg-gradient-to-br from-primary/40 to-primary/20 shadow-lg shadow-primary/20"
+                      : "bg-primary/10"
+                      }`}
+                  >
+                    <pkg.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold mb-2">
+                    {pkg.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                    {pkg.description}
+                  </p>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-sm text-muted-foreground font-medium">
+                      KSH
+                    </span>
+                    <span className="text-4xl font-bold text-gradient-gold">
+                      {pkg.price}
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 mb-8">
+                  {pkg.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  variant={pkg.popular ? "gold" : "gold-outline"}
+                  className="w-full font-semibold"
+                  asChild
+                >
+                  <a
+                    href="https://paystack.shop/pay/lexblitz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mt-10">
+            All prices are in Kenyan Shillings (KSH). Custom corporate packages
+            available upon request.
+          </p>
         </div>
       </section>
 

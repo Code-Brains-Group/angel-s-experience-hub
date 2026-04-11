@@ -38,6 +38,21 @@ import nmc12 from "@/assets/gallery/mc/new-mc/new-mc12.jpeg";
 import nmc13 from "@/assets/gallery/mc/new-mc/new-mc13.jpeg";
 import nmc14 from "@/assets/gallery/mc/new-mc/new-mc14.jpeg";
 
+// Latest MC Assets
+import mc001 from "@/assets/gallery/mc/mc001.jpeg";
+import mc002 from "@/assets/gallery/mc/mc002.jpeg";
+import mc003 from "@/assets/gallery/mc/mc003.jpeg";
+import mc004 from "@/assets/gallery/mc/mc004.jpeg";
+import mc005 from "@/assets/gallery/mc/mc005.jpeg";
+import mc006 from "@/assets/gallery/mc/mc006.jpeg";
+import mc007 from "@/assets/gallery/mc/mc007.jpeg";
+import mc008 from "@/assets/gallery/mc/mc008.jpeg";
+import mc009 from "@/assets/gallery/mc/mc009.jpeg";
+import mc010 from "@/assets/gallery/mc/mc010.jpeg";
+import mc011 from "@/assets/gallery/mc/mc011.jpeg";
+import mc012 from "@/assets/gallery/mc/mc012.jpeg";
+import mc013 from "@/assets/gallery/mc/mc013.jpeg";
+
 const eventTypes = [
   {
     icon: Building2,
@@ -385,6 +400,58 @@ export default function MCServices() {
                 <p className="text-xs text-gray-500 uppercase tracking-widest">
                   Signature Gallery Expansion
                 </p>
+              </div>
+            </div>
+
+            {/* EXTENDED SHOWCASE - NEW BLOCK 3 (Fresh Highlights) */}
+            <div className="break-inside-avoid space-y-6">
+              <div className="columns-2 gap-4 space-y-4">
+                <img
+                  src={mc001}
+                  alt="Recent Hosting Action"
+                  className="w-full h-auto rounded-[2rem] border border-white/5"
+                />
+                <img
+                  src={mc002}
+                  alt="Recent Hosting Action"
+                  className="w-full h-auto rounded-[2rem] border border-white/5"
+                />
+                <img
+                  src={mc003}
+                  alt="Recent Hosting Action"
+                  className="w-full h-auto rounded-[2rem] border border-white/5"
+                />
+                <img
+                  src={mc004}
+                  alt="Recent Hosting Action"
+                  className="w-full h-auto rounded-[2rem] border border-white/5"
+                />
+                <img
+                  src={mc005}
+                  alt="Recent Hosting Action"
+                  className="w-full h-auto rounded-[2rem] border border-white/5"
+                />
+                <img
+                  src={mc006}
+                  alt="Recent Hosting Action"
+                  className="w-full h-auto rounded-[2rem] border border-white/5"
+                />
+              </div>
+            </div>
+
+            {/* EXTENDED SHOWCASE - NEW BLOCK 4 (Spotlight & Expansion) */}
+            <div className="break-inside-avoid relative group overflow-hidden rounded-[2.5rem] border border-white/5 shadow-xl mb-12">
+              <img src={mc007} alt="Elite Moment" className="w-full h-auto block transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            
+            <div className="break-inside-avoid space-y-6">
+              <div className="columns-2 gap-4 space-y-4">
+                <img src={mc008} alt="Recent Hosting Action" className="w-full h-auto rounded-[2rem] border border-white/5 opacity-90 hover:opacity-100 transition-opacity" />
+                <img src={mc009} alt="Recent Hosting Action" className="w-full h-auto rounded-[2rem] border border-white/5 opacity-90 hover:opacity-100 transition-opacity" />
+                <img src={mc010} alt="Recent Hosting Action" className="w-full h-auto rounded-[2rem] border border-white/5 opacity-90 hover:opacity-100 transition-opacity" />
+                <img src={mc011} alt="Recent Hosting Action" className="w-full h-auto rounded-[2rem] border border-white/5 opacity-90 hover:opacity-100 transition-opacity" />
+                <img src={mc012} alt="Recent Hosting Action" className="w-full h-auto rounded-[2rem] border border-white/5 opacity-90 hover:opacity-100 transition-opacity" />
+                <img src={mc013} alt="Recent Hosting Action" className="w-full h-auto rounded-[2rem] border border-white/5 opacity-90 hover:opacity-100 transition-opacity" />
               </div>
             </div>
 

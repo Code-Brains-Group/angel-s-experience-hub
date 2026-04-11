@@ -4,92 +4,65 @@ import { Link } from "react-router-dom";
 import { BookOpen, ArrowRight, Calendar, User, Tag } from "lucide-react";
 
 // Import images for blog posts
-import mcEvent1 from "@/assets/gallery/mc-event-1.jpg";
-import mcEvent2 from "@/assets/gallery/mc-event-2.jpg";
 import cxTraining1 from "@/assets/gallery/cx-training-1.jpg";
-import cxTraining2 from "@/assets/gallery/cx-training-2.jpg";
+import mcEvent2 from "@/assets/gallery/mc-event-2.jpg";
 import movieDate1 from "@/assets/gallery/movie-date-1.jpg";
-import mcEvent3 from "@/assets/gallery/mc-event-3.jpg";
+import edutainment1 from "@/assets/gallery/edutainment-1.jpg";
 
-// Mock blog posts - these would typically come from an API
+// Blog posts
 const blogPosts = [
   {
     id: 1,
-    slug: "mastering-event-hosting",
-    title: "The Art of Mastering Event Hosting: Tips from a Professional MC",
+    slug: "customer-experience-2026",
+    title: "Customer Experience Trends to Watch in 2026",
     excerpt:
-      "Discover the key principles that transform a good event into an memorable experience. From reading the room to perfect timing...",
+      "In 2026, CX is no longer a department — it is the business itself. Explore the trends reshaping how brands are perceived, trusted, and chosen...",
     author: "Angel",
-    date: "2024-01-15",
-    category: "MC Tips",
-    readTime: "5 min read",
-    image: mcEvent1,
-  },
-  {
-    id: 2,
-    slug: "customer-experience-2024",
-    title: "Customer Experience Trends to Watch in 2024",
-    excerpt:
-      "The landscape of customer experience is evolving rapidly. Here are the trends that will define how businesses connect with their customers...",
-    author: "Angel",
-    date: "2024-01-10",
+    date: "2026-04-12",
     category: "CX Insights",
     readTime: "7 min read",
     image: cxTraining1,
   },
   {
-    id: 3,
+    id: 2,
     slug: "power-of-storytelling",
     title: "The Power of Storytelling in Public Speaking",
     excerpt:
-      "Stories have the unique ability to captivate audiences and make messages memorable. Learn how to weave compelling narratives...",
+      "Facts inform, but stories stay. Discover why storytelling is the most powerful tool in any speaker's toolkit and how to use it effectively...",
     author: "Angel",
-    date: "2024-01-05",
+    date: "2026-04-12",
     category: "Public Speaking",
     readTime: "6 min read",
     image: mcEvent2,
   },
   {
-    id: 4,
-    slug: "building-customer-loyalty",
-    title: "Building Customer Loyalty: Beyond Satisfaction",
-    excerpt:
-      "Satisfied customers are good, but loyal customers are gold. Explore strategies that turn one-time buyers into lifelong advocates...",
-    author: "Angel",
-    date: "2024-01-01",
-    category: "CX Insights",
-    readTime: "8 min read",
-    image: cxTraining2,
-  },
-  {
-    id: 5,
+    id: 3,
     slug: "movie-nights-community",
     title: "How Movie Nights Build Stronger Communities",
     excerpt:
-      "There's something magical about sharing a film experience with others. Discover how communal viewing creates lasting bonds...",
+      "Not every meaningful connection begins with a deep conversation. Sometimes it starts with gathering in the same space and sharing a story together...",
     author: "Angel",
-    date: "2023-12-28",
+    date: "2026-04-12",
     category: "Community",
-    readTime: "4 min read",
+    readTime: "5 min read",
     image: movieDate1,
   },
   {
-    id: 6,
-    slug: "wedding-mc-guide",
-    title: "The Ultimate Guide to Being a Wedding MC",
+    id: 4,
+    slug: "movie-date-with-angel-story",
+    title: "From Movie Nights to a Movement: The Story Behind Movie Date with Angel",
     excerpt:
-      "Weddings are deeply personal events that require a special touch. Here's everything you need to know about hosting the perfect celebration...",
+      "A question asked after every film changed everything. Discover how a bond built with a mother became a community, and a community became a movement...",
     author: "Angel",
-    date: "2023-12-20",
-    category: "MC Tips",
-    readTime: "10 min read",
-    image: mcEvent3,
+    date: "2026-04-12",
+    category: "Community",
+    readTime: "8 min read",
+    image: edutainment1,
   },
 ];
 
 const categories = [
   "All",
-  "MC Tips",
   "CX Insights",
   "Public Speaking",
   "Community",
