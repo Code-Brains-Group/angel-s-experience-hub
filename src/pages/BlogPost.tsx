@@ -348,29 +348,13 @@ function renderContent(content: string) {
       continue;
     }
 
-    // H2
+    // H2 - skip (no subtopic headings shown)
     if (trimmedLine.startsWith("## ")) {
-      elements.push(
-        <h2
-          key={`h2-${i}`}
-          className="font-display text-2xl font-bold mt-10 mb-4"
-        >
-          {trimmedLine.slice(3)}
-        </h2>,
-      );
       continue;
     }
 
-    // H3
+    // H3 - skip (no subtopic headings shown)
     if (trimmedLine.startsWith("### ")) {
-      elements.push(
-        <h3
-          key={`h3-${i}`}
-          className="font-display text-xl font-semibold mt-8 mb-3"
-        >
-          {trimmedLine.slice(4)}
-        </h3>,
-      );
       continue;
     }
 

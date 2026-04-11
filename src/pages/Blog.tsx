@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { BookOpen, ArrowRight, Calendar, User, Tag } from "lucide-react";
 
 // Import images for blog posts
-import cxTraining1 from "@/assets/gallery/cx-training-1.jpg";
-import mcEvent2 from "@/assets/gallery/mc-event-2.jpg";
-import movieDate1 from "@/assets/gallery/movie-date-1.jpg";
-import edutainment1 from "@/assets/gallery/edutainment-1.jpg";
+import cxTraining1 from "@/assets/gallery/cx/cx001.jpeg";
+import mcEvent2 from "@/assets/gallery/mc/mc001.jpeg";
+import movieDate1 from "@/assets/gallery/movie/main_movie/mv1.jpeg";
+import edutainment1 from "@/assets/gallery/movie/edu/edu1.jpeg";
 
 // Blog posts
 const blogPosts = [
